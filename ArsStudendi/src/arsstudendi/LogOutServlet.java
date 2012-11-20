@@ -14,12 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 public class LogOutServlet extends HttpServlet 
 {
 	LogController logController = new LogController();
-	Student student = ;
+	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException 
 	{
 		
-		
+		re
 		
 		logController.logOut(student);
 		resp.sendRedirect("/home.jsp");
