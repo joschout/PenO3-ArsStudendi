@@ -29,7 +29,7 @@ public class LogOutServlet extends HttpServlet
 		resp.sendRedirect("/home.jsp");
 
 		}
-
+//jefke
 
 		
 }
