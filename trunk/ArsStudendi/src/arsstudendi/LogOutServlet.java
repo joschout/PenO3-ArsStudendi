@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class LogOutServlet extends HttpServlet 
@@ -18,39 +19,17 @@ public class LogOutServlet extends HttpServlet
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException 
 	{
-		
-		re
-		
+		HttpSession session = req.getSession();
+		Student student = (Student)session.getAttribute("student");
+		if(student!= null){
 		logController.logOut(student);
+		session.setAttribute("student", null);
+		}
+		
 		resp.sendRedirect("/home.jsp");
-//
-//		String emailAdress = req.getParameter("emailAdress");
-//		String password = req.getParameter("password");
-//
-//		Student student = controller.logIn(password, emailAdress);
-//		if(controller.testLogin(student)){
-//			resp.sendRedirect("/index.html");
-//			
-//		}
-//		else
-//		{
-//			resp.sendRedirect("/home.jsp");
+
 		}
 
 
-//
-//	}
-//	
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) 
-		throws IOException
-		{
-//			req.setAttribute("student", student);
-//			try {
-//				req.getRequestDispatcher("/register.jsp").forward(req, resp);
-//			} catch (ServletException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//		}
-		}
 		
 }
