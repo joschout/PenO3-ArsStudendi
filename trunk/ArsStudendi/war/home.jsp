@@ -28,9 +28,6 @@
 		emptyFields();
 	});
 	
-
-	
-	
 	</script>
 </head> 
 <body> 

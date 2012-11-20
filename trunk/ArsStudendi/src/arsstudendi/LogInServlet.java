@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 
 public class LogInServlet extends HttpServlet 
@@ -17,28 +19,28 @@ public class LogInServlet extends HttpServlet
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException 
 	{
+		
 
+		
 		String emailAdress = req.getParameter("emailAdress");
 		String password = req.getParameter("password");
 
 		Student student = controller.logIn(password, emailAdress);
-		if(controller.testLogin(student)){
-			resp.sendRedirect("/index.html");
+		if(controller.testLogin(student)==false){
+			resp.sendRedirect("/home.jsp");
 			
 		}
-		else
-		{
-			resp.sendRedirect("/home.jsp");
-		}
-
-
-
+		
 	}
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) 
 		throws IOException
 		{
+	    	
+			HttpSession session = req.getSession();
+			
 			req.setAttribute("student", student);
+			session.setAttribute("currentUser", student);
 			try {
 				req.getRequestDispatcher("/register.jsp").forward(req, resp);
 			} catch (ServletException e) {
