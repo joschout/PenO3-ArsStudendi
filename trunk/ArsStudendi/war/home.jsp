@@ -1,6 +1,7 @@
 !DOCTYPE html> 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
+<%@ page import="DomainModel.Student" %>
 <html> 
 <head> 
 	<title>ArsStudendi</title> 
@@ -54,6 +55,7 @@
 			<input type="submit" value="Log In"/>
 			
 		</form>
+		
 		
 	</div>
 	
