@@ -1,15 +1,31 @@
 package DomainModel;
 
 import java.util.*;
+
+import javax.persistence.Id;
+
+import com.googlecode.objectify.Key;
+
 import activityTypePackage.*;
 
+
+
 public class Activity {
+	@Id Long ActivityId;
 	private Calendar startTime;
 	private Calendar stopTime;
+	@parent private Key<Student> studentKey;
 	private long studentID;
 	private String activityName;
 	private ActivityType activityType;
 
+	
+	public Activity(Calendar startTime, Key<Student> studentKey, String activityName) {
+		setStartTime(startTime);
+		this.studentKey=studentKey;
+		setName(activityName);
+
+	}
 	public Activity(Calendar startTime, long studentID, String activityName) {
 		setStartTime(startTime);
 		setStudentID(studentID);
