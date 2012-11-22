@@ -19,7 +19,6 @@ public class LogInServlet extends HttpServlet
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException 
 	{
-		
 
 		
 		String emailAdress = req.getParameter("emailAdress");
