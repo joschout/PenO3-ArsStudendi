@@ -9,9 +9,37 @@ import com.googlecode.objectify.ObjectifyService;
 import Controllers.Objectifiable;
 
 public class StudyProgramRegistry extends Objectifiable {
+	
 	private static StudyProgramRegistry _singletonObject;
 //	public ArrayList<StudyProgram> studyPrograms;
-	public static String[] arr = { "TESTPROGRAM1", "TESTPROGRAM2", "TESTPROGRAM3", "TESTPROGRAM4", "TESTPROGRAM5", "TESTPROGRAM6"};
+	public static String[] studyProgramNames = { "TESTPROGRAM1", "TESTPROGRAM2", "TESTPROGRAM3", "TESTPROGRAM4", "TESTPROGRAM5", "TESTPROGRAM6"};
+	
+	/**
+	 * 
+	 */
+	private StudyProgramRegistry(){
+	ObjectifyService.register(StudyProgram.class);
+	}
+
+	/**
+	 * Dit is eigenlijk de getInstance() methode
+	 * @return
+	 */
+	public static synchronized StudyProgramRegistry getSingletonObject(){
+		if( _singletonObject == null){
+			_singletonObject = new StudyProgramRegistry();
+		}
+		return _singletonObject;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public String[] getStudyProgamNames(){
+		return studyProgramNames;
+	}
+	
+	
 	
 //	static{
 //	ArrayList<Course> courses = CourseRegistry.getSingletonObject().getCourseList();
@@ -53,61 +81,45 @@ public class StudyProgramRegistry extends Objectifiable {
 //		studyPrograms.add(studyProgram);
 //		i++;
 //	}
-//	}
-	
-	private StudyProgramRegistry(){
-	ObjectifyService.register(StudyProgram.class);
-	}
-
-	/**
-	 * Dit is eigenlijk de getInstance() methode
-	 * @return
-	 */
-	public static synchronized StudyProgramRegistry getSingletonObject(){
-		if( _singletonObject == null){
-			_singletonObject = new StudyProgramRegistry();
-		}
-		return _singletonObject;
-	}
+//	}	
 //	public boolean putStudent(StudyProgram studyProgram){
-//		if(studyProgram != null){
-//		getObjectify().put(studyProgram);
-//		return true;
+//	if(studyProgram != null){
+//	getObjectify().put(studyProgram);
+//	return true;
+//	}
+//	else{
+//		return false;
+//	}
+//}
+//
+///**
+// * 
+// */
+//public StudyProgram getCourse(Key<StudyProgram> studyProgramKey){
+//	return getObjectify().get(studyProgramKey);
+//}
+//	
+//public StudyProgram getStudyProgram(Long studyProgramID){
+//	return getObjectify().get(StudyProgram.class, studyProgramID);
+//}
+//public ArrayList<StudyProgram> getStudyProgramList(){
+//	return studyPrograms;
+//}
+//
+//public StudyProgram getCourse(Long studyProgramID){
+//	for (StudyProgram studyProgram: studyPrograms){
+//		if (studyProgram.getStudyProgramID() == studyProgramID){
+//			return studyProgram;
 //		}
-//		else{
-//			return false;
-//		}
+//
 //	}
-//	
-//	/**
-//	 * 
-//	 */
-//	public StudyProgram getCourse(Key<StudyProgram> studyProgramKey){
-//		return getObjectify().get(studyProgramKey);
-//	}
-//		
-//	public StudyProgram getStudyProgram(Long studyProgramID){
-//		return getObjectify().get(StudyProgram.class, studyProgramID);
-//	}
-//	public ArrayList<StudyProgram> getStudyProgramList(){
-//		return studyPrograms;
-//	}
-//	
-//	public StudyProgram getCourse(Long studyProgramID){
-//		for (StudyProgram studyProgram: studyPrograms){
-//			if (studyProgram.getStudyProgramID() == studyProgramID){
-//				return studyProgram;
-//			}
-//	
-//		}
-//		return null;
-//		// should NEVER happen
-//		// THIS CANNOT HAPPEN DO YOU HEAR ME
-//	}
-//	
-	public String[] getStudyProgamNames(){
-		return arr;
-	}
+//	return null;
+//	// should NEVER happen
+//	// THIS CANNOT HAPPEN DO YOU HEAR ME
+//}
+//
+	
+	
 //	public StudyProgram getStudyProgram(long studyprogramNumber){
 //		return getStudyProgramList().get((int) studyprogramNumber);
 //	}
