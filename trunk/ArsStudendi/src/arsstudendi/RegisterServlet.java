@@ -1,6 +1,8 @@
 package arsstudendi;
 
 import Controllers.*;
+import DomainModel.Student;
+
 import java.util.*;
 import java.io.IOException;
 import javax.servlet.http.*;
@@ -37,6 +39,8 @@ public class RegisterServlet extends HttpServlet {
 			}
 			i++;
 		}
+		// vreemde code voor: if(getObjectify().query(Student.class).filter("emailAdress", emailAdress).get() == null)
+		// DUS: als er nog geen gebruiker met dit emailadres in de datastore zit
 		if(controller.testUser(emailAdress)){
 		controller.makeStudent(nStudyProgram, studentFirstName,studentLastName , password, courses, emailAdress);
 		resp.sendRedirect("/index.html");

@@ -5,28 +5,54 @@ import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.*;
-import com.googlecode.objectify.Key;
+//import com.googlecode.objectify.Key;
+import com.googlecode.objectify.annotation.Serialized;
 
 @Entity
-public class Student implements Serializable {
 
+public class Student implements Serializable{
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String studentFirstName;
 	private String studentLastName;
 	@Id
 	private Long studentID;
 	private String password;
-	private List<String> courses;
-//	private List<Course> courses;
-//	private List<Milestone> milestoneList;
-//	private List<Activity> oldActivityList;
-//	private Activity currentActivity;
-	private String emailAdress;
-	private String studyProgram;
+	//private List<String> courses;
+	@Serialized private List<Course> courses;
 
+	@Serialized private List<Milestone> milestoneList;
+	@Serialized private List<Activity> oldActivityList;
+	@Serialized private Activity currentActivity;
+	private String emailAdress;
+	@Serialized private StudyProgram studyProgram;
+	
+//private String studyProgram;
+//	public Student(){}
+//	//Misschien is het teveel om zowel een studyprogram als een lijst van courses mee te geven
+//	public Student(String studyProgram, String studentFirstName,
+//			String studentLastName, String password, List<String> courses,
+//			String newEmailAdress) {
+//		this.studentFirstName = studentFirstName;
+//		this.studentLastName = studentLastName;
+//		this.studyProgram = studyProgram;
+//		this.password = password;
+//		this.courses = courses;
+//		this.emailAdress = newEmailAdress;
+////		currentActivity = null;
+////		oldActivityList = null;
+////		milestoneList = null;
+//	}
+	
 	public Student(){}
+	
 	//Misschien is het teveel om zowel een studyprogram als een lijst van courses mee te geven
-	public Student(String studyProgram, String studentFirstName,
-			String studentLastName, String password, List<String> courses,
+	public Student(StudyProgram studyProgram, String studentFirstName,
+			String studentLastName, String password, List<Course> courses,
 			String newEmailAdress) {
 		this.studentFirstName = studentFirstName;
 		this.studentLastName = studentLastName;
@@ -34,9 +60,9 @@ public class Student implements Serializable {
 		this.password = password;
 		this.courses = courses;
 		this.emailAdress = newEmailAdress;
-//		currentActivity = null;
-//		oldActivityList = null;
-//		milestoneList = null;
+		currentActivity = null;
+		oldActivityList = null;
+		milestoneList = null;
 	}
 
 	public String getStudentFirstName() {
@@ -55,39 +81,39 @@ public class Student implements Serializable {
 		this.studentLastName = studentLastName;
 	}
 	
-	public List<String> getCourses() {
-	return courses;
-}
-
-public void setCourses(List<String> courses) {
-	this.courses = courses;
-}
-
-//	public List<Course> getCourses() {
-//		return courses;
-//	}
+//	public List<String> getCourses() {
+//	return courses;
+//}
 //
-//	public void setCourses(List<Course> courses) {
-//		this.courses = courses;
-//	}
+//public void setCourses(List<String> courses) {
+//	this.courses = courses;
+//}
 
-	public void addCourse(String course) {
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+
+	public void addCourse(Course course) {
 		if (course != null) {
 			getCourses().add(course);
 		}
 	}
 
-	public void removeCourse(String course) {
+	public void removeCourse(Course course) {
 		if (course != null && getCourses().contains(course)) {
 			getCourses().remove(course);
 		}
 	}
 
-	public String getStudyProgram() {
+	public StudyProgram getStudyProgram() {
 		return studyProgram;
 	}
 
-	public void setStudyProgram(String studyProgram) {
+	public void setStudyProgram(StudyProgram studyProgram) {
 		if (studyProgram != null) {
 			this.studyProgram = studyProgram;
 		}
@@ -115,46 +141,46 @@ public void setCourses(List<String> courses) {
 		return studentID;
 	}
 
-//	public List<Milestone> getMilestones() {
-//		return milestoneList;
-//	}
-//
-//	public void addMilestone(Milestone newMilestone) {
-//		milestoneList.add(newMilestone);
-//	}
-//
-//	public void removeMilestone(Milestone delMilestone) {
-//
-//		if (milestoneList.contains(delMilestone)) {
-//			milestoneList.remove(delMilestone);
-//		}
-//	}
+	public List<Milestone> getMilestones() {
+		return milestoneList;
+	}
 
-//	public Activity getCurrentActivity() {
-//		return currentActivity;
-//	}
-//
-//	public void setCurrentActivity(Activity currentActivity) {
-//		this.currentActivity = currentActivity;
-//	}
+	public void addMilestone(Milestone newMilestone) {
+		milestoneList.add(newMilestone);
+	}
+
+	public void removeMilestone(Milestone delMilestone) {
+
+		if (milestoneList.contains(delMilestone)) {
+			milestoneList.remove(delMilestone);
+		}
+	}
+
+	public Activity getCurrentActivity() {
+		return currentActivity;
+	}
+
+	public void setCurrentActivity(Activity currentActivity) {
+		this.currentActivity = currentActivity;
+	}
 
 
-//	public List<Activity> getOldActivityList() {
-//		return oldActivityList;
-//	}
-//
-//	public void setOldActivityList(List<Activity> oldActivityList) {
-//		this.oldActivityList = oldActivityList;
-//	}
-//
-//	public void addActivityToOldActivityList(Activity activity) {
-//		getOldActivityList().add(activity);
-//	}
-//
-//	public void removeFromOldActivityList(Activity activity) {
-//		if (getOldActivityList().contains(activity)) {
-//			getOldActivityList().remove(activity);
-//		}
-//	}
+	public List<Activity> getOldActivityList() {
+		return oldActivityList;
+	}
+
+	public void setOldActivityList(List<Activity> oldActivityList) {
+		this.oldActivityList = oldActivityList;
+	}
+
+	public void addActivityToOldActivityList(Activity activity) {
+		getOldActivityList().add(activity);
+	}
+
+	public void removeFromOldActivityList(Activity activity) {
+		if (getOldActivityList().contains(activity)) {
+			getOldActivityList().remove(activity);
+		}
+	}
 
 }
