@@ -11,16 +11,19 @@
 
 $(document).ready(function() {
 		$("#stop").hide();
+		$("#cancel").hide();
 });
 
 function TestFunction(){
 	if($("#start").is(':visible')){
 	$("#start").hide();
 	$("#stop").show();
+	$("#cancel").show();
 	}
 	else{
 	$("#start").show();
 	$("#stop").hide();
+	$("#cancel").hide();
 	}
 }
 
@@ -88,7 +91,8 @@ function HideList2(){
    			
    			
    			
-			<div class="ui-block-a" id="stop"><button type="button"  name="stop" data-theme="b" value="stop" onClick="TestFunction()">Stop</button></div>   
+			<div class="ui-block-a" id="stop"><button type="submit"  name="stop" data-theme="b" value="stop" onClick="TestFunction()">Stop</button></div>
+			<div class="ui-block-a" id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" onClick="TestFunction()">Stop</button></div>   
 		</form>
 		
 
