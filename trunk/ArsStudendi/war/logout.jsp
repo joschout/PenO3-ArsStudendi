@@ -16,13 +16,17 @@
 
 	<div data-role="header" data-theme="d">
 	 	<a href="index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
-		<h1>Milestones</h1>
-		<a href="logout.jsp" data-role="button" data-icon="delete">LogOut</a>
+		<h1>Log Out</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		<p>Under construction</p>		
+		<p>Are you sure you want to log out?</p>		
 	</div><!-- /content -->
+	
+	<fieldset class="ui-grid-a">
+			<div class="ui-block-a"><button type="submit" data-theme="b">Yes</button></div>
+			<div class="ui-block-b"><a href="index.jsp" data-role="button">No</a></button></div>	   
+	</fieldset>
 
 </div><!-- /page -->
 
