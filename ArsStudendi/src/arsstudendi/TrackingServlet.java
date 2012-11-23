@@ -11,13 +11,13 @@ import javax.servlet.ServletException;
 
 public class TrackingServlet extends HttpServlet 
 {
-	TimerController controller = new RegisterController();
+	TimerController controller = new TimerController();
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		String start = req.getParameter("start");
 		String stop = req.getParameter("stop");
 		if( start != null){
-
+			controller.startActivity();
 		}
 		if (stop != null){
 
@@ -26,10 +26,7 @@ public class TrackingServlet extends HttpServlet
 	}
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-	String[] courseNames = controller.getCourseNames();
-	System.out.println(courseNames);
-	req.setAttribute("courseNames", courseNames);
-	
+
 	try {
 		req.getRequestDispatcher("/tracking.jsp").forward(req, resp);
 	} catch (ServletException e) {

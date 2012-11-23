@@ -37,8 +37,8 @@ function TestFunction(){
 		<div data-role="content" >
 		<form action="/tracking" method="Post">
 		<fieldset class="ui-grid-a">
-			<div class="ui-block-a" id="start"><button type="button" data-theme="b" value="start" onClick="TestFunction()">Start</button></div>
-			<div class="ui-block-a" id="stop"><button type="button"  data-theme="b" value="stop" onClick="TestFunction()">Stop</button></div>   
+			<div class="ui-block-a" id="start"><button type="submit" name="start" data-theme="b" value="start" onClick="TestFunction()">Start</button></div>
+			<div class="ui-block-a" id="stop"><button type="button"  name="stop" data-theme="b" value="stop" onClick="TestFunction()">Stop</button></div>   
 		</fieldset>
 		</form>
 		
