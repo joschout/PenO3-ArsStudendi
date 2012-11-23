@@ -8,14 +8,14 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-	<script type="text/javascript">
+	<script type="text/javascript"></script>
 </head>
 <body> 
 
 <div data-role="page">
 
 	<div data-role="header" data-theme="d">
-	 	<a href="index.html" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+	 	<a href="index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
 		<h1>Milestones</h1>
 		<a href="home.jsp" data-role="button" data-icon="delete">LogOut</a>
 	</div><!-- /header -->
