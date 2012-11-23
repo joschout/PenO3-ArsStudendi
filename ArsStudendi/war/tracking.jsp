@@ -90,13 +90,12 @@ function HideList2(){
    			
    			
    			
-   			
+   			<div data-role="controlgroup">
 			<div class="ui-block-a" id="stop"><button type="submit"  name="stop" data-theme="b" value="stop" onClick="TestFunction()">Stop</button></div>
-			<div class="ui-block-a" id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" onClick="TestFunction()">Stop</button></div>   
-		</form>
+			<div class="ui-block-a" id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" onClick="TestFunction()">cancel</button></div> 
+			</div>  
 		
-
-        
+		</form>  
         </div>
 
         

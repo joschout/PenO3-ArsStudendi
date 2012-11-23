@@ -12,7 +12,7 @@
 <div data-role="page">
 
 	<div data-role="header" data-theme="d">
-	<a href="index.html" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+	<a href="index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
 		<h1>Ars Studendi</h1>
 	<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
 		  
@@ -21,7 +21,7 @@
 	<a href="tracking.jsp" data-role="button">Tracking</a> <br>
 	<a href="milestones.jsp" data-role="button">Milestones</a> <br>
 	<a href="statistics.jsp" data-role="button">Statistics</a> <br>
-	<a href="index.html" data-role="button">Settings</a>
+	<a href="index.jsp" data-role="button">Settings</a>
 
 </div><!-- /page -->
 

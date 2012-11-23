@@ -47,7 +47,7 @@ public class RegisterServlet extends HttpServlet {
 		// DUS: als er nog geen gebruiker met dit emailadres in de datastore zit
 		if(registerController.testUser(emailAdress)){
 		registerController.makeStudent(nStudyProgram, studentFirstName,studentLastName , password, courses, emailAdress);
-		resp.sendRedirect("/index.html");
+		resp.sendRedirect("/index.jsp");
 		}
 		else{
 			req.setAttribute("courseNames", courseNames);
