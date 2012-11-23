@@ -23,6 +23,9 @@
 	<div data-role="content">	
 		<p>Under construction</p>		
 	</div><!-- /content -->
+	
+	<a href="createMilestone.jsp" data-role="button">Create Milestone</a> <br>
+	<a href="showMilestones.jsp" data-role="button">Show Milestones</a>
 
 </div><!-- /page -->
 
