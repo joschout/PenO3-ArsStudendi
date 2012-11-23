@@ -12,10 +12,6 @@ import com.googlecode.objectify.annotation.Serialized;
 
 public class Student implements Serializable{
 
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private String studentFirstName;
 	private String studentLastName;
@@ -30,24 +26,7 @@ public class Student implements Serializable{
 	@Serialized private Activity currentActivity;
 	private String emailAdress;
 	@Serialized private StudyProgram studyProgram;
-	
-//private String studyProgram;
-//	public Student(){}
-//	//Misschien is het teveel om zowel een studyprogram als een lijst van courses mee te geven
-//	public Student(String studyProgram, String studentFirstName,
-//			String studentLastName, String password, List<String> courses,
-//			String newEmailAdress) {
-//		this.studentFirstName = studentFirstName;
-//		this.studentLastName = studentLastName;
-//		this.studyProgram = studyProgram;
-//		this.password = password;
-//		this.courses = courses;
-//		this.emailAdress = newEmailAdress;
-////		currentActivity = null;
-////		oldActivityList = null;
-////		milestoneList = null;
-//	}
-	
+		
 	public Student(){}
 	
 	//Misschien is het teveel om zowel een studyprogram als een lijst van courses mee te geven
@@ -80,14 +59,6 @@ public class Student implements Serializable{
 	public void setStudentLastName(String studentLastName) {
 		this.studentLastName = studentLastName;
 	}
-	
-//	public List<String> getCourses() {
-//	return courses;
-//}
-//
-//public void setCourses(List<String> courses) {
-//	this.courses = courses;
-//}
 
 	public List<Course> getCourses() {
 		return courses;
