@@ -6,7 +6,7 @@ import java.util.*;
 
 public class MilestoneController {
 
-	public void makeNewMilestone(String name, Calendar startTime,Calendar stopTime, Course course, MilestoneType milestoneType,int goal) {
+	public void makeNewMilestone(Student student, String name, Calendar startTime,Calendar stopTime, Course course, MilestoneType milestoneType,int goal) {
 		Milestone milestone = new Milestone(name, course, milestoneType, goal);
 		if (startTime != null) {
 			milestone.setStartTime(startTime);
@@ -14,7 +14,12 @@ public class MilestoneController {
 		if (stopTime != null) {
 			milestone.setStopTime(stopTime);
 		}
+		student.addMilestone(milestone);
 
+	}
+	public void removeMileStone(Student student, Milestone milestone)
+	{
+		student.removeMilestone(milestone);
 	}
 	/**
 	 * deze methode moet aangeroepen worden na het stoppen van een activity,
