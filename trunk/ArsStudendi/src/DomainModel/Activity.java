@@ -17,10 +17,8 @@ public class Activity implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id Long ActivityId;
 	private Calendar startTime;
 	private Calendar stopTime;
-	//private Key<Student> studentKey;
 	private long studentID;
 	private String activityName;
 	private ActivityType activityType;

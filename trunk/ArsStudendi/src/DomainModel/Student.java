@@ -1,7 +1,5 @@
 package DomainModel;
 
-//import java.io.IOException;
-import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.*;
@@ -10,7 +8,7 @@ import com.googlecode.objectify.annotation.Serialized;
 
 @Entity
 
-public class Student implements Serializable{
+public class Student {
 
 	private static final long serialVersionUID = 1L;
 	private String studentFirstName;
