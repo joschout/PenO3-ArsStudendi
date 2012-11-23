@@ -5,7 +5,7 @@ import java.util.*;
 
 import javax.persistence.Id;
 
-import com.googlecode.objectify.Key;
+import com.googlecode.objectify.*;
 
 import activityTypePackage.*;
 
@@ -19,6 +19,7 @@ public class Activity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Calendar startTime;
 	private Calendar stopTime;
+
 	private long studentID;
 	private String activityName;
 	private ActivityType activityType;
