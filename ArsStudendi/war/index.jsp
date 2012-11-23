@@ -21,8 +21,8 @@
 
 	
 	<a href="tracking.jsp" data-role="button">Tracking</a> <br>
-	<a href="Milestones.jsp" data-role="button">Milestones</a> <br>
-	<a href="Statistics.html" data-role="button">Statistics</a> <br>
+	<a href="milestones.jsp" data-role="button">Milestones</a> <br>
+	<a href="statistics.jsp" data-role="button">Statistics</a> <br>
 	<a href="index.html" data-role="button">Settings</a>
 
 </div><!-- /page -->
