@@ -23,6 +23,7 @@
 			$('[type="submit"]').button('refresh');	
 		}
 	}
+
 	
 	$(document).ready(function() {
 		emptyFields();

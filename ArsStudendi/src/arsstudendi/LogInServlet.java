@@ -16,16 +16,19 @@ public class LogInServlet extends HttpServlet
 {
         LogController controller = new LogController();
         Student student = null;
+        HttpSession session;
+
         public void doPost(HttpServletRequest req, HttpServletResponse resp)
                         throws IOException 
         {
 
                 String emailAdress = req.getParameter("emailAdress");
                 String password = req.getParameter("password");
-
+                
+                session = req.getSession();
+                
                 Student student = controller.logIn(password, emailAdress);
                 if(controller.testLogin(student)){
-                        HttpSession session = req.getSession();
                         session.setAttribute("currentUser", student);
                         resp.sendRedirect("/index.jsp");
                 }

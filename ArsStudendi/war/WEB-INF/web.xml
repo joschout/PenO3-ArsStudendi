@@ -16,7 +16,14 @@
 <servlet-name>Tracking</servlet-name>
 <url-pattern>/tracking</url-pattern>
 </servlet-mapping>
-
+<servlet>
+<servlet-name>LogOut</servlet-name>
+<servlet-class>arsstudendi.LogOutServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>LogOut</servlet-name>
+<url-pattern>/logout</url-pattern>
+</servlet-mapping>
 <servlet>
 <servlet-name>LogIn</servlet-name>
 <servlet-class>arsstudendi.LogInServlet</servlet-class>
