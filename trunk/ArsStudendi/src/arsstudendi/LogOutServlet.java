@@ -14,22 +14,24 @@ import javax.servlet.http.HttpSession;
 
 public class LogOutServlet extends HttpServlet 
 {
-	LogController logController = new LogController();
+	LogController controller = new LogController();
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException 
 	{
 		HttpSession session = req.getSession();
-		Student student = (Student)session.getAttribute("student");
+		
+		Student student = (Student)session.getAttribute("currentUser");		
+		
 		if(student!= null){
-		logController.logOut(student);
-		session.setAttribute("student", null);
+		controller.logOut(student);
+   	 	session.invalidate();
 		}
 		
 		resp.sendRedirect("/home.jsp");
 
 		}
-//jefke
+
 
 		
 }
