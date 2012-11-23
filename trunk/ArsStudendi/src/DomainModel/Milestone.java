@@ -14,15 +14,22 @@ public class Milestone {
 	private int goal;
 	private int progress;
 
-	public Milestone(String name, Course course, Milestonetype milestoneType,int goal) {
+	public Milestone(String name, Course course, MilestoneType milestoneType,
+			int goal) {
 
 		this.name = name;
 		this.goal = goal;
 		this.milestoneType = milestoneType;
 	}
-
+	public void setIsAchieved(boolean isAchieved){
+		this.isAchieved = isAchieved;
+	}
 	public void setProgress(int newProgress) {
 		progress += newProgress;
+	}
+
+	public void setGoal(int newGoal) {
+		goal = newGoal;
 	}
 
 	public int getProgress() {
@@ -45,7 +52,6 @@ public class Milestone {
 		return name;
 	}
 
-
 	public MilestoneType milestoneType() {
 		return milestoneType;
 	}
@@ -58,4 +64,7 @@ public class Milestone {
 		this.name = name;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 }
