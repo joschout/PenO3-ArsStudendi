@@ -1,5 +1,6 @@
 package DomainModel;
 
+import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.Id;
@@ -10,22 +11,28 @@ import activityTypePackage.*;
 
 
 
-public class Activity {
+public class Activity implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id Long ActivityId;
 	private Calendar startTime;
 	private Calendar stopTime;
-	@parent private Key<Student> studentKey;
+	//private Key<Student> studentKey;
 	private long studentID;
 	private String activityName;
 	private ActivityType activityType;
 
 	
-	public Activity(Calendar startTime, Key<Student> studentKey, String activityName) {
-		setStartTime(startTime);
-		this.studentKey=studentKey;
-		setName(activityName);
-
-	}
+//	public Activity(Calendar startTime, Key<Student> studentKey, String activityName) {
+//		setStartTime(startTime);
+//		this.studentKey=studentKey;
+//		setName(activityName);
+//
+//	}
+	
 	public Activity(Calendar startTime, long studentID, String activityName) {
 		setStartTime(startTime);
 		setStudentID(studentID);
