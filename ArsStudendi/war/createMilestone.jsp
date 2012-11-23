@@ -10,6 +10,10 @@
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	<script type="text/javascript"></script>
 	
+	<link rel="stylesheet" href="jquery.ui.datepicker.mobile.css" /> 
+  	<script src="jQuery.ui.datepicker.js"></script>
+  	<script src="jquery.ui.datepicker.mobile.js"></script>
+	
   	
 	<script>
 	function emptyFields() {
@@ -62,7 +66,10 @@
      			<label for="pages">Number Of Pages</label>
 
 			</fieldset>
-						
+			<div>
+			<label for="date">Date Input:</label>
+			<input type="date" name="date" id="date" value=""  />		
+			</div>			
 			<fieldset class="ui-grid-a">
 				<div class="ui-block-a"><button type="submit" data-theme="b">Create</button></div>
 				<div class="ui-block-b"><a href="milestones.jsp" data-role="button">Cancel</a></button></div>	   
