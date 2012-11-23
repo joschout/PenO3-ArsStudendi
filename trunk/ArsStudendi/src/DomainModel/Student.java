@@ -10,7 +10,6 @@ import com.googlecode.objectify.annotation.Serialized;
 
 public class Student {
 
-	private static final long serialVersionUID = 1L;
 	private String studentFirstName;
 	private String studentLastName;
 	@Id

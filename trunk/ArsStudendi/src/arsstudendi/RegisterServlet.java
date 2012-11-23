@@ -2,6 +2,7 @@ package arsstudendi;
 
 import Controllers.*;
 import DomainModel.Student;
+import DomainModel.StudyProgram;
 
 
 import java.util.*;
