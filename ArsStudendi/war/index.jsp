@@ -14,7 +14,7 @@
 	<div data-role="header" data-theme="d">
 	<a href="index.html" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
 		<h1>Ars Studendi</h1>
-	<a href="home.jsp" data-role="button" data-icon="delete">LogOut</a>
+	<a href="logout.jsp" data-role="button" data-icon="delete">LogOut</a>
 		  
 	</div><!-- /header -->
 	
