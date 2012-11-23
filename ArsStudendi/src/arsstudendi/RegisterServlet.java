@@ -3,6 +3,7 @@ package arsstudendi;
 import Controllers.*;
 import DomainModel.Student;
 
+
 import java.util.*;
 import java.io.IOException;
 import javax.servlet.http.*;
@@ -13,7 +14,7 @@ import javax.servlet.ServletException;
 
 @SuppressWarnings("serial")
 public class RegisterServlet extends HttpServlet {
-	RegisterController controller = new RegisterController();
+	RegisterController registerController = new RegisterController();
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
 			
@@ -29,7 +30,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		ArrayList<String> courses = new ArrayList<String>();
 		int i =0;
-		String[] courseNames = controller.getCourseNames();
+		String[] courseNames = registerController.getCourseNames();
 		int length = courseNames.length;
 		while(i < length){
 			String s = new String();
@@ -39,10 +40,12 @@ public class RegisterServlet extends HttpServlet {
 			}
 			i++;
 		}
+		
+		
 		// vreemde code voor: if(getObjectify().query(Student.class).filter("emailAdress", emailAdress).get() == null)
 		// DUS: als er nog geen gebruiker met dit emailadres in de datastore zit
-		if(controller.testUser(emailAdress)){
-		controller.makeStudent(nStudyProgram, studentFirstName,studentLastName , password, courses, emailAdress);
+		if(registerController.testUser(emailAdress)){
+		registerController.makeStudent(nStudyProgram, studentFirstName,studentLastName , password, courses, emailAdress);
 		resp.sendRedirect("/index.html");
 		}
 		else{
@@ -59,7 +62,7 @@ public class RegisterServlet extends HttpServlet {
 	}
 		
 		public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		String[] courseNames = controller.getCourseNames();
+		String[] courseNames = registerController.getCourseNames();
 		System.out.println(courseNames);
 		req.setAttribute("courseNames", courseNames);
 		

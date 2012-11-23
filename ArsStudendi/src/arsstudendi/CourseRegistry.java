@@ -7,18 +7,9 @@ import java.util.*;
 public class CourseRegistry extends Objectifiable {
 
 	private static CourseRegistry _singletonObject;
-//	public static ArrayList<Course> courses;
-	public static String[] arr = { "TESTCOURSE1", "TESTCOURSE2", "TESTCOURSE3",
+	//	public static ArrayList<Course> courses;
+	public static String[] courseNames = { "TESTCOURSE1", "TESTCOURSE2", "TESTCOURSE3",
 			"TESTCOURSE4", "TESTCOURSE5", "TESTCOURSE6" };
-//	static {
-//		int length = 6;
-//		int i = 1;
-//		while (i < length + 1) {
-//			Course course = new Course(arr[i], (long) i);
-//			courses.add(course);
-//			i++;
-//		}
-//	}
 
 	/**
 	 * Dit is eigenlijk de getInstance() methode
@@ -31,7 +22,21 @@ public class CourseRegistry extends Objectifiable {
 		}
 		return _singletonObject;
 	}
+	
+	public String[] getCourseNames() {
+		return courseNames;
+	}
 
+	//	static {
+	//		int length = 6;
+	//		int i = 1;
+	//		while (i < length + 1) {
+	//			Course course = new Course(arr[i], (long) i);
+	//			courses.add(course);
+	//			i++;
+	//		}
+	//	}
+	
 	// public boolean putCourse(Course course){
 	// if(course != null){
 	// getObjectify().put(course);
@@ -68,8 +73,5 @@ public class CourseRegistry extends Objectifiable {
 //		// THIS CANNOT HAPPEN DO YOU HEAR ME
 //	}
 
-	public String[] getCourseNames() {
-		return arr;
-	}
-
+	
 }

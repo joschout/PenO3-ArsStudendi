@@ -12,6 +12,7 @@ public class RegisterController {
 	public boolean makeStudent(String program, String studentFirstName, String studentLastName, String password, List<String> strCourses, String newEmailAdress)
 	{
 		boolean succeed = false;
+		StudyProgram program = new StudyProgram(courseList, name, studyProgramID)
 //		Long studyP = Long.valueOf(program);
 		// een boolean terug geven of het emailadres geldig is
 		//Tijdelijk wegens niet static
