@@ -19,15 +19,13 @@
 		<h1>Milestones</h1>
 		<a href="logout.jsp" data-role="button" data-icon="delete">LogOut</a>
 	</div><!-- /header -->
-
-	<div data-role="content">	
-		<p>Under construction</p>		
-	</div><!-- /content -->
 	
-	<a href="createMilestone.jsp" data-role="button">Create Milestone</a> <br>
-	<a href="showMilestones.jsp" data-role="button">Show Milestones</a>
+	<br>
+	<a href="createMilestone.jsp" data-role="button" target="_self">Create Milestone</a> <br>
+	<a href="showMilestones.jsp" data-role="button" target="_self">Show Milestones</a>
 
 </div><!-- /page -->
+
 
 </body>
 </html>
