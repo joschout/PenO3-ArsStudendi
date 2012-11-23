@@ -25,6 +25,14 @@
 <url-pattern>/logout</url-pattern>
 </servlet-mapping>
 <servlet>
+<servlet-name>Index</servlet-name>
+<servlet-class>arsstudendi.IndexServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>Index</servlet-name>
+<url-pattern>/index</url-pattern>
+</servlet-mapping>
+<servlet>
 <servlet-name>LogIn</servlet-name>
 <servlet-class>arsstudendi.LogInServlet</servlet-class>
 </servlet>

@@ -8,14 +8,13 @@ public class TimerController {
 
 public boolean startActivity(Student student, String activityName){
 	boolean succeed = false;
-//		if(student != null && student.getCurrentActivity() == null){
-//		
-//		no idea if this works
+		if(student != null && student.getCurrentActivity() == null){
+		
 	Calendar startTime = Calendar.getInstance();
 	Activity newActivity = new Activity(startTime, student.getStudentID(), activityName);
 	student.setCurrentActivity(newActivity);
 	succeed = true;
-//	}
+	}
 return succeed;	
 }
 

@@ -1,5 +1,6 @@
 package DomainModel;
 
+import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.*;
@@ -8,7 +9,7 @@ import com.googlecode.objectify.annotation.Serialized;
 
 @Entity
 
-public class Student {
+public class Student{
 
 	private String studentFirstName;
 	private String studentLastName;
