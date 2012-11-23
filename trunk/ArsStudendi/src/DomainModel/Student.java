@@ -1,13 +1,14 @@
 package DomainModel;
 
 //import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.*;
 import com.googlecode.objectify.Key;
 
 @Entity
-public class Student {
+public class Student implements Serializable {
 
 	private String studentFirstName;
 	private String studentLastName;

@@ -1,7 +1,6 @@
 !DOCTYPE html> 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
-<%@ page import="DomainModel.Student" %>
 <html> 
 <head> 
 	<title>ArsStudendi</title> 
@@ -44,7 +43,7 @@
 	<div data-role="content">
 		<form id="logIn" action="/home" method="post">
 			<div data-role="fieldcontain" class="ui-hide-label">
-				<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="e-mailadress" class="center-button" onchange="emptyFields()"/>
+				<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="emailadress" class="center-button" onchange="emptyFields()"/>
 			</div>
 			
 			<div data-role="fieldcontain" class="ui-hide-label">
