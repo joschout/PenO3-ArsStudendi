@@ -2,6 +2,7 @@ package arsstudendi;
 
 import Controllers.Objectifiable;
 import DomainModel.*;
+
 import java.util.*;
 
 public class CourseRegistry extends Objectifiable {
@@ -21,6 +22,57 @@ public class CourseRegistry extends Objectifiable {
 			_singletonObject = new CourseRegistry();
 		}
 		return _singletonObject;
+	}
+	
+	
+	
+	
+	
+	
+	
+	public ArrayList<Course> makeCourses() {
+		
+		String[] arr = getCourseNames();
+		ArrayList<Course> courses = new ArrayList<Course>();
+		int length = arr.length;
+		int i = 0;
+		while (i < length) {
+			Course course = new Course(arr[i], (long) i);
+			courses.add(course);
+			i++;
+		}
+		return courses;
+	}
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public ArrayList<Course> getCourseList() {
+		ArrayList<Course> courses = makeCourses();
+		return courses;
+	}
+	public Course getCourse(String courseName) {
+		ArrayList<Course> courses = makeCourses();
+		for (Course course : courses) {
+			if (course.getCourseName() == courseName) {
+				return course;
+			}
+
+		}
+		return null;
+	}
+
+	public String getCourseNameWithLong(long i) {
+		ArrayList<Course> courses = makeCourses();
+		for (Course course : courses) {
+			if (course.getCourseID() == i) {
+				return course.getCourseName();
+			}
+
+		}
+		return null;
 	}
 	
 	public String[] getCourseNames() {
