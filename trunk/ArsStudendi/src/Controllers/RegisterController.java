@@ -14,12 +14,12 @@ public class RegisterController {
 		boolean succeed = false;
 		// een boolean terug geven of het emailadres geldig is
 		//Tijdelijk wegens niet static
-		StudyProgram studyProgram = StudentRegistry.getSingletonObject().getStudyProgram(program);
+		StudyProgram studyProgram = StudyProgramRegistry.getSingletonObject().getStudyProgram(program);
 		List<Course> courses = new ArrayList<Course>();
 		//Tijdelijk wegens niet static
 		for(String strCourse: strCourses){
 			if (strCourse != null){
-			Course course = StudentRegistry.getSingletonObject().getCourse(strCourse);
+			Course course = CourseRegistry.getSingletonObject().getCourse(strCourse);
 			courses.add(course);	
 			}
 		}
@@ -40,7 +40,7 @@ public class RegisterController {
 		return CourseRegistry.getSingletonObject().getCourseNames();
 	}
 	public String getProgramNameWithLong(long i) {
-		String s = StudentRegistry.getSingletonObject().getProgramNameWithLong(i);
+		String s = StudyProgramRegistry.getSingletonObject().getProgramNameWithLong(i);
 		return s;
 	}
 
