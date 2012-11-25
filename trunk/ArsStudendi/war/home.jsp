@@ -52,7 +52,7 @@
 			</div>	
 			
 			
-			<input type="submit" value="Log In"/>
+			<input type="submit" value="LogIn"/>
 			
 		</form>
 		
