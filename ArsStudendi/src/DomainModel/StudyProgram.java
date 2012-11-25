@@ -1,10 +1,11 @@
 package DomainModel;
 
+import java.io.Serializable;
 import java.util.*;
 import javax.persistence.*;
 
 @Entity
-public class StudyProgram {
+public class StudyProgram implements Serializable {
 	private List<Course> courseList;
 	private String name;
 	@Id private Long studyProgramID;

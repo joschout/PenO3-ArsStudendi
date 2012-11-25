@@ -38,7 +38,7 @@ public class Student{
 		this.courses = courses;
 		this.emailAdress = newEmailAdress;
 		currentActivity = null;
-		oldActivityList = null;
+		oldActivityList = new ArrayList<Activity>();
 		milestoneList = null;
 	}
 

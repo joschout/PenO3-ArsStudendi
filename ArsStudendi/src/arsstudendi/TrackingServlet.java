@@ -21,26 +21,52 @@ public class TrackingServlet extends HttpServlet
 		String cancel = req.getParameter("cancel");
 		String option1 = req.getParameter("option1");
 		String option2 = req.getParameter("option2");
+		
 		HttpSession session = req.getSession();
-		Student student = (Student)session.getAttribute("currentUser");
+		Long currentID = (Long)session.getAttribute("currentID");
+		Student student = controller.getStudent(currentID);
+		
 		if( start != null){
 			controller.startActivity(student, option2);
 		}
 		if (stop != null){
 			controller.stopActivity(student);
 		}
-//		if(cancel != null){
-//			controller.cancelActivity(student);
-//		}
+		if(cancel != null){
+			controller.cancelActivity(student);
+		}
+		
+		String aCheck = controller.checkActivity(student);
+		if (aCheck != null ){
+			req.setAttribute("aCheck", aCheck);
+		}
+		else{
+			req.setAttribute("aCheck", null);
+		}
 		resp.sendRedirect("/tracking.jsp");
+//		try {
+//			req.getRequestDispatcher("/tracking.jsp").forward(req, resp);
+//		} catch (ServletException e) {
+//			// TODO Auto-generated catch block
+//			System.out.println("ERROR DETECTED");
+//			e.printStackTrace();
+//	}
 		
 	}
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 	HttpSession session = req.getSession();
-	Student student = (Student)session.getAttribute("currentUser");
-	String studentName = student.getStudentFirstName() + " " + student.getStudentLastName();
-	req.setAttribute("studentName", studentName);
+//	Student student = (Student)session.getAttribute("currentUser");
+	Long currentID = (Long)session.getAttribute("currentID");
+	Student student = controller.getStudent(currentID);
+	req.setAttribute("studentID", currentID);
+	String aCheck = controller.checkActivity(student);
+	if (aCheck != null ){
+		req.setAttribute("aCheck", aCheck);
+	}
+	else{
+		req.setAttribute("aCheck", null);
+	}
 	try {
 		req.getRequestDispatcher("/tracking.jsp").forward(req, resp);
 	} catch (ServletException e) {

@@ -7,38 +7,7 @@
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	
-<script>
 
-$(document).ready(function() {
-		$("#stop").hide();
-		$("#cancel").hide();
-});
-
-function TestFunction(){
-	if($("#start").is(':visible')){
-	$("#start").hide();
-	$("#stop").show();
-	$("#cancel").show();
-	}
-	else{
-	$("#start").show();
-	$("#stop").hide();
-	$("#cancel").hide();
-	}
-}
-
-
-function HideList2(){
-	if($("#option1").val() != "STUDY"){
-	$("#option2").hide();
-	}
-	else{$("#option2").show();}
-	}
-
-
-
-
-</script>
 
 	
 </head> 
@@ -46,27 +15,58 @@ function HideList2(){
 
 <div data-role="page">
 
+<script>
+function hideList2(){
+	if($("#option1 option:selected").val() != "STUDY"){
+	$("#option2").hide();
+	}
+	else{
+	$("#option2").show();
+	}
+	}
+</script>
+
+<% String aCheck = (String)request.getAttribute("aCheck"); %>
+<script>
+var aCheck =<%out.println(aCheck);%>;
+function testF(){
+if(aCheck == "null"){
+				$("#stop").hide();
+				$("#cancel").hide();
+}
+else{
+	$("#start").hide();
+}
+}
+</script>
+<script>
+$(document).ready(function(){
+testF();
+
+});
+</script>
+
 	<form action="/tracking" method="Post">
 	<div data-role="header" data-theme="b">
-		<%String header = (String)request.getAttribute("studentName") + " Tracking";%>
-		<h1><%out.println(header); %></h1>
-		 <a href="../index.html" data-role="button" data-icon="home" data-iconpos="notext">Home</a> 
+		<h1><%out.println("header"); %></h1>
+		 <a href="../index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a> 
+	</div>
 	</form>
 
-	</div>
+	
 	
 		<div data-role="content" >
 		<form action="/tracking" method="Post">
 
-		
-			<div class="ui-block-a" id="start"><button type="submit" name="start" data-theme="b" value="start" onClick="TestFunction()">Start</button></div>
+
+			<div id="start"><button type="submit" name="start" data-theme="b" value="start">Start</button></div>
 			
 			<div data-role="fieldcontain">
    			<fieldset data-role="controlgroup">
    			
    			<div id="option1">
 			<label for="option1" class="select"></label>
-			<select name="option1" id="option1" onChange="HideList2();">
+			<select name="option1" id="option1" onChange="hideList2();">
 			<option value=STUDY>STUDY</option>
 			<option value=SPORT>SPORT</option>
    			<option value=SOCIAL>SOCIAL</option>
@@ -91,8 +91,8 @@ function HideList2(){
    			
    			
    			<div data-role="controlgroup">
-			<div class="ui-block-a" id="stop"><button type="submit"  name="stop" data-theme="b" value="stop" onClick="TestFunction()">Stop</button></div>
-			<div class="ui-block-a" id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" onClick="TestFunction()">cancel</button></div> 
+			<div id="stop"><button type="submit"  name="stop" data-theme="b" value="stop">Stop</button></div>
+			<div id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" >cancel</button></div> 
 			</div>  
 		
 		</form>  

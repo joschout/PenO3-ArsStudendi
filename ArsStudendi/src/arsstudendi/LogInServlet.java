@@ -29,7 +29,8 @@ public class LogInServlet extends HttpServlet
                 
                 Student student = controller.logIn(password, emailAdress);
                 if(controller.testLogin(student)){
-                        session.setAttribute("currentUser", student);
+                		 Long currentID = student.getStudentID();
+                        session.setAttribute("currentID", currentID);
                         resp.sendRedirect("/index.jsp");
                 }
                 else
