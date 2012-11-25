@@ -4,6 +4,8 @@ import DomainModel.*;
 
 import java.util.*;
 
+import arsstudendi.StudentRegistry;
+
 public class MilestoneController {
 
 	public void makeNewMilestone(Student student, String name, Calendar startTime,Calendar stopTime, Course course, MilestoneType milestoneType,int goal) {
@@ -15,11 +17,13 @@ public class MilestoneController {
 			milestone.setStopTime(stopTime);
 		}
 		student.addMilestone(milestone);
+		StudentRegistry.getSingletonObject().putStudent(student);
 
 	}
 	public void removeMileStone(Student student, Milestone milestone)
 	{
 		student.removeMilestone(milestone);
+		StudentRegistry.getSingletonObject().putStudent(student);
 	}
 	/**
 	 * deze methode moet aangeroepen worden na het stoppen van een activity,

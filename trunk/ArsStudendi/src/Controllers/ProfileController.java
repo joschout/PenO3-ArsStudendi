@@ -1,5 +1,6 @@
 package Controllers;
 
+import arsstudendi.StudentRegistry;
 import DomainModel.*;
 
 public class ProfileController {
@@ -10,6 +11,7 @@ public class ProfileController {
 		boolean succeed = false;
 		if(newPassword != null && student != null){
 		student.setPassword(newPassword);
+		StudentRegistry.getSingletonObject().putStudent(student);
 		succeed=true;
 		}
 		return succeed;
@@ -20,6 +22,7 @@ public class ProfileController {
 		succeed = true;
 		student.setStudentLastName(lastName)	;
 		student.setStudentFirstName(firstName);
+		StudentRegistry.getSingletonObject().putStudent(student);
 	}
 	return succeed;
 	}
@@ -29,6 +32,7 @@ public class ProfileController {
 		if(course != null && student != null){
 			student.addCourse(course);
 			succeed = true;
+			StudentRegistry.getSingletonObject().putStudent(student);
 		}
 		return succeed;
 	}
@@ -37,6 +41,7 @@ public class ProfileController {
 		boolean succeed = false;
 		if(student != null && course != null){
 			student.removeCourse(course);
+			StudentRegistry.getSingletonObject().putStudent(student);
 			succeed = true;
 		}
 		return succeed;
@@ -45,6 +50,7 @@ public class ProfileController {
 		 boolean succeed = false;
 		 if(student != null && newEmailAdress != null){
 			 student.setEmailAdress(newEmailAdress);
+			 StudentRegistry.getSingletonObject().putStudent(student);
 		 }
 		 return succeed;
 	 }
