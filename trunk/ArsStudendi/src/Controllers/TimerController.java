@@ -1,6 +1,8 @@
 package Controllers;
 //
 import java.util.Calendar;
+
+import arsstudendi.StudentRegistry;
 import DomainModel.Activity;
 import DomainModel.Student;
 
@@ -14,6 +16,7 @@ public boolean startActivity(Student student, String activityName){
 	Activity newActivity = new Activity(startTime, student.getStudentID(), activityName);
 	student.setCurrentActivity(newActivity);
 	succeed = true;
+	StudentRegistry.getSingletonObject().putStudent(student);
 	}
 return succeed;	
 }
@@ -25,6 +28,7 @@ public boolean stopActivity(Student student){
 		student.addActivityToOldActivityList(tempActivity);
 		student.setCurrentActivity(null);
 		succeed = true;
+		StudentRegistry.getSingletonObject().putStudent(student);
 	}
 return succeed;
 }
@@ -34,8 +38,23 @@ public boolean cancelActivity(Student student){
 	if(student != null && student.getCurrentActivity() !=null){
 		student.setCurrentActivity(null);
 		succeed = true;
+		StudentRegistry.getSingletonObject().putStudent(student);
 	}
 return succeed;
+}
+
+public Student getStudent(long ID){
+	Student student = StudentRegistry.getSingletonObject().getStudent(ID);
+	return student;
+}
+
+public String checkActivity(Student student){
+	Activity activity = student.getCurrentActivity();
+	if ( activity != null){
+		String name = activity.getName();
+		return name;
+	}
+	return null;
 }
 
 /**

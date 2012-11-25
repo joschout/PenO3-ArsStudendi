@@ -20,8 +20,7 @@ public class IndexServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
                     throws IOException 
     {
-        HttpSession session = req.getSession();
-        session.setAttribute("currentUser", null);
+
     	
     }
     
