@@ -6,6 +6,7 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 import DomainModel.*;
 import activityTypePackage.ActivityType;
+import arsstudendi.StudentRegistry;
 
 
 public class ActivityController {
@@ -18,6 +19,7 @@ public boolean startActivity(Student student, String activityName){
 	Calendar startTime = Calendar.getInstance();
 	Activity newActivity = new Activity(startTime, student.getStudentID(), activityName);
 	student.setCurrentActivity(newActivity);
+	StudentRegistry.getSingletonObject().putStudent(student);
 	succeed = true;
 	}
 return succeed;	
@@ -45,6 +47,7 @@ return succeed;
 			}
 			student.addActivityToOldActivityList(tempActivity);
 			student.setCurrentActivity(null);
+			StudentRegistry.getSingletonObject().putStudent(student);
 			succeed = true;
 
 		}
@@ -55,6 +58,7 @@ public boolean cancelActivity(Student student){
 	boolean succeed = false;
 	if(student != null && student.getCurrentActivity() !=null){
 		student.setCurrentActivity(null);
+		StudentRegistry.getSingletonObject().putStudent(student);
 		succeed = true;
 	}
 return succeed;
@@ -78,6 +82,7 @@ public void changeCurrentActivityName(Student student, String newActivityName)
 {
 if(student.getCurrentActivity() != null){
 	student.getCurrentActivity().setActivityName(newActivityName);
+	StudentRegistry.getSingletonObject().putStudent(student);
 }
 }
 

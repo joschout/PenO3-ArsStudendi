@@ -43,6 +43,10 @@
 	
 	<div data-role="content">
 		<form id="logIn" action="/home" method="post">
+				
+                    <img src="/images/Logo_klein.jpeg" alt="image" />
+                
+			
 			<div data-role="fieldcontain" class="ui-hide-label">
 				<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="emailadress" class="center-button" onchange="emptyFields()"/>
 			</div>
