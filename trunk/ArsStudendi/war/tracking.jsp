@@ -26,25 +26,52 @@ function hideList2(){
 	}
 </script>
 
-<% String aCheck = (String)request.getAttribute("aCheck"); %>
+<% String aCheck = (String)request.getAttribute("aCheck");
+	out.println(aCheck);
+	if(aCheck == null){
+	%>
+	<script>var check= "stopped"; </script>
+	<%
+	}
+	else
+	{
+	%>
+	<script>var check= "started"; </script>
+	<%}
+ %>
+
 <script>
-var aCheck =<%out.println(aCheck);%>;
+
+
 function testF(){
-if(aCheck == "null"){
-				$("#stop").hide();
-				$("#cancel").hide();
+if(check == "started"){
+	$("#start").hide();
+	$("#option1").hide();
+	$("#option2").hide();
+
+
 }
 else{
-	$("#start").hide();
+	$("#stop").hide();
+	$("#cancel").hide();
 }
 }
 </script>
 <script>
-$(document).ready(function(){
-testF();
+function myLiveEventHandler(event)
+{
+  if(event.handled !== true)
+  {
+    testF();
+    event.handled = true;
+  }
+  return false;
+}
 
-});
+$(document).on("pageshow", myLiveEventHandler);
+
 </script>
+
 
 	<form action="/tracking" method="Post">
 	<div data-role="header" data-theme="b">
@@ -77,10 +104,10 @@ testF();
    			<div id="option2">
    			<label for="option2" class="select"></label>
 			<select name="option2">
-			<option value=Lecture>Lecture</option>
-   			<option value=SelfTeaching>SelfTeaching</option>
-   			<option value=TeamWork>TeamWork</option>
-   			<option value=Practice>Practice</option>
+			<option value="Lecture">Lecture</option>
+   			<option value="SelfTeaching">SelfTeaching</option>
+   			<option value="TeamWork">TeamWork</option>
+   			<option value="Practice">Practice</option>
    			</select>
    			</div>
    			
@@ -92,7 +119,7 @@ testF();
    			
    			<div data-role="controlgroup">
 			<div id="stop"><button type="submit"  name="stop" data-theme="b" value="stop">Stop</button></div>
-			<div id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" >cancel</button></div> 
+			<div id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" >Cancel</button></div> 
 			</div>  
 		
 		</form>  
