@@ -16,6 +16,8 @@
 <div data-role="page">
 
 <script>
+
+
 function hideList2(){
 	if($("#option1 option:selected").val() != "STUDY"){
 	$("#option2").hide();
@@ -27,7 +29,6 @@ function hideList2(){
 </script>
 
 <% String aCheck = (String)request.getAttribute("aCheck");
-	out.println(aCheck);
 	if(aCheck == null){
 	%>
 	<script>var check= "stopped"; </script>
@@ -41,8 +42,6 @@ function hideList2(){
  %>
 
 <script>
-
-
 function testF(){
 if(check == "started"){
 	$("#start").hide();
@@ -56,8 +55,8 @@ else{
 	$("#cancel").hide();
 }
 }
-</script>
-<script>
+
+
 function myLiveEventHandler(event)
 {
   if(event.handled !== true)
@@ -67,7 +66,6 @@ function myLiveEventHandler(event)
   }
   return false;
 }
-
 $(document).on("pageshow", myLiveEventHandler);
 
 </script>
@@ -114,6 +112,7 @@ $(document).on("pageshow", myLiveEventHandler);
    			</fieldset>
 			</div>
    			
+   			<div
    			
    			
    			
@@ -121,9 +120,20 @@ $(document).on("pageshow", myLiveEventHandler);
 			<div id="stop"><button type="submit"  name="stop" data-theme="b" value="stop">Stop</button></div>
 			<div id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" >Cancel</button></div> 
 			</div>  
+			
+
+			
+			
 		
 		</form>  
         </div>
+		
+		<script>
+		var timePassed = '<%= request.getAttribute("timePassed")%>'
+		</script>
+		<div data-role="footer" id="timer">
+		<h4><script>document.write(timePassed);</script></h4>
+		</div><!-- /footer -->	
 
         
 

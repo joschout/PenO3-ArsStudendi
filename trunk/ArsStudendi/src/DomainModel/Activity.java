@@ -98,9 +98,14 @@ public class Activity implements Serializable{
 	public long getDurationActivity() {
 		if (stopTime == null) {
 			Calendar now = Calendar.getInstance();
-			return now.getTimeInMillis() - startTime.getTimeInMillis();
+			long milisec = now.getTimeInMillis() - startTime.getTimeInMillis();
+			long sec = milisec/1000;
+			return sec;
 		}
-		return stopTime.getTimeInMillis() - startTime.getTimeInMillis();
+		long milisec = stopTime.getTimeInMillis() - startTime.getTimeInMillis();
+		long sec = milisec/1000;
+		return sec;
+		// voorlopig hier, later zie timeconvertion
 	}
 
 	/**
