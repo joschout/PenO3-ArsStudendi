@@ -44,20 +44,23 @@
 	<div data-role="content">
 		<form id="logIn" action="/home" method="post">
 				
-                    <img src="/images/Logo_klein.jpeg" alt="image" />
-                
+				<div class="ui-grid-b">
+					<div class="ui-block-a"></div>
+					<div class="ui-block-b">
+						<img src="/images/Logo_klein.jpeg" alt="image" />
+							
+						<div data-role="fieldcontain" class="ui-hide-label">
+							<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="emailadress" class="center-button" onchange="emptyFields()"/>
+						</div>
 			
-			<div data-role="fieldcontain" class="ui-hide-label">
-				<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="emailadress" class="center-button" onchange="emptyFields()"/>
-			</div>
-			
-			<div data-role="fieldcontain" class="ui-hide-label">
-    			<input type="password" name="password" id="password" value="" placeholder="password" class="center-button" onchange="emptyFields()" />
-			</div>	
-			
-			
-			<input type="submit" value="LogIn"/>
-			
+						<div data-role="fieldcontain" class="ui-hide-label">
+    						<input type="password" name="password" id="password" value="" placeholder="password" class="center-button" onchange="emptyFields()" />
+						</div>	
+							<input type="submit" value="LogIn"/>
+						</div>
+					<div class="ui-block-c"></div>
+				</div>
+
 		</form>
 		
 		
