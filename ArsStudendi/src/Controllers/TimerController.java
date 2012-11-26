@@ -48,6 +48,11 @@ public Student getStudent(long ID){
 	return student;
 }
 
+public Activity getActivity(Student student){
+	Activity currentActivity = student.getCurrentActivity();
+	return currentActivity;
+}
+
 public String checkActivity(Student student){
 	Activity activity = student.getCurrentActivity();
 	if ( activity != null){
@@ -61,7 +66,7 @@ public String checkActivity(Student student){
  *
  */
 public static long getTimePassed(Activity activity){
-	return 1;//return activity.getTimePassed();
+	return activity.getDurationActivity();
 }
 
 public long getTimePassedCurrentActivity(Student student){

@@ -20,6 +20,12 @@ public class TrackingServlet extends HttpServlet
 		Long currentID = (Long)session.getAttribute("currentID");
 		Student student = controller.getStudent(currentID);
 		String aCheck = controller.checkActivity(student);
+		if(aCheck != null){
+		long timePassed = controller.getTimePassed(controller.getActivity(student));
+		req.setAttribute("timePassed", timePassed);
+		}
+		else
+		{req.setAttribute("timePassed", "noValue");}
 		req.setAttribute("aCheck", aCheck);
 		String start = req.getParameter("start");
 		String stop = req.getParameter("stop");
