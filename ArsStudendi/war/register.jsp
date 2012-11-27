@@ -42,7 +42,7 @@
  			if(pass != pass2) {
  				$('[type="submit"]').button('disable');
  				$('[type="submit"]').button('refresh');	
- 				alert("Please insert the same password twice")
+ 				//alert("Please confirm your password correctly")
  			}
  	}
  	
@@ -91,7 +91,9 @@
 		
 		
 		<div data-role="fieldcontain">
-    		<input type="password" name="passwordRepeat" id="passwordRepeat" value="" placeholder="Repeat Password" onchange="emptyFields(), checkPassword()" onchange="checkPassword()"/>
+
+    		<input type="password" name="passwordRepeat" id="passwordRepeat" value="" placeholder="Confirm Password" onchange="emptyFields()"/>
+    		
 		</div>
 		
 		<div data-role="fieldcontain" class="ui-hide-label">
