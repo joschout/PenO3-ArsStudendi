@@ -18,14 +18,20 @@ public class TrackingServlet extends HttpServlet
 			throws IOException {
 		HttpSession session = req.getSession();
 		Long currentID = (Long)session.getAttribute("currentID");
+		System.out.println(currentID);
 		Student student = controller.getStudent(currentID);
 		String aCheck = controller.checkActivity(student);
+		System.out.println(aCheck);
 		if(aCheck != null){
+		System.out.println("why?");
 		long timePassed = controller.getTimePassed(controller.getActivity(student));
 		req.setAttribute("timePassed", timePassed);
 		}
 		else
-		{req.setAttribute("timePassed", "noValue");}
+		{	int i=-1;
+			String s = Integer.toString(i);
+			System.out.println(s + "17:32");
+			req.setAttribute("timePassed", i);}
 		req.setAttribute("aCheck", aCheck);
 		String start = req.getParameter("start");
 		String stop = req.getParameter("stop");
@@ -34,21 +40,22 @@ public class TrackingServlet extends HttpServlet
 		String option2 = req.getParameter("option2");		
 		if( start != null){
 			controller.startActivity(student, option2);
+			long timePassed = controller.getTimePassed(controller.getActivity(student));
+			req.setAttribute("timePassed", timePassed);
 		}
 		if (stop != null){
 			controller.stopActivity(student);
+			int i=-1;
+			String s = Integer.toString(i);
+			req.setAttribute("timePassed", s);
 		}
 		if(cancel != null){
 			controller.cancelActivity(student);
+			int i=-1;
+			String s = Integer.toString(i);
+			req.setAttribute("timePassed", s);
 		}
 		aCheck = controller.checkActivity(student);
-		if (aCheck != null ){
-			req.setAttribute("aCheck", aCheck);
-		}
-		else{
-			req.setAttribute("aCheck", null);
-		}
-
 		try {
 				req.getRequestDispatcher("/tracking.jsp").forward(req, resp);
 			} catch (ServletException e) {
@@ -61,7 +68,7 @@ public class TrackingServlet extends HttpServlet
 	}
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-    	doPost(req, resp);  
+    	doPost(req, resp);
     }  
 	
 

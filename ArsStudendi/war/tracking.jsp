@@ -8,15 +8,31 @@
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	
 
-
-	
 </head> 
 <body> 
 
 <div data-role="page">
 
 <script>
-
+	var timePassed = "<%= request.getAttribute("timePassed")%>";
+	timePassed = parseInt(timePassed);
+	var localTP;
+	function localTime(){
+	if(timePassed == -1){
+		localTP = "Testing";
+	}
+	else{
+	localTP = timePassed;
+	}
+	}
+	function myTimer()
+	{
+	localTP = localTP + 1;
+	$("#demo").text(localTP);
+	}
+	function display(){
+	setInterval("myTimer()",1000);
+	}
 
 function hideList2(){
 	if($("#option1 option:selected").val() != "STUDY"){
@@ -61,12 +77,14 @@ function myLiveEventHandler(event)
 {
   if(event.handled !== true)
   {
+  	localTime();
+  	display();
     testF();
     event.handled = true;
   }
   return false;
 }
-$(document).on("pageshow", myLiveEventHandler);
+$(document).on("pageinit", myLiveEventHandler);
 
 </script>
 
@@ -120,7 +138,6 @@ $(document).on("pageshow", myLiveEventHandler);
 			<div id="stop"><button type="submit"  name="stop" data-theme="b" value="stop">Stop</button></div>
 			<div id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" >Cancel</button></div> 
 			</div>  
-			
 
 			
 			
@@ -128,12 +145,7 @@ $(document).on("pageshow", myLiveEventHandler);
 		</form>  
         </div>
 		
-		<script>
-		var timePassed = '<%= request.getAttribute("timePassed")%>'
-		</script>
-		<div data-role="footer" id="timer">
-		<h4><script>document.write(timePassed);</script></h4>
-		</div><!-- /footer -->	
+		<div id="demo">"Test"</div>
 
         
 
@@ -144,6 +156,7 @@ $(document).on("pageshow", myLiveEventHandler);
 	
 
 </div>
+
 
 </body>
 </html>
