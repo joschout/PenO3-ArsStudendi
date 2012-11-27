@@ -67,4 +67,9 @@ public class MilestoneController {
 		}
 		return isFinished;
 	}
+	
+	public Student getStudent(long ID){
+		Student student = StudentRegistry.getSingletonObject().getStudent(ID);
+		return student;
+	}
 }
