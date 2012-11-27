@@ -77,6 +77,21 @@
 				<div class="ui-block-b"><a href="milestones.jsp" data-role="button">Cancel</a></button></div>	   
 			</fieldset>
 			
+			<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup">
+			<legend>Courses:</legend>
+			<%
+				String[] courseNames = (String[])request.getAttribute("courseNames");
+				int i = 0;
+				if( courseNames != null){
+				while(i<courseNames.length) {
+			%>
+			<input type="checkbox" name=<% out.println(courseNames[i]);%> id=<% out.println(courseNames[i]);%> class="custom";"/>
+			<label for=<% out.println(courseNames[i]);%>> <% out.println(courseNames[i]);%> </label>
+			<% i++; } }%>
+			</fieldset>
+		</div>
+			
  	</form>
 			
 	
