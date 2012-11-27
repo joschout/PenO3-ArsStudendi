@@ -47,7 +47,7 @@
 				<div class="ui-grid-b">
 					<div class="ui-block-a"></div>
 					<div class="ui-block-b">
-						<img src="/images/Logo_klein.jpeg" alt="image" />
+						<img src="/images/Logo_finaal.png" alt="logo" width="394" height="69"/>
 							
 						<div data-role="fieldcontain" class="ui-hide-label">
 							<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="emailadress" class="center-button" onchange="emptyFields()"/>
@@ -56,7 +56,7 @@
 						<div data-role="fieldcontain" class="ui-hide-label">
     						<input type="password" name="password" id="password" value="" placeholder="password" class="center-button" onchange="emptyFields()" />
 						</div>	
-							<input type="submit" value="LogIn"/>
+							<input type="submit" value="Log In"/>
 						</div>
 					<div class="ui-block-c"></div>
 				</div>

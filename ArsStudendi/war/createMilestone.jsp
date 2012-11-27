@@ -66,10 +66,12 @@
      			<label for="pages">Number Of Pages</label>
 
 			</fieldset>
+			
 			<div>
 			<label for="date">Date Input:</label>
 			<input type="date" name="date" id="date" value=""  />		
-			</div>			
+			</div>	
+					
 			<fieldset class="ui-grid-a">
 				<div class="ui-block-a"><button type="submit" data-theme="b">Create</button></div>
 				<div class="ui-block-b"><a href="milestones.jsp" data-role="button">Cancel</a></button></div>	   
