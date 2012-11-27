@@ -10,15 +10,19 @@ import java.io.IOException;
 import javax.servlet.http.*;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
+
 
 
 
 @SuppressWarnings("serial")
 public class RegisterServlet extends HttpServlet {
 	RegisterController registerController = new RegisterController();
+	LogController logController = new LogController();
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-			
+		HttpSession session = req.getSession();
+		
 		String studentFirstName = req.getParameter("studentFirstName");
 		String studentLastName = req.getParameter("studentLastName");
 		String password = req.getParameter("password");
@@ -47,6 +51,9 @@ public class RegisterServlet extends HttpServlet {
 		// DUS: als er nog geen gebruiker met dit emailadres in de datastore zit
 		if(registerController.testUser(emailAdress)){
 		registerController.makeStudent(nStudyProgram, studentFirstName,studentLastName , password, courses, emailAdress);
+		Student student = logController.logIn(password, emailAdress);
+		Long ID = student.getStudentID();
+		session.setAttribute("currentID", ID);
 		resp.sendRedirect("/index.jsp");
 		}
 		else{
@@ -59,6 +66,7 @@ public class RegisterServlet extends HttpServlet {
 				System.out.println("ERROR DETECTED");
 				e.printStackTrace();
 		}}
+		
 
 	}
 		
