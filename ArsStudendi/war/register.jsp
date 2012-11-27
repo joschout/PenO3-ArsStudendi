@@ -39,11 +39,10 @@
  	{
  			var pass = $("#password").val();
  			var pass2 = $("#passwordRepeat").val();
- 			
  			if(pass != pass2) {
  				$('[type="submit"]').button('disable');
  				$('[type="submit"]').button('refresh');	
- 				//alert("Please insert the same password twice")
+ 				alert("Please insert the same password twice")
  			}
  	}
  	
@@ -92,7 +91,7 @@
 		
 		
 		<div data-role="fieldcontain">
-    		<input type="password" name="passwordRepeat" id="passwordRepeat" value="" placeholder="Repeat Password" onchange="emptyFields()"/>
+    		<input type="password" name="passwordRepeat" id="passwordRepeat" value="" placeholder="Repeat Password" onchange="emptyFields(), checkPassword()" onchange="checkPassword()"/>
 		</div>
 		
 		<div data-role="fieldcontain" class="ui-hide-label">
@@ -126,7 +125,7 @@
 		</div>
 		
 		<fieldset class="ui-grid-a">
-			<div class="ui-block-a"><button type="submit" data-theme="b" onclick ="checkPassword()">Submit</button></div>
+			<div class="ui-block-a"><button type="submit" data-theme="b">Submit</button></div>
 			<div class="ui-block-b"><a href="home.jsp" data-role="button">Cancel</a></button></div>	   
 		</fieldset>
 		
