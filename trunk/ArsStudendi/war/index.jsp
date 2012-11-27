@@ -18,7 +18,7 @@
 		  
 	</div><!-- /header -->
 		
-	<a href="tracking.jsp" data-role="button">Tracking</a> <br>
+	<a href="/tracking.jsp" data-role="button">Tracking</a> <br>
 	<a href="milestones.jsp" data-role="button">Mijlpalen</a> <br>
 	<a href="statistics.jsp" data-role="button">Statistieken</a> <br>
 	<a href="index.jsp" data-role="button">Instellingen</a>
