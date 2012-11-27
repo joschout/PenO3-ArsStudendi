@@ -2,6 +2,8 @@ package arsstudendi;
 
 import Controllers.*;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import DomainModel.*;
 
 import javax.servlet.http.HttpServlet;
@@ -26,12 +28,24 @@ public class MilestoneServlet extends HttpServlet {
 		
 		
 		// start en stopTime die calender object teruggeven?
-		// courses moeten op het
-		// scherm komen, aanvinken. Deze course moet doorgegeven worden
-		// tick: amount of pages of time. 
-		//hoeveel page's en hoeveel tijd moet
-		// aangegeven worden
+		// courses moeten op het scherm komen (dropdown), aanvinken. Deze course moet doorgegeven worden
+		// tickbox:amount of pages of time. 
+		//hoeveel page's en hoeveel tijd moet aangegeven worden
 		//submit: aanmaken van milestone
 		milestoneController.makeNewMilestone(student, milestoneName, startTime, stopTime, course, milestoneType, goal);
+		
+		ArrayList<String> courses = new ArrayList<String>();
+		int i =0;
+		String[] courseNames = milestoneController.getCourseNames(student);
+		int length = courseNames.length;
+		while(i < length){
+			String s = new String();
+			s = req.getParameter("" + courseNames[i]);
+			if (s != null){
+				courses.add(courseNames[i]);
+			}
+			i++;
+		}
+		
 	}
 }

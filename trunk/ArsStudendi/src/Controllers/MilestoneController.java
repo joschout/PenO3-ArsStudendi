@@ -25,16 +25,7 @@ public class MilestoneController {
 		student.removeMilestone(milestone);
 		StudentRegistry.getSingletonObject().putStudent(student);
 	}
-	/**
-	 * deze methode moet aangeroepen worden na het stoppen van een activity,
-	 * zodat de milestone geupdate wordt. Als de methode true teruggeeft wil 
-	 * dit zeggen dat er een milestone gecomplete wordt.
-	 * 
-	 * @param milestone
-	 *            milestone die geupdate moet worden
-	 * @param progress
-	 *            de tijd/aantal blz die je geleerd hebt voor de milestone
-	 */
+
 	
 	public void changeName(Milestone milestone, String name)
 	{
@@ -52,6 +43,17 @@ public class MilestoneController {
 	{
 		milestone.setGoal(goal);
 	}
+	/**
+	 * deze methode moet aangeroepen worden na het stoppen van een activity,
+	 * zodat de milestone geupdate wordt. Als de methode true teruggeeft wil 
+	 * dit zeggen dat er een milestone gecomplete wordt.
+	 * 
+	 * @param milestone
+	 *            milestone die geupdate moet worden
+	 * @param progress
+	 *            de tijd/aantal blz die je geleerd hebt voor de milestone
+	 */
+	
 	public boolean updateMilestone(Milestone milestone, int progress) {
 
 		milestone.setProgress(progress);
@@ -66,6 +68,16 @@ public class MilestoneController {
 			milestone.setIsAchieved(true);
 		}
 		return isFinished;
+	}
+	public String [] getCourseNames(Student student)
+	{
+		int size = student.getCourses().size();
+		String [] courseNames = new String[size];
+		int i = 0;
+		while(i<size){
+			courseNames[i] = student.getCourses().get(i).getCourseName();
+		}   	
+		return courseNames;
 	}
 	
 	public Student getStudent(long ID){
