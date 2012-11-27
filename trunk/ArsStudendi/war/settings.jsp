@@ -16,15 +16,16 @@
 
 	<div data-role="header" data-theme="b">
 	 	<a href="index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
-		<h1>Statistics</h1>
-		<a href="logout.jsp" data-role="button" data-icon="delete">LogOut</a>
+		<h1>Settings</h1>
+		<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
 	</div><!-- /header -->
-
-	<div data-role="content">	
-		<p>Under construction</p>		
-	</div><!-- /content -->
+	
+	<br>
+	<a href="courses.jsp" data-role="button" target="_self">Courses</a> <br>
+	<a href="layout.jsp" data-role="button" target="_self">Layout</a>
 
 </div><!-- /page -->
+
 
 </body>
 </html>
