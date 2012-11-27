@@ -47,7 +47,9 @@
 				<div class="ui-grid-b">
 					<div class="ui-block-a"></div>
 					<div class="ui-block-b">
+
 						<img src="/images/Logo_finaal.png" alt="logo" width="394" height="69"/>
+
 							
 						<div data-role="fieldcontain" class="ui-hide-label">
 							<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="emailadress" class="center-button" onchange="emptyFields()"/>

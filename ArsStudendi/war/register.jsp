@@ -22,9 +22,10 @@
 		var name = $("#studentName").val();
 		var lName = $("#studentLastName").val();
 		var pass = $("#password").val();
+		var pass2 = $("#passwordRepeat").val();
 		var email = $("#emailAdress").val();
 		
-		if(name == "" || lName == "" || pass == "" || email == "") {
+		if(name == "" || lName == "" || pass == "" || pass2 == ""|| email == "") {
 			$('[type="submit"]').button('disable');
 			$('[type="submit"]').button('refresh');	
 		}
@@ -33,6 +34,20 @@
 			$('[type="submit"]').button('refresh');	
 		}
 	}
+	
+ 	function checkPassword()
+ 	{
+ 			var pass = $("#password").val();
+ 			var pass2 = $("#passwordRepeat").val();
+ 			
+ 			if(pass != pass2) {
+ 				$('[type="submit"]').button('disable');
+ 				$('[type="submit"]').button('refresh');	
+ 				//alert("Please insert the same password twice")
+ 			}
+ 	}
+ 	
+ 	 
 	
 	//String[] courseNames = request.getAttribute("courseNames");
 	
@@ -66,8 +81,18 @@
 			<input type="text" name="studentLastName" id="studentLastName" value="" placeholder="Last Name" onchange="emptyFields()"/>
 		</div>
 		
+		
+		
+		
+		
+		
 		<div data-role="fieldcontain">
     		<input type="password" name="password" id="password" value="" placeholder="Password" onchange="emptyFields()"/>
+		</div>
+		
+		
+		<div data-role="fieldcontain">
+    		<input type="password" name="passwordRepeat" id="passwordRepeat" value="" placeholder="Repeat Password" onchange="emptyFields()"/>
 		</div>
 		
 		<div data-role="fieldcontain" class="ui-hide-label">
@@ -101,18 +126,18 @@
 		</div>
 		
 		<fieldset class="ui-grid-a">
-			<div class="ui-block-a"><button type="submit" data-theme="b">Submit</button></div>
+			<div class="ui-block-a"><button type="submit" data-theme="b" onclick ="checkPassword()">Submit</button></div>
 			<div class="ui-block-b"><a href="home.jsp" data-role="button">Cancel</a></button></div>	   
 		</fieldset>
 		
-		
 
+		
 		
 		
 	</form>
 
 	
-	
+
 
 </div><!-- /page -->
 
