@@ -14,7 +14,7 @@
 
 <div data-role="page">
 
-	<div data-role="header" data-theme="d">
+	<div data-role="header" data-theme="b">
 	 	<a href="index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
 		<h1>Log Out</h1>
 	</div><!-- /header -->
