@@ -15,11 +15,14 @@ public class MilestoneServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		String milestoneName = req.getParameter("milestoneName");
 		
 		HttpSession session = req.getSession();
-		Student student = (Student)session.getAttribute("currentUser");
+		Long currentID = (Long)session.getAttribute("currentID");
+		Student student = milestoneController.getStudent(currentID);
 		
+		String milestoneName = req.getParameter("milestoneName");
+		String startTime = req.getParameter("start");
+		String stopTime = req.getParameter("end");
 		
 		
 		// start en stopTime die calender object teruggeven?
@@ -29,6 +32,6 @@ public class MilestoneServlet extends HttpServlet {
 		//hoeveel page's en hoeveel tijd moet
 		// aangegeven worden
 		//submit: aanmaken van milestone
-milestoneController.makeNewMilestone(student, milestoneName, startTime, stopTime, course, milestoneType, goal)
+		milestoneController.makeNewMilestone(student, milestoneName, startTime, stopTime, course, milestoneType, goal);
 	}
 }
