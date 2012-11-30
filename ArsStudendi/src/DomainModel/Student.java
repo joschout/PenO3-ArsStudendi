@@ -46,7 +46,7 @@ public class Student{
 		return studentFirstName;
 	}
 
-	public void setStudentFirstName(String studentFirstName) {
+	public void setFirstName(String studentFirstName) {
 		this.studentFirstName = studentFirstName;
 	}
 
@@ -54,7 +54,7 @@ public class Student{
 		return studentLastName;
 	}
 
-	public void setStudentLastName(String studentLastName) {
+	public void setLastName(String studentLastName) {
 		this.studentLastName = studentLastName;
 	}
 
