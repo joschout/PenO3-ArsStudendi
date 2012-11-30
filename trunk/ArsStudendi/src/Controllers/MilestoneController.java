@@ -76,8 +76,10 @@ public class MilestoneController {
 		int i = 0;
 		while(i<size){
 			courseNames[i] = student.getCourses().get(i).getCourseName();
+			i++;
 		}   	
 		return courseNames;
+
 	}
 	
 	public Student getStudent(long ID){

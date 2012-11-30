@@ -40,7 +40,14 @@
 <servlet-name>LogIn</servlet-name>
 <url-pattern>/home</url-pattern>
 </servlet-mapping>
-
+<servlet>
+<servlet-name>newMilestone</servlet-name>
+<servlet-class>arsstudendi.MilestoneServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>newMilestone</servlet-name>
+<url-pattern>/newMilestone</url-pattern>
+</servlet-mapping>
 <welcome-file-list>
 <welcome-file>home.jsp</welcome-file>
 </welcome-file-list>

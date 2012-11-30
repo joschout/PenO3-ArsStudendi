@@ -10,31 +10,41 @@
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	<script type="text/javascript"></script>
 	
+	<link href="mobiscroll-2.2/css/mobiscroll-2.2.custom.min.css" rel="stylesheet" type="text/css" />
+	<script src="mobiscroll-2.2/js/mobiscroll-2.2.custom.min.js" type="text/javascript"></script>
+	
+	
 </head>
 
 <body>
 
 <script>
-var selected = $("input[type='radio'][name='milestoneType']:checked").val();
-
-function hideList2(){
-	if(selected != "Study"){
-		$("#option2").hide();
-	}
-	else{
-		$("#option2").show();
-	}
-}
-</script>
-<script>
-
-$("#getinfo").click(function() {
-
-    $("input[name*="radio-choice-1"]:checked").each(function() {
-        alert($(this).val());
-    });
-
-});​
+$(document).bind('pageinit', function() {
+	$('input[name=milestoneType]').click(function() {
+		if($(this).val() !== "Study") {
+			$("#option2").hide();
+			$("#courses").hide();
+			$("#pageSlider").hide();
+			
+		}
+		else if($(this).val() == "Study") {
+			$("#option2").show();
+			$("#courses").show();
+				if($("#option2").val() == "Page") {
+					alert("test");
+					$("#pageSlider").show();
+				}
+		}
+	});
+	$('input[name=milestoneSort]').click(function() {
+		if($(this).val() == "Page") {
+			$("#pageSlider").show();	
+		}
+		else if($(this).val() !== "Page") {
+			$("#pageSlider").hide();
+		}
+	});
+});
 
 </script>
 
@@ -49,6 +59,7 @@ $("#getinfo").click(function() {
 	</div>
 	
 	<div data-role="content">
+	
 		<form action="/newMilestone" method="post" id="newMilestone">
 			
 			<div>
@@ -57,32 +68,47 @@ $("#getinfo").click(function() {
 			
 			<fieldset data-role="controlgroup" id="option1">
 				<legend>Choose a type:</legend>
-     			<input type="radio" name="milestoneType" id="radio-choice-1" value="choice-1" checked="checked" />
+     			<input type="radio" name="milestoneType" id="radio-choice-1" value="Study" checked="checked"/>
      			<label for="radio-choice-1">Study</label>
 
-     			<input type="radio" name="milestoneType" id="radio-choice-2" value="choice-2"  />
-     			<label for="radio-choice-2">Social</label>
-
-     			<input type="radio" name="milestoneType" id="radio-choice-3" value="choice-3"  />
-     			<label for="radio-choice-3">Sports</label>
-
-     			<input type="radio" name="milestoneType" id="radio-choice-4" value="choice-4"  />
-     			<label for="radio-choice-4">Sleep</label>
-		</fieldset>
+     			<input type="radio" name="milestoneType" id="radio-choice-2" value="Sports"/>
+     			<label for="radio-choice-2">Sports</label>
+			</fieldset>
+			
+   			<div data-role="fieldcontain" id="courses">
+				<fieldset data-role="controlgroup">
+				<legend>Courses:</legend>
+				<%
+					String[] courseNames = (String[])request.getAttribute("courseNames");
+					out.println(courseNames);
+					int i = 0;
+					if( courseNames != null){
+					while(i<courseNames.length) {
+				%>
+				<input type="checkbox" name=<% out.println(courseNames[i]);%> id=<% out.println(courseNames[i]);%> class="custom";"/>
+				<label for=<% out.println(courseNames[i]);%>> <% out.println(courseNames[i]);%> </label>
+				<% i++; } }%>
+				</fieldset>
+			</div>
 		
-   			</div>
-   			
-   			<div id="option2">
-   				<label for="option2" class="select"></label>
-				<select name="option2">
-				<option value="Lecture">Lecture</option>
-   				<option value="SelfTeaching">SelfTeaching</option>
-   				<option value="TeamWork">TeamWork</option>
-   				<option value="Practice">Practice</option>
-   				</select>
-   			</div>
-   			
-   			<a href="#" id="getinfo">getinfo</a>
+			<fieldset data-role="controlgroup" id="option2">
+				<legend>Sort of milestone:</legend>
+     				<input type="radio" name="milestoneSort" id="radio-choice-1" value="Time" checked="checked" />
+     				<label for="radio-choice-1">Time</label>
+		
+     				<input type="radio" name="milestoneSort" id="radio-choice-2" value="Page"  />
+     				<label for="radio-choice-2">Pages</label>
+			</fieldset>
+			
+			<div id="pageSlider">
+				<label for="slider-fill">Amount of pages</label>
+				<input type="range" name="amountOfPages" id="amountOfPages" value="pages" min="0" max="100" data-highlight="true"/>
+			</div>	
+			
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><button type="submit" data-theme="b">Submit</button></div>
+				<div class="ui-block-b"><a href="milestone.jsp" data-role="button">Cancel</a></button></div>	   
+			</fieldset>
 		
 		</form>
 	
