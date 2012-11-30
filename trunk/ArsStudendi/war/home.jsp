@@ -6,9 +6,10 @@
 	<title>ArsStudendi</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" type="text/css" href="main.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-	
+
 	<script>
 	function emptyFields() {
 		var email = $("#emailAdress").val();
@@ -29,9 +30,13 @@
 		emptyFields();
 	});
 	
+	
+
 	</script>
 </head> 
 <body> 
+
+
 
 <div data-role="page">
 
@@ -44,8 +49,8 @@
 	<div data-role="content">
 		<form id="logIn" action="/home" method="post">
 				
-						<div style="width:50%;">
-						<img src="/images/Logo_finaal.png" alt="logo" width="50%"/>
+						<div class="center-align" width:"30%">
+							<img src="/images/Logo_final.png" alt="logo" width="30%"/>
 						</div>
 							
 						<div data-role="fieldcontain" class="ui-hide-label">
