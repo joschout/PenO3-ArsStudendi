@@ -80,20 +80,13 @@
 			<input type="text" name="studentLastName" id="studentLastName" value="" placeholder="Last Name" onchange="emptyFields()"/>
 		</div>
 		
-		
-		
-		
-		
-		
-		<div data-role="fieldcontain">
+		<div data-role="fieldcontain" class="ui-hide-label">
     		<input type="password" name="password" id="password" value="" placeholder="Password" onchange="emptyFields()"/>
 		</div>
 		
 		
-		<div data-role="fieldcontain">
-
-    		<input type="password" name="passwordRepeat" id="passwordRepeat" value="" placeholder="Confirm Password" onchange="emptyFields()"/>
-    		
+		<div data-role="fieldcontain" class="ui-hide-label">
+    		<input type="password" name="passwordRepeat" id="passwordRepeat" value="" placeholder="Confirm Password" onchange="emptyFields()"/>	
 		</div>
 		
 		<div data-role="fieldcontain" class="ui-hide-label">
@@ -127,7 +120,7 @@
 		</div>
 		
 		<fieldset class="ui-grid-a">
-			<div class="ui-block-a"><button type="submit" data-theme="b">Submit</button></div>
+			<div class="ui-block-a"><button type="submit" data-theme="b">Register</button></div>
 			<div class="ui-block-b"><a href="home.jsp" data-role="button">Cancel</a></button></div>	   
 		</fieldset>
 		
