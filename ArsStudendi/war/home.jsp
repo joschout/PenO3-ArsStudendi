@@ -1,4 +1,4 @@
-!DOCTYPE html> 
+<!DOCTYPE html> 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <html> 
@@ -44,12 +44,9 @@
 	<div data-role="content">
 		<form id="logIn" action="/home" method="post">
 				
-				<div class="ui-grid-b">
-					<div class="ui-block-a"></div>
-					<div class="ui-block-b">
-
-						<img src="/images/Logo_finaal.png" alt="logo" width="394" height="69"/>
-
+						<div style="width:50%;">
+						<img src="/images/Logo_finaal.png" alt="logo" width="50%"/>
+						</div>
 							
 						<div data-role="fieldcontain" class="ui-hide-label">
 							<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="emailadress" class="center-button" onchange="emptyFields()"/>
@@ -60,8 +57,7 @@
 						</div>	
 							<input type="submit" value="Log In"/>
 						</div>
-					<div class="ui-block-c"></div>
-				</div>
+
 
 		</form>
 		
