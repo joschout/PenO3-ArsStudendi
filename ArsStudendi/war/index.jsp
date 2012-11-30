@@ -17,11 +17,11 @@
 	<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
 		  
 	</div><!-- /header -->
-		
+	<br>	
 	<a href="tracking.jsp" data-role="button" >Tracking</a> <br>
-	<a href="milestones.jsp" data-role="button">Mijlpalen</a> <br>
-	<a href="statistics.jsp" data-role="button">Statistieken</a> <br>
-	<a href="index.jsp" data-role="button">Instellingen</a>
+	<a href="milestones.jsp" data-role="button">Milestones</a> <br>
+	<a href="statistics.jsp" data-role="button">Statistics</a> <br>
+	<a href="settings.jsp" data-role="button">Settings</a>
 
 
 </div><!-- /page -->
