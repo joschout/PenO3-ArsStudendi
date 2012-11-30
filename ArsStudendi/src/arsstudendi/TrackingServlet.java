@@ -57,6 +57,7 @@ public class TrackingServlet extends HttpServlet
 			req.setAttribute("timePassed", s);
 		}
 		aCheck = controller.checkActivity(student);
+		req.setAttribute("aCheck", aCheck);
 //		resp.sendRedirect("/tracking.jsp");
 		try {
 				req.getRequestDispatcher("/tracking.jsp").forward(req, resp);

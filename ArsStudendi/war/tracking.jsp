@@ -20,13 +20,13 @@ function reNew(){
 <% String aCheck = (String)request.getAttribute("aCheck");
 		if(aCheck == null){
 		%>
-		var check= "stopped";
+		check= "stopped";
 		<%
 		}
 		else
 		{
 		%>
-		var check= "started"; 
+		check= "started"; 
 		<%}
  		%>
  		alert(check);
@@ -40,7 +40,7 @@ function reNew(){
 		localTP = "Testing";
 	}
 	else{
-	localTP = timePassed;
+	localTP = 0;
 	}
 	}
 	function myTimer()
@@ -63,7 +63,7 @@ function hideList2(){
 
 function testF(){
 if(check == "started"){
-	alert("test1");
+	alert("startHide");
 	$("#start").hide();
 	$("#option1").hide();
 	$("#option2").hide();
@@ -71,7 +71,7 @@ if(check == "started"){
 
 }
 else{
-	alert("test2");
+	alert("stopHide");
 	$("#stop").hide();
 	$("#cancel").hide();
 }
@@ -104,7 +104,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 	
 	
 		<div data-role="content" >
-		<form action="/tracking" method="POST">
+		<form action="/tracking" method="POST" data-ajax="false">
 		
 
 
@@ -142,7 +142,6 @@ $(document).bind("pageinit", myLiveEventHandler);
    			<div data-role="controlgroup">
 			<div id="stop"><button type="submit"  name="stop" data-theme="b" value="stop">Stop</button></div>
 			<div id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" >Cancel</button></div>
-			<div id="change"><button type="button"  name="change" data-theme="b" value="cancel" onClick="testF()">Change</button></div>  
 			</div>  
 
 			
