@@ -12,11 +12,29 @@
 <body> 
 
 <div data-role="page">
-
+		
+ 		
 <script>
+var check;
+function reNew(){
+<% String aCheck = (String)request.getAttribute("aCheck");
+		if(aCheck == null){
+		%>
+		var check= "stopped";
+		<%
+		}
+		else
+		{
+		%>
+		var check= "started"; 
+		<%}
+ 		%>
+ 		alert(check);
+ 		}
 	var timePassed = "<%= request.getAttribute("timePassed")%>";
 	timePassed = parseInt(timePassed);
 	var localTP;
+	
 	function localTime(){
 	if(timePassed == -1){
 		localTP = "Testing";
@@ -42,24 +60,10 @@ function hideList2(){
 	$("#option2").show();
 	}
 	}
-</script>
 
-<% String aCheck = (String)request.getAttribute("aCheck");
-	if(aCheck == null){
-	%>
-	<script>var check= "stopped"; </script>
-	<%
-	}
-	else
-	{
-	%>
-	<script>var check= "started"; </script>
-	<%}
- %>
-
-<script>
 function testF(){
 if(check == "started"){
+	alert("test1");
 	$("#start").hide();
 	$("#option1").hide();
 	$("#option2").hide();
@@ -67,6 +71,7 @@ if(check == "started"){
 
 }
 else{
+	alert("test2");
 	$("#stop").hide();
 	$("#cancel").hide();
 }
@@ -77,6 +82,7 @@ function myLiveEventHandler(event)
 {
   if(event.handled !== true)
   {
+  	reNew();
   	localTime();
   	display();
     testF();
@@ -84,22 +90,23 @@ function myLiveEventHandler(event)
   }
   return false;
 }
-$(document).on("pageinit", myLiveEventHandler);
+$(document).bind("pageinit", myLiveEventHandler);
 
 </script>
 
 
-	<form action="/tracking" method="Post">
 	<div data-role="header" data-theme="b">
 		<h1><%out.println("header"); %></h1>
 		 <a href="../index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a> 
 	</div>
-	</form>
+
 
 	
 	
 		<div data-role="content" >
-		<form action="/tracking" method="Post">
+		<form action="/tracking" method="POST">
+		
+
 
 
 			<div id="start"><button type="submit" name="start" data-theme="b" value="start">Start</button></div>
@@ -130,13 +137,12 @@ $(document).on("pageinit", myLiveEventHandler);
    			</fieldset>
 			</div>
    			
-   			<div
-   			
    			
    			
    			<div data-role="controlgroup">
 			<div id="stop"><button type="submit"  name="stop" data-theme="b" value="stop">Stop</button></div>
-			<div id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" >Cancel</button></div> 
+			<div id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" >Cancel</button></div>
+			<div id="change"><button type="button"  name="change" data-theme="b" value="cancel" onClick="testF()">Change</button></div>  
 			</div>  
 
 			
