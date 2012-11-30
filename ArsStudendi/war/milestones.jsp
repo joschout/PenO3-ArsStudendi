@@ -21,7 +21,7 @@
 	</div><!-- /header -->
 	
 	<br>
-	<a href="createMilestone.jsp" data-role="button" target="_self">Create Milestone</a> <br>
+	<a href="/newMilestone" data-role="button" target="_self">Create Milestone</a> <br>
 	<a href="showMilestones.jsp" data-role="button" target="_self">Show Milestones</a>
 
 </div><!-- /page -->
