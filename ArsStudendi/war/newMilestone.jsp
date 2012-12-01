@@ -25,23 +25,22 @@ $(document).bind('pageinit', function() {
 			$("#option2").hide();
 			$("#courses").hide();
 			$("#pageSlider").hide();
+			$("#date").hide();
 			
 		}
 		else if($(this).val() == "Study") {
 			$("#option2").show();
 			$("#courses").show();
-				if($("#option2").val() == "Page") {
-					alert("test");
-					$("#pageSlider").show();
-				}
 		}
 	});
 	$('input[name=milestoneSort]').click(function() {
 		if($(this).val() == "Page") {
-			$("#pageSlider").show();	
+			$("#pageSlider").show();
+			$("#date").hide();	
 		}
-		else if($(this).val() !== "Page") {
+		else if($(this).val() == "Time") {
 			$("#pageSlider").hide();
+			$("#date").show();
 		}
 	});
 });
@@ -105,10 +104,15 @@ $(document).bind('pageinit', function() {
 				<input type="range" name="amountOfPages" id="amountOfPages" value="pages" min="0" max="100" data-highlight="true"/>
 			</div>	
 			
+			<div id="date">
+				<input type="date" name="milestoneDate">
+			</div>
+			
 			<fieldset class="ui-grid-a">
 				<div class="ui-block-a"><button type="submit" data-theme="b">Submit</button></div>
 				<div class="ui-block-b"><a href="milestone.jsp" data-role="button">Cancel</a></button></div>	   
 			</fieldset>
+		
 		
 		</form>
 	
