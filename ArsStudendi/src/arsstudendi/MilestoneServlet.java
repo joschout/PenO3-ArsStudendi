@@ -22,10 +22,7 @@ public class MilestoneServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		Long currentID = (Long)session.getAttribute("currentID");
 		Student student = milestoneController.getStudent(currentID);
-		String studentname = student.getStudentFirstName();
-		System.out.println(studentname);
 		
-		req.setAttribute("name", studentname);
 
 		String milestoneName = req.getParameter("milestoneName");
 		String startTime = req.getParameter("start");
@@ -60,7 +57,7 @@ public class MilestoneServlet extends HttpServlet {
 			System.out.println("ERROR DETECTED");
 			e.printStackTrace();
 	}
-		
+	
 	}
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
