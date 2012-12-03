@@ -1,5 +1,6 @@
 package Controllers;
 //
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import arsstudendi.StudentRegistry;
@@ -76,6 +77,12 @@ public long getTimePassedCurrentActivity(Student student){
 	else return -1;*/
 	return 1;
 }
-
+public static long getTotalTimeOfActivityList(ArrayList<Activity> activityList){
+	long totalTime = 0;
+	for(Activity activity: activityList){
+		totalTime += getTimePassed(activity);
+	}
+	return totalTime;
+}
  
 }
