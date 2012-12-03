@@ -20,8 +20,8 @@ public class ProfileController {
 	boolean succeed = false;
 	if (firstName!= null && lastName!= null && student != null){
 		succeed = true;
-		student.setStudentLastName(lastName)	;
-		student.setStudentFirstName(firstName);
+		student.setLastName(lastName)	;
+		student.setFirstName(firstName);
 		StudentRegistry.getSingletonObject().putStudent(student);
 	}
 	return succeed;
