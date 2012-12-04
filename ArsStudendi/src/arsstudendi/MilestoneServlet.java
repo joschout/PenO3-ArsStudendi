@@ -34,7 +34,7 @@ public class MilestoneServlet extends HttpServlet {
 		int month = Integer.parseInt(milestoneDate.substring(5,7));
 		int day = Integer.parseInt(milestoneDate.substring(8,10));
 		cal.set(year, month-1, day, 23, 59, 59);
-
+		
 		
 		//String startTime = req.getParameter("start");
 		//String stopTime = req.getParameter("end");

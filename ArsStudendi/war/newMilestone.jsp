@@ -20,12 +20,17 @@ $(document).bind('pageinit', function() {
 			$("#pageSlider").hide();
 			$("#time").hide();
 			$("#sportsTime").hide();
+				$('[type="submit"]').button('disable');
+				$('[type="submit"]').button('refresh');
 	$('input[name=milestoneType]').click(function() {
 		if($(this).val() == "Sports") {
 			$("#option2").hide();
 			$("#sportsTime").show();
-			
-			
+				if($("#sportsTime").val() != "") {
+					alert("notEmpty");
+					$('[type="submit"]').button('enable');
+					$('[type="submit"]').button('refresh');	
+				}
 		}
 		else if($(this).val() == "Study") {
 			$("#option2").show();
@@ -46,6 +51,35 @@ $(document).bind('pageinit', function() {
 	});
 });
 
+	
+
+</script>
+
+<script>
+	function emptyFields() {
+		var name = $("#nameMilestone").val();
+		var date = $("#milestoneDate").val();
+		var time = $("#time2").val();
+		var amountOfPages = $("#amountOfPages").val();
+		var sportsTime = $("#sportsTime2").val();
+		if(name == "" || date == "") {
+			$('[type="submit"]').button('disable');
+			$('[type="submit"]').button('refresh');
+		}
+		else {
+			if(time == "" && amountOfPages == "" && sportsTime == "") {
+				$('[type="submit"]').button('disable');
+				$('[type="submit"]').button('refresh');
+			}
+			else {
+				$('[type="submit"]').button('enable');
+				$('[type="submit"]').button('refresh');
+			}
+		}
+	
+	}
+	
+	
 </script>
 
 
@@ -63,10 +97,10 @@ $(document).bind('pageinit', function() {
 		<form action="/newMilestone" method="post" id="newMilestone">
 			
 			<div>
-				<input type="text" name="nameMilestone" id="nameMilestone" value="" placeholder="Description"/>
+				<input type="text" name="nameMilestone" id="nameMilestone" value="" placeholder="Description" onchange="emptyFields()"/>
 			</div>
 			<div id="date">
-   				<input type="date" name="milestoneDate">
+   				<input type="date" name="milestoneDate" id="milestoneDate" onchange="emptyFields()"/>
    			</div>
 			
 			<fieldset data-role="controlgroup" id="option1">
@@ -107,19 +141,19 @@ $(document).bind('pageinit', function() {
 				
 				<div id="pageSlider">
 					<label for="amountOfPages">Amount of pages:</label>
-					<input type="range" name="amountOfPages" id="amountOfPages" value="pages" min="0" max="100" data-highlight="true"/>
+					<input type="range" name="amountOfPages" id="amountOfPages" value="pages" min="0" max="100" data-highlight="true" onchange="emptyFields()"/>
 				</div>	
 				
 				<div id="time">
 					<label for="time">Hours and minutes:</label>
-					<input type="time" name="time" id="time">
+					<input type="time" name="time" id="time2" onchange="emptyFields()"/>
 				</div>
 			
 			</div>
 			
 			<div id="sportsTime">
 					<label for="time">Hours and minutes:</label>
-					<input type="time" name="sportsTime" id="sportsTime">
+					<input type="time" name="sportsTime" id="sportsTime2" onchange="emptyFields()"/>
 			</div>
 			
 			
