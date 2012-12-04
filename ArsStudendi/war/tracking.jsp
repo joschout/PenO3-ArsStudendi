@@ -21,6 +21,7 @@ function reNew(){
 		if(aCheck == null){
 		%>
 		check= "stopped";
+		$("#demo").hide();
 		<%
 		}
 		else
