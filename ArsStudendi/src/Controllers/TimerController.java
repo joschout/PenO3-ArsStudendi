@@ -63,6 +63,18 @@ public String checkActivity(Student student){
 	return null;
 }
 
+public String [] getCourseNames(Student student)
+{
+	int size = student.getCourses().size();
+	String [] courseNames = new String[size];
+	int i = 0;
+	while(i<size){
+		courseNames[i] = student.getCourses().get(i).getCourseName();
+		i++;
+	}   	
+	return courseNames;
+
+}
 /**
  *
  */
