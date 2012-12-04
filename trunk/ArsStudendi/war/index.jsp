@@ -74,7 +74,7 @@
 	<br>	
 	<a href="/tracking" data-role="button" data-ajax="false">Tracking</a> <br>
 	<a href="milestones.jsp" data-role="button">Milestones</a> <br>
-	<a href="statistics.jsp" data-role="button">Statistics</a> <br>
+	<a href="/statistics" data-role="button" data-ajax="false">Statistics</a> <br>
 	<a href="settings.jsp" data-role="button">Settings</a>
 	
 
