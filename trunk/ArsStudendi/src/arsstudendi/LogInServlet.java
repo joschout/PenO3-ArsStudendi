@@ -31,11 +31,11 @@ public class LogInServlet extends HttpServlet
                 if(controller.testLogin(student)){
                 		 Long currentID = student.getStudentID();
                         session.setAttribute("currentID", currentID);
-                        resp.sendRedirect("/index.jsp");
+                        resp.sendRedirect("/index");
                 }
                 else
                 {
-                        resp.sendRedirect("/home.jsp");
+                        resp.sendRedirect("/home");
                 }
 
 

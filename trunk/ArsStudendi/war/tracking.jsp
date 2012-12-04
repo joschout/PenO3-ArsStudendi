@@ -46,7 +46,6 @@ function reNew(){
 	}
 	function myTimer()
 	{
-
 	localTP = localTP + 1;
 	$("#demo").text(localTP);
 	}
@@ -97,7 +96,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 
 	<div data-role="header" data-theme="b">
 		<h1><%out.println("header"); %></h1>
-		 <a href="../index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a> 
+		 <a href="/index" data-role="button" data-icon="home" data-iconpos="notext" data-ajax="false">Home</a> 
 	</div>
 
 
