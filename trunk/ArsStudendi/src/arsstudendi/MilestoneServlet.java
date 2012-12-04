@@ -2,7 +2,8 @@ package arsstudendi;
 
 import Controllers.*;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
+import java.text.*;
 
 import DomainModel.*;
 
@@ -40,11 +41,17 @@ public class MilestoneServlet extends HttpServlet {
 				}
 				else if(milestoneSort.equals("Time")) {
 					String time = req.getParameter("time");
+					DateFormat sdf = new SimpleDateFormat("hh:mm");
+					Date date;
+						try {
+							date = sdf.parse(time);
+							System.out.println(date);
+						} catch (ParseException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+						};
 
-					DateFormat sdf = new SimpleDateFormat("hh:mm:ss");
-					Date date = sdf.parse(time);
-
-					System.out.println("Time: " + date);
+					
 				}
 			}
 			else if(milestoneType.equals("Sports")) {
