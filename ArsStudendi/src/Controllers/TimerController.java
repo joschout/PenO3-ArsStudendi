@@ -3,8 +3,10 @@ package Controllers;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import activityTypePackage.ActivityType;
 import arsstudendi.StudentRegistry;
 import DomainModel.Activity;
+import DomainModel.Course;
 import DomainModel.Student;
 
 public class TimerController {
@@ -21,6 +23,37 @@ public boolean startActivity(Student student, String activityName){
 	}
 return succeed;	
 }
+
+/**
+ * Stops the current activity of the given student (if he has one) and gives this activity an instance of the class ActivityType.
+ * The current activity will be added to the list of the old activities of the student. 
+ * Afterwards, the current activity of the student will be set to null.
+ * 
+ * @param student the student whose current activity, if any, has to be
+ * @param activityType
+ * @return true if (student != null && activityType != null && student.getCurrentActivity() !=null)
+ */
+	public boolean stopActivity(Student student, ActivityType activityType,
+			Course course) {
+		boolean succeed = false;
+		if (student != null && activityType != null
+				&& student.getCurrentActivity() != null) {
+
+			Activity tempActivity = student.getCurrentActivity();
+			tempActivity.setActivityType(activityType);
+			tempActivity.setStopTime(Calendar.getInstance());
+			if (activityType instanceof activityTypePackage.Study) {
+				((activityTypePackage.Study) activityType).setCourse(course);
+			}
+			student.addActivityToOldActivityList(tempActivity);
+			student.setCurrentActivity(null);
+			StudentRegistry.getSingletonObject().putStudent(student);
+			succeed = true;
+
+		}
+		return succeed;
+	}
+
 
 public boolean stopActivity(Student student){
 	boolean succeed = false;
@@ -82,13 +115,17 @@ public static long getTimePassed(Activity activity){
 	return activity.getDurationActivity();
 }
 
+
+
+
 public long getTimePassedCurrentActivity(Student student){
-	/*if(student != null && student.getCurrentActivity() !=null){
+	if(student != null && student.getCurrentActivity() !=null){
 	return getTimePassed(student.getCurrentActivity());
 	}
-	else return -1;*/
-	return 1;
+	else return -1;
 }
+
+
 public static long getTotalTimeOfActivityList(ArrayList<Activity> activityList){
 	long totalTime = 0;
 	for(Activity activity: activityList){
@@ -96,5 +133,11 @@ public static long getTotalTimeOfActivityList(ArrayList<Activity> activityList){
 	}
 	return totalTime;
 }
- 
+public void changeCurrentActivityName(Student student, String newActivityName)
+{
+if(student.getCurrentActivity() != null){
+	student.getCurrentActivity().setActivityName(newActivityName);
+	StudentRegistry.getSingletonObject().putStudent(student);
+}
+}
 }
