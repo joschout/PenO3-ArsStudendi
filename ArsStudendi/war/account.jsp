@@ -63,8 +63,10 @@
 <div data-role="page">
 
 	<div data-role="header" data-theme="b">
-		<h1>Account</h1>
-	</div><!-- /header -->
+	<a href="index.jsp" data-icon="home">Home</a>
+	<h1>Account</h1>
+	<a href="logout.jsp" data-icon="star" data-theme="b">Log out</a>
+</div>
 
 
 	<div data-role="content">
@@ -98,8 +100,8 @@
 			
 		
 		<fieldset class="ui-grid-a">
-			<div class="ui-block-a"><button type="submit" data-theme="b">Submit</button></div>
-			<div class="ui-block-b"><a href="home.jsp" data-role="button">Cancel</a></button></div>	   
+			<div  class="ui-block-a"><a href="confirm.jsp"  data-role="button">Submit</a></button></div>
+			<div  class="ui-block-b"><a href="settings.jsp" data-role="button">Cancel</a></button></div>	
 		</fieldset>
 		
 
