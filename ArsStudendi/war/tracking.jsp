@@ -29,7 +29,6 @@ function reNew(){
 		check= "started"; 
 		<%}
  		%>
- 		alert(check);
  		}
 	var timePassed = "<%= request.getAttribute("timePassed")%>";
 	timePassed = parseInt(timePassed);
@@ -63,7 +62,6 @@ function hideList2(){
 
 function testF(){
 if(check == "started"){
-	alert("startHide");
 	$("#start").hide();
 	$("#option1").hide();
 	$("#option2").hide();
@@ -71,7 +69,6 @@ if(check == "started"){
 
 }
 else{
-	alert("stopHide");
 	$("#stop").hide();
 	$("#cancel").hide();
 }
