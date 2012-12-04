@@ -21,9 +21,11 @@ public class Milestone {
 		this.goal = goal;
 		this.milestoneType = milestoneType;
 	}
-	public void setIsAchieved(boolean isAchieved){
+
+	public void setIsAchieved(boolean isAchieved) {
 		this.isAchieved = isAchieved;
 	}
+
 	public void setProgress(int newProgress) {
 		progress += newProgress;
 	}
@@ -66,5 +68,9 @@ public class Milestone {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Calendar getStopTime() {
+		return stopTime;
 	}
 }

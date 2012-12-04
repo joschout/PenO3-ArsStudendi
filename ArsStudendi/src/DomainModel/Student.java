@@ -8,26 +8,33 @@ import javax.persistence.*;
 import com.googlecode.objectify.annotation.Serialized;
 
 @Entity
-
-public class Student{
+public class Student {
 
 	private String studentFirstName;
 	private String studentLastName;
 	@Id
 	private Long studentID;
 	private String password;
-	//private List<String> courses;
-	@Serialized private List<Course> courses;
+	// private List<String> courses;
+	@Serialized
+	private List<Course> courses;
 
-	@Serialized private List<Milestone> milestoneList;
-	@Serialized private List<Activity> oldActivityList;
-	@Serialized private Activity currentActivity;
+	@Serialized
+	private List<Milestone> milestoneList;
+	@Serialized
+	private List<Activity> oldActivityList;
+	@Serialized
+	private Activity currentActivity;
 	private String emailAdress;
-	@Serialized private StudyProgram studyProgram;
-		
-	public Student(){}
-	
-	//Misschien is het teveel om zowel een studyprogram als een lijst van courses mee te geven
+	@Serialized
+	private StudyProgram studyProgram;
+	private Calendar lastLogin;
+
+	public Student() {
+	}
+
+	// Misschien is het teveel om zowel een studyprogram als een lijst van
+	// courses mee te geven
 	public Student(StudyProgram studyProgram, String studentFirstName,
 			String studentLastName, String password, List<Course> courses,
 			String newEmailAdress) {
@@ -40,6 +47,13 @@ public class Student{
 		currentActivity = null;
 		oldActivityList = new ArrayList<Activity>();
 		milestoneList = null;
+	}
+
+	public Calendar getLastLogin() {
+		return lastLogin;
+	}
+	public void setLastLogin(Calendar loginTime){
+		lastLogin = loginTime;
 	}
 
 	public String getStudentFirstName() {
@@ -87,7 +101,7 @@ public class Student{
 			this.studyProgram = studyProgram;
 		}
 	}
-	
+
 	public String getEmailAdress() {
 		return emailAdress;
 	}
@@ -97,8 +111,8 @@ public class Student{
 	}
 
 	public void setPassword(String newPassword) {
-		if(newPassword != null){
-		this.password = newPassword;
+		if (newPassword != null) {
+			this.password = newPassword;
 		}
 	}
 
@@ -132,7 +146,6 @@ public class Student{
 	public void setCurrentActivity(Activity currentActivity) {
 		this.currentActivity = currentActivity;
 	}
-
 
 	public List<Activity> getOldActivityList() {
 		return oldActivityList;
