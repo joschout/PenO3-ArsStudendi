@@ -21,7 +21,7 @@ function reNew(){
 		if(aCheck == null){
 		%>
 		check= "stopped";
-		$("#footer").hide();
+		$("#demo").hide();
 		$("#numPages").hide();
 		<%}
 		else{%>	
@@ -99,53 +99,57 @@ $(document).bind("pageinit", myLiveEventHandler);
 
 
 	<div data-role="header" data-theme="b">
-		<h1><%out.println("header"); %></h1>
-		 <a href="/index" data-role="button" data-icon="home" data-iconpos="notext" data-ajax="false">Home</a> 
+		<a href="index.jsp" data-role="button" data-icon="home" data-iconpos="notext" data-ajax="false">Home</a> 
+		<h1><%out.println("Tracking");%></h1>
+		<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
 	</div>
-
-
-	
 	
 		<div data-role="content" >
 		<form action="/tracking" method="POST" data-ajax="false">
 		
-
-
-
-			<div id="start"><button type="submit" name="start" data-theme="b" value="start">Start</button></div>
 			
 			<div data-role="fieldcontain">
-   			<fieldset data-role="controlgroup">
+   				<fieldset data-role="controlgroup">
    			
-   			<div id="option1">
-			<label for="option1" class="select"></label>
-			<select name="option1" id="option1" onChange="hideList2();">
-			<option value=STUDY>STUDY</option>
-			<option value=SPORT>SPORT</option>
-   			<option value=SOCIAL>SOCIAL</option>
-   			<option value=SLEEP>SLEEP</option>
-   			</select>
-   			</div>
+   					<div id="option1">
+						<label for="option1" class="select"></label>
+						<select name="option1" id="option1" onChange="hideList2();">
+							<option value=STUDY>Study</option>
+							<option value=SPORT>Sport</option>
+   							<option value=SOCIAL>Social</option>
+   							<option value=SLEEP>Sleep</option>
+   						</select>
+   					</div>
    			
-   			<div id="option2">
-   			<label for="option2" class="select"></label>
-			<select name="option2">
-			<option value="Lecture">Lecture</option>
-   			<option value="SelfTeaching">SelfTeaching</option>
-   			<option value="TeamWork">TeamWork</option>
-   			<option value="Practice">Practice</option>
-   			</select>
-   			</div>
+   					<div id="option2">
+   						<label for="option2" class="select"></label>
+						<select name="option2">
+							<option value="Lecture">Lecture</option>
+   							<option value="SelfTeaching">Self Teaching</option>
+   							<option value="TeamWork">Teamwork</option>
+   							<option value="Practice">Practice</option>
+   						</select>
+   					</div>
    			
-   			</fieldset>
+   				</fieldset>
 			</div>
 			
+			<div id="start">
+				<button type="submit" name="start" data-theme="b" value="start">Start</button>
+			</div>
+			
+			<div id="demo"></div>
+			
+		
+			
+			
 			<div data-role="fieldcontain" class="ui-hide-label" id="numPages">
-			<input type="text" name="numberOfPages"  value="" placeholder="numberOfPages"/>
+				<label for="numberOfPages" class="select">Amount Studied</label><br>
+				<input type="text" name="numberOfPages"  value="" placeholder="# Pages"/>
 			</div>
 			
 			<div data-role="fieldcontain" id="courses">
-			<label for="select-choice-0" class="select">courses</label>
+			<label for="select-choice-0" class="select">Course</label><br>
 			<select name="courses">
 			<%
 				String[] courseNames = (String[])request.getAttribute("studentCourses");
@@ -156,22 +160,18 @@ $(document).bind("pageinit", myLiveEventHandler);
    			<%i++;}}%>
 			</select>
 			</div>
-   			
-   			
-   			<div data-role="controlgroup">
-			<div id="stop"><button type="submit"  name="stop" data-theme="b" value="stop">Stop</button></div>
-			<div id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" >Cancel</button></div>
-			</div>  
-
+   					
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a" id="stop"><button type="submit" name="stop" data-theme="b" value="stop">Stop</button></div>
+				<div class="ui-block-b" id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" >Cancel</button></div>	   
+			</fieldset>
 			
-			
-		
 		</form>  
         </div>
 		
-		<div data-role="footer" id="footer"> 
-		<div id="demo"></div>
-		</div>
+ 
+		
+		
 
         
 
