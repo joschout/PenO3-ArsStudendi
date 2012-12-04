@@ -23,7 +23,7 @@
 		<p>Are you sure you want to change the settings?</p>		
 	</div><!-- /content -->
 	
-	<form id="LogOut" action="/logout" method="post">
+	<form id="Confirm" action="/confirm" method="post">
 	<fieldset class="ui-grid-a">
 			<div class="ui-block-a"><button type="submit" data-theme="b">Yes</button></div>
 			<div class="ui-block-b"><a href="index.jsp" data-role="button">No</a></button></div>	   
