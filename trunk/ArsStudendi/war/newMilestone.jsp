@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-	<script type="text/javascript"></script>	
+	<script type="text/javascript"></script>zzz	
 	
 </head>
 
@@ -112,14 +112,14 @@ $(document).bind('pageinit', function() {
 				
 				<div id="time">
 					<label for="time">Hours and minutes:</label>
-					<input type="time" name="time">
+					<input type="time" name="time" id="time">
 				</div>
 			
 			</div>
 			
 			<div id="sportsTime">
 					<label for="time">Hours and minutes:</label>
-					<input type="time" name="time">
+					<input type="time" name="sportsTime" id="sportsTime">
 			</div>
 			
 			

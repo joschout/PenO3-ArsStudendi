@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 @SuppressWarnings("serial")
 public class MilestoneServlet extends HttpServlet {
 	MilestoneController milestoneController = new MilestoneController();
+	
+	
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
@@ -22,12 +24,31 @@ public class MilestoneServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		Long currentID = (Long)session.getAttribute("currentID");
 		Student student = milestoneController.getStudent(currentID);
-		
 
-		String milestoneName = req.getParameter("milestoneName");
-		String startTime = req.getParameter("start");
-		String stopTime = req.getParameter("end");
+		String milestoneName = req.getParameter("nameMilestone");
+		String milestoneDate = req.getParameter("milestoneDate");
 		
+		//String startTime = req.getParameter("start");
+		//String stopTime = req.getParameter("end");
+		
+		String milestoneType = req.getParameter("milestoneType");
+			if(milestoneType.equals("Study")) {
+				String milestoneSort = req.getParameter("milestoneSort");
+				if(milestoneSort.equals("Page")) {
+					String amountOfPages = req.getParameter("amountOfPages");
+					
+				}
+				else if(milestoneSort.equals("Time")) {
+					String time = req.getParameter("time");
+				}
+			}
+			else if(milestoneType.equals("Sports")) {
+					String time = req.getParameter("sportsTime");
+					
+				}
+			
+		
+		resp.sendRedirect("milestones.jsp");
 		
 		// start en stopTime die calender object teruggeven?
 		// courses moeten op het scherm komen (dropdown), aanvinken. Deze course moet doorgegeven worden
@@ -61,6 +82,20 @@ public class MilestoneServlet extends HttpServlet {
 	}
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-    	doPost(req, resp);
+    	
+    	HttpSession session = req.getSession();
+		Long currentID = (Long)session.getAttribute("currentID");
+		Student student = milestoneController.getStudent(currentID);
+		
+    	String[] courseNames = milestoneController.getCourseNames(student);
+    	req.setAttribute("courseNames", courseNames);
+		try {
+			req.getRequestDispatcher("/newMilestone.jsp").forward(req, resp);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			System.out.println("ERROR DETECTED");
+			e.printStackTrace();
+	}
+    	
     }  
 }
