@@ -21,7 +21,7 @@ function reNew(){
 		if(aCheck == null){
 		%>
 		check= "stopped";
-		$("#demo").hide();
+		$("#footer").hide();
 		<%
 		}
 		else
@@ -31,6 +31,7 @@ function reNew(){
 		<%}
  		%>
  		}
+
 	var timePassed = "<%= request.getAttribute("timePassed")%>";
 	timePassed = parseInt(timePassed);
 	var localTP;
@@ -40,11 +41,12 @@ function reNew(){
 		localTP = "Testing";
 	}
 	else{
-	localTP = 0;
+	localTP = timePassed;
 	}
 	}
 	function myTimer()
 	{
+
 	localTP = localTP + 1;
 	$("#demo").text(localTP);
 	}
@@ -148,7 +150,9 @@ $(document).bind("pageinit", myLiveEventHandler);
 		</form>  
         </div>
 		
-		<div id="demo">"Test"</div>
+		<div data-role="footer" id="footer"> 
+		<div id="demo"></div>
+		</div>
 
         
 

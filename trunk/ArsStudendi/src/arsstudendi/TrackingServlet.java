@@ -12,7 +12,6 @@ import javax.servlet.ServletException;
 
 public class TrackingServlet extends HttpServlet 
 {
-
 	TimerController controller = new TimerController();
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
@@ -24,7 +23,6 @@ public class TrackingServlet extends HttpServlet
 		req.setAttribute("aCheck", aCheck);
 		System.out.println(aCheck);
 		if(aCheck != null){
-		System.out.println("test1");
 		long timePassed = controller.getTimePassed(controller.getActivity(student));
 		req.setAttribute("timePassed", timePassed);
 		}
