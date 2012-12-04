@@ -40,11 +40,16 @@ public class MilestoneServlet extends HttpServlet {
 				}
 				else if(milestoneSort.equals("Time")) {
 					String time = req.getParameter("time");
+
+					DateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+					Date date = sdf.parse(time);
+
+					System.out.println("Time: " + date);
 				}
 			}
 			else if(milestoneType.equals("Sports")) {
 					String time = req.getParameter("sportsTime");
-					
+					int intTime = Integer.parseInt(time);
 				}
 			
 		
