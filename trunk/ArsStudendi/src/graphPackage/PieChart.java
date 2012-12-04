@@ -8,6 +8,7 @@ import java.util.Map;
 public class PieChart extends Graph{
 
 	public java.util.HashMap<String, Long> pieChartMap;
+	
 
 	/**
 	 * 
