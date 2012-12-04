@@ -68,8 +68,7 @@
 
 	<div data-role="header" data-theme="b">
 		<h1>Ars Studendi</h1>
-	<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
-		  
+	<a href="logout.jsp" data-role="button" data-icon="delete" class="ui-btn-right">Log Out</a>
 	</div><!-- /header -->
 	<br>	
 	<a href="/tracking" data-role="button" data-ajax="false">Tracking</a> <br>
