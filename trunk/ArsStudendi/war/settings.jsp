@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html> 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
@@ -12,20 +14,33 @@
 </head>
 <body> 
 
+
+
+
+
 <div data-role="page">
 
 	<div data-role="header" data-theme="b">
 	 	<a href="index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
 		<h1>Settings</h1>
+		
+		<div data-role="content">	
+			
+	</div><!-- /content -->
+	
 		<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
 	</div><!-- /header -->
 	
 	<br>
+	<a href="account.jsp" data-role="button" target="_self">Account</a> <br>
 	<a href="courses.jsp" data-role="button" target="_self">Courses</a> <br>
 	<a href="layout.jsp" data-role="button" target="_self">Layout</a>
+	
 
 </div><!-- /page -->
 
-//jos
+     
+
+
 </body>
 </html>
