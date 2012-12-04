@@ -10,6 +10,14 @@ public class PieChart extends Graph{
 	public java.util.HashMap<String, Long> pieChartMap;
 	
 
+	public java.util.HashMap<String, Long> getPieChartMap() {
+		return pieChartMap;
+	}
+
+	public void setPieChartMap(java.util.HashMap<String, Long> pieChartMap) {
+		this.pieChartMap = pieChartMap;
+	}
+
 	/**
 	 * 
 	 */
