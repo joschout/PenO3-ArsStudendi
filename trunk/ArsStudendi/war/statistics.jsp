@@ -28,7 +28,6 @@
         
         data.addColumn('string', 'Keys');
         data.addColumn('number', 'Values');
-        alert("hij komt tot 1")
         data.addRows([
         <% String[] pieChartKeysArray = (String[])request.getAttribute("pieChartKeysArray");
        	   String[] pieChartValuesArray = (String[])request.getAttribute("pieChartValuesArray");
@@ -43,7 +42,6 @@
         %>
         ]);
 		
-        alert("hij komt tot 3")
         // Set chart options
         var options = {'title':'How Much Pizza I Ate Last Night',
                        'width':400,
@@ -61,7 +59,7 @@
 
 
 	<div data-role="header" data-theme="b">
-	 	<a href="index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+	 	<a href="/index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
 		<h1>Statistics</h1>
 		<a href="logout.jsp" data-role="button" data-icon="delete">LogOut</a>
 	</div><!-- /header -->
