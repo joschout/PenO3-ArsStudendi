@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-	<script type="text/javascript"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
 
@@ -27,22 +26,24 @@
         var data = new google.visualization.DataTable();
 
         
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        
-        
-        
-        data.addRows(<% out.println(request.getAttribute("pieChartData"))%>)
-    
- 
+        data.addColumn('string', 'Keys');
+        data.addColumn('number', 'Values');
+        alert("hij komt tot 1")
         data.addRows([
-          ['Mushrooms', 3],
-          ['Onions', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
+        <% String[] pieChartKeysArray = (String[])request.getAttribute("pieChartKeysArray");
+       	   String[] pieChartValuesArray = (String[])request.getAttribute("pieChartValuesArray");
+        int i =0;
+        if(pieChartKeysArray!= null && pieChartValuesArray != null){
+        	while(i<=pieChartKeysArray.length-1){%>
+        	 [<%out.println(pieChartKeysArray[i]);%>, <%out.println(pieChartValuesArray[i]);%>]       	
+        	<%	
+        	i++;
+        	}
+        }        
+        %>
         ]);
-
+		
+        alert("hij komt tot 3")
         // Set chart options
         var options = {'title':'How Much Pizza I Ate Last Night',
                        'width':400,
@@ -52,11 +53,12 @@
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
-    </script>
+      </script>
 </head>
 <body> 
 
 <div data-role="page">
+
 
 	<div data-role="header" data-theme="b">
 	 	<a href="index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
