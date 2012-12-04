@@ -15,11 +15,12 @@ public class Milestone {
 	private int progress;
 
 	public Milestone(String name, Course course, MilestoneType milestoneType,
-			int goal) {
+			int goal, Calender stopTime) {
 
 		this.name = name;
 		this.goal = goal;
 		this.milestoneType = milestoneType;
+		this.stopTime = stopTime;
 	}
 
 	public void setIsAchieved(boolean isAchieved) {
