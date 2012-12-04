@@ -29,8 +29,8 @@ public class RegisterController {
 	return succeed;
 	}
 	
-	public boolean testUser(String emailAdress){
-		boolean test = StudentRegistry.getSingletonObject().testStudent(emailAdress);
+	public boolean isEmailAvailable(String emailAdress){
+		boolean test = StudentRegistry.getSingletonObject().isEmailAvailable(emailAdress);
 		return test;
 	}
 	

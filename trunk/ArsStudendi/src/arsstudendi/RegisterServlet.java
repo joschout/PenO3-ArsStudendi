@@ -49,9 +49,18 @@ public class RegisterServlet extends HttpServlet {
 		
 		// vreemde code voor: if(getObjectify().query(Student.class).filter("emailAdress", emailAdress).get() == null)
 		// DUS: als er nog geen gebruiker met dit emailadres in de datastore zit
-		if(registerController.testUser(emailAdress)){
-		registerController.makeStudent(nStudyProgram, studentFirstName,studentLastName , password, courses, emailAdress);
+		if(registerController.isEmailAvailable(emailAdress)){
+		boolean newStudentSucceeded = registerController.makeStudent(nStudyProgram, studentFirstName,studentLastName , password, courses, emailAdress);
+		if(newStudentSucceeded){
+			System.out.println("the student has been made");
+		}
+		
 		Student student = logController.logIn(password, emailAdress);
+		if(student == null){
+			System.out.println("the student is a null reference");
+		}
+		
+		
 		Long ID = student.getStudentID();
 		session.setAttribute("currentID", ID);
 		resp.sendRedirect("/index.jsp");

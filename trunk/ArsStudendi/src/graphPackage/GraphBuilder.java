@@ -187,4 +187,18 @@ public class GraphBuilder {
 		}
 		return null;
 	}
+	
+	
+//	/**
+//	 * per dag deze week
+//	 * @param student
+//	 * @return
+//	 */
+//	public static Graph makeLineChartOfCourses(Student student){
+//		List<String> XAxis = new ArrayList<String>();
+//		
+//		
+//		
+//		return null;
+//	}
 }

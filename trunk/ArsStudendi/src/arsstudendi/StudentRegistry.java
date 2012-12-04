@@ -39,7 +39,7 @@ public class StudentRegistry extends Objectifiable {
 	 * @param emailAdress
 	 * @return
 	 */
-	public boolean testStudent(String emailAdress) {
+	public boolean isEmailAvailable(String emailAdress) {
 		Student student = getObjectify().query(Student.class)
 				.filter("emailAdress", emailAdress).get();
 		if (student == null) {
