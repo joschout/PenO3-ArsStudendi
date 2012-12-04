@@ -66,7 +66,7 @@
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		<p>Sign up for an ArsStudendi account and enjoy the benefits of learning analytics!</p>		
+		<p>Sign up for an Ars Studendi account and enjoy the benefits of learning analytics!</p>		
 	</div><!-- /content -->
 
 	<div data-role="content">
@@ -90,7 +90,7 @@
 		</div>
 		
 		<div data-role="fieldcontain" class="ui-hide-label">
-			<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="e-mail" onchange="emptyFields()"/>
+			<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="E-mail" onchange="emptyFields()"/>
 		</div>
 		
 
