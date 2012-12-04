@@ -27,37 +27,44 @@ public class MilestoneServlet extends HttpServlet {
 		Student student = milestoneController.getStudent(currentID);
 
 		String milestoneName = req.getParameter("nameMilestone");
+		
 		String milestoneDate = req.getParameter("milestoneDate");
+		Calendar cal = Calendar.getInstance();
+		int year = Integer.parseInt(milestoneDate.substring(0,4));
+		int month = Integer.parseInt(milestoneDate.substring(5,7));
+		int day = Integer.parseInt(milestoneDate.substring(8,10));
+		cal.set(year, month-1, day, 23, 59, 59);
+
 		
 		//String startTime = req.getParameter("start");
 		//String stopTime = req.getParameter("end");
 		
 		String milestoneType = req.getParameter("milestoneType");
+		int goal;
 			if(milestoneType.equals("Study")) {
 				String milestoneSort = req.getParameter("milestoneSort");
 				if(milestoneSort.equals("Page")) {
 					String amountOfPages = req.getParameter("amountOfPages");
+					goal = Integer.parseInt(amountOfPages);
 					
 				}
 				else if(milestoneSort.equals("Time")) {
 					String time = req.getParameter("time");
-					DateFormat sdf = new SimpleDateFormat("hh:mm");
-					Date date;
-						try {
-							date = sdf.parse(time);
-							System.out.println(date);
-						} catch (ParseException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-						};
-
+					int hour = Integer.parseInt(time.substring(0,2));
+					int min = Integer.parseInt(time.substring(3,5));
+					goal = 60*hour+min;
 					
 				}
 			}
 			else if(milestoneType.equals("Sports")) {
 					String time = req.getParameter("sportsTime");
-					int intTime = Integer.parseInt(time);
+					int hour = Integer.parseInt(time.substring(0,2));
+					int min = Integer.parseInt(time.substring(3,5));
+					goal = 60*hour+min;
 				}
+			
+			
+			//milestoneController.makeNewMilestone(student, milestoneName, startTime, stopTime, course, milestoneType, goal);
 			
 		
 		resp.sendRedirect("milestones.jsp");
