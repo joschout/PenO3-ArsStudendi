@@ -22,15 +22,15 @@ function reNew(){
 		%>
 		check= "stopped";
 		$("#footer").hide();
-		<%
-		}
-		else
-		{
-		%>
-		check= "started"; 
+		$("#numPages").hide();
 		<%}
- 		%>
- 		}
+		else{%>	
+		check= "started"; 
+		<% if(!(aCheck.equals("STUDY"))){%>
+		$("#numPages").hide();
+		$("#courses").hide();
+		<%}}%>
+ }
 
 	var timePassed = "<%= request.getAttribute("timePassed")%>";
 	timePassed = parseInt(timePassed);
@@ -53,6 +53,7 @@ function reNew(){
 	setInterval("myTimer()",1000);
 	}
 
+		
 function hideList2(){
 	if($("#option1 option:selected").val() != "STUDY"){
 	$("#option2").hide();
@@ -73,6 +74,9 @@ if(check == "started"){
 else{
 	$("#stop").hide();
 	$("#cancel").hide();
+	$("#numPages").hide();
+	$("#courses").hide();
+	
 }
 }
 
@@ -135,7 +139,23 @@ $(document).bind("pageinit", myLiveEventHandler);
    			
    			</fieldset>
 			</div>
-   			
+			
+			<div data-role="fieldcontain" class="ui-hide-label" id="numPages">
+			<input type="text" name="numberOfPages"  value="" placeholder="numberOfPages"/>
+			</div>
+			
+			<div data-role="fieldcontain" id="courses">
+			<label for="select-choice-0" class="select">courses</label>
+			<select name="courses">
+			<%
+				String[] courseNames = (String[])request.getAttribute("studentCourses");
+				int i = 0;
+				if( courseNames != null){
+				while(i<courseNames.length) {%>
+   			<option value = <%out.println(courseNames[i]);%>> <%out.println(courseNames[i]);%> </option>
+   			<%i++;}}%>
+			</select>
+			</div>
    			
    			
    			<div data-role="controlgroup">

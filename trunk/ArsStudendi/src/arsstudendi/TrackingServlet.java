@@ -20,8 +20,10 @@ public class TrackingServlet extends HttpServlet
 		System.out.println(currentID);
 		Student student = controller.getStudent(currentID);
 		String aCheck = controller.checkActivity(student);
+		String[] studentCourses = controller.getCourseNames(student);
+		req.setAttribute("studentCourses", studentCourses);
 		req.setAttribute("aCheck", aCheck);
-		System.out.println(aCheck);
+		System.out.println(studentCourses);
 		if(aCheck != null){
 		long timePassed = controller.getTimePassed(controller.getActivity(student));
 		req.setAttribute("timePassed", timePassed);
@@ -38,15 +40,18 @@ public class TrackingServlet extends HttpServlet
 		String option1 = req.getParameter("option1");
 		String option2 = req.getParameter("option2");		
 		if( start != null){
-			controller.startActivity(student, option2);
+			controller.startActivity(student, option1);
 			long timePassed = controller.getTimePassed(controller.getActivity(student));
-			req.setAttribute("timePassed", timePassed);
+			req.setAttribute("timePassed", timePassed); 
 		}
 		if (stop != null){
+			Long numPages = (Long)req.getAttribute("numPages");
+			String courseStudied = (String)req.getAttribute("courses");
 			controller.stopActivity(student);
 			int i=-1;
 			String s = Integer.toString(i);
 			req.setAttribute("timePassed", s);
+			
 		}
 		if(cancel != null){
 			controller.cancelActivity(student);
