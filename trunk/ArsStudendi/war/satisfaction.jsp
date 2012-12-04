@@ -15,15 +15,20 @@
 <p>what do you think about your progress?</p>
 
 
- <label for="VeryGood"></label>
-  <input type="submit" name="satisfaction" id="VeryGood" value="Very Good"><br>
-  <label for="Good"></label>
-  <input type="submit" name="satisfaction" id="Good" value="Good"><br>
-  <label for="Bad"></label>
-  <input type="submit" name="satisfaction" id="Bad" value="Bad"><br>
-  <label for="VeryBad"></label>
-  <input type="submit" name="satisfaction" id="VeryBad" value="Very Bad"><br><br>
+<fieldset data-role="controlgroup">
 
+     	<input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked" />
+     	<label for="radio-choice-1">Very Good</label>
+
+     	<input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2"  />
+     	<label for="radio-choice-2">Good</label>
+
+     	<input type="radio" name="radio-choice" id="radio-choice-3" value="choice-3"  />
+     	<label for="radio-choice-3">Bad</label>
+
+     	<input type="radio" name="radio-choice" id="radio-choice-4" value="choice-4"  />
+     	<label for="radio-choice-4">Very Bad</label>
+</fieldset>
 
 
 </body>
