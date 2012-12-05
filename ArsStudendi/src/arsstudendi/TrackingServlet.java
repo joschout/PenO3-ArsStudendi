@@ -17,13 +17,11 @@ public class TrackingServlet extends HttpServlet
 			throws IOException {
 		HttpSession session = req.getSession();
 		Long currentID = (Long)session.getAttribute("currentID");
-		System.out.println(currentID);
 		Student student = controller.getStudent(currentID);
 		String aCheck = controller.checkActivity(student);
 		String[] studentCourses = controller.getCourseNames(student);
 		req.setAttribute("studentCourses", studentCourses);
 		req.setAttribute("aCheck", aCheck);
-		System.out.println(studentCourses);
 		if(aCheck != null){
 		long timePassed = controller.getTimePassed(controller.getActivity(student));
 		req.setAttribute("timePassed", timePassed);
@@ -31,12 +29,12 @@ public class TrackingServlet extends HttpServlet
 		else
 		{	int i=-1;
 			String s = Integer.toString(i);
-			System.out.println(s + "test2");
 			req.setAttribute("timePassed", i);}
 		
 		String start = req.getParameter("start");
 		String stop = req.getParameter("stop");
 		String cancel = req.getParameter("cancel");
+		String add = req.getParameter("addActivity");
 		String option1 = req.getParameter("option1");
 		String option2 = req.getParameter("option2");		
 		if( start != null){
@@ -58,6 +56,9 @@ public class TrackingServlet extends HttpServlet
 			int i=-1;
 			String s = Integer.toString(i);
 			req.setAttribute("timePassed", s);
+		}
+		if(add != null){
+			resp.sendRedirect("/addActivity");
 		}
 		aCheck = controller.checkActivity(student);
 		req.setAttribute("aCheck", aCheck);

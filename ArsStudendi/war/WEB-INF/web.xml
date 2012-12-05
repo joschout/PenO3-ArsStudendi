@@ -17,6 +17,14 @@
 <url-pattern>/tracking</url-pattern>
 </servlet-mapping>
 <servlet>
+<servlet-name>AddActivity</servlet-name>
+<servlet-class>arsstudendi.AddActivityServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>AddActivity</servlet-name>
+<url-pattern>/addActivity</url-pattern>
+</servlet-mapping>
+<servlet>
 <servlet-name>Statistics</servlet-name>
 <servlet-class>arsstudendi.GraphServlet</servlet-class>
 </servlet>
