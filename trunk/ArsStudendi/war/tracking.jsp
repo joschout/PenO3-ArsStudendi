@@ -107,6 +107,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 		<div data-role="content" >
 		<form action="/tracking" method="POST" data-ajax="false">
 		
+			<div id="addActivity"><button type="submit" name="addActivity" data-theme="b" value="addActivity">addActivity</button></div>
 			
 			<div data-role="fieldcontain">
    				<fieldset data-role="controlgroup">

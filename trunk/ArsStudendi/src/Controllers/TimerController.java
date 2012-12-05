@@ -76,6 +76,11 @@ public boolean cancelActivity(Student student){
 	}
 return succeed;
 }
+public void addActivity(Student student, Long studentID, Calendar startTime, Calendar stopTime, String activityName){
+	Activity activity = new Activity(startTime, studentID, activityName);
+	activity.setStopTime(stopTime);
+	student.addActivityToOldActivityList(activity);
+}
 
 public Student getStudent(long ID){
 	Student student = StudentRegistry.getSingletonObject().getStudent(ID);
