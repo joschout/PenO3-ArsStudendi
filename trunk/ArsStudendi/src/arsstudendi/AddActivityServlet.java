@@ -6,7 +6,7 @@ import Controllers.*;
 import DomainModel.Student;
 
 import java.util.*;
-
+import java.text.*;
 import javax.servlet.http.*;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,29 +20,30 @@ public class AddActivityServlet extends HttpServlet{
 		HttpSession session = req.getSession();
 		Long currentID = (Long)session.getAttribute("currentID");
 		Student student = controller.getStudent(currentID);
-		String activityName = (String)req.getAttribute("courses");
+		String activityName = (String)req.getParameter("courses");
 		String[] studentCourses = controller.getCourseNames(student);
 		req.setAttribute("studentCourses", studentCourses);
 		
 		String add= req.getParameter("AddActivity");
 		System.out.println(add);
 		if(add != null){
-		String start = req.getParameter("startDate");
-		System.out.println(start);
-//		Calendar startTime = Calendar.getInstance();
-//		int startyear = Integer.parseInt(start.substring(0,4));
-//		int startmonth = Integer.parseInt(start.substring(5,7));
-//		int startday = Integer.parseInt(start.substring(8,10));
-//		startTime.set(startyear, startmonth-1, startday, 23, 59, 59);
-//		
-		String stop = req.getParameter("stopDate");
-		System.out.println(stop);
-//		Calendar stopTime = Calendar.getInstance();
-//		int stopyear = Integer.parseInt(stop.substring(0,4));
-//		int stopmonth = Integer.parseInt(stop.substring(5,7));
-//		int stopday = Integer.parseInt(stop.substring(8,10));
-//		stopTime.set(stopyear, stopmonth-1, stopday, 23, 59, 59);
-//		controller.addActivity(student, currentID, startTime, stopTime, activityName);
+		Calendar startTime = Calendar.getInstance();	
+		int startyear = Integer.parseInt(req.getParameter("select-start-year"));
+		int startmonth = Integer.parseInt(req.getParameter("select-start-month"));
+		startmonth = startmonth - 1;
+		int startday = Integer.parseInt(req.getParameter("select-start-day"));
+		int starthour = Integer.parseInt(req.getParameter("select-start-hour"));
+		int startminute = Integer.parseInt(req.getParameter("select-start-minute"));
+		startTime.set(startyear, startmonth, startday, starthour, startminute);
+
+		Calendar stopTime = Calendar.getInstance();
+		int stopyear = Integer.parseInt(req.getParameter("select-stop-year"));
+		int stopmonth = Integer.parseInt(req.getParameter("select-stop-month"));
+		int stopday = Integer.parseInt(req.getParameter("select-stop-day"));
+		int stophour = Integer.parseInt(req.getParameter("select-stop-hour"));
+		int stopminute = Integer.parseInt(req.getParameter("select-stop-minute"));
+		stopTime.set(startyear, startmonth, startday, starthour, startminute);
+		controller.addActivity(student, currentID, startTime, stopTime, activityName);
 		}
 		try {
 			req.getRequestDispatcher("/addActivity.jsp").forward(req, resp);
