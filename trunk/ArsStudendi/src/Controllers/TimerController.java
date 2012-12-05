@@ -59,6 +59,7 @@ public boolean stopActivity(Student student){
 	boolean succeed = false;
 	if(student != null && student.getCurrentActivity() !=null){
 		Activity tempActivity = student.getCurrentActivity();
+		tempActivity.setStopTime(Calendar.getInstance());
 		student.addActivityToOldActivityList(tempActivity);
 		student.setCurrentActivity(null);
 		succeed = true;

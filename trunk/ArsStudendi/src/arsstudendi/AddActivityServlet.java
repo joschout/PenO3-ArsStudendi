@@ -42,7 +42,7 @@ public class AddActivityServlet extends HttpServlet{
 		int stopday = Integer.parseInt(req.getParameter("select-stop-day"));
 		int stophour = Integer.parseInt(req.getParameter("select-stop-hour"));
 		int stopminute = Integer.parseInt(req.getParameter("select-stop-minute"));
-		stopTime.set(startyear, startmonth, startday, starthour, startminute);
+		stopTime.set(stopyear, stopmonth, stopday, stophour, stopminute);
 		controller.addActivity(student, currentID, startTime, stopTime, activityName);
 		}
 		try {
