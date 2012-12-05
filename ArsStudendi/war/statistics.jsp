@@ -56,6 +56,7 @@
 <body> 
 
 <div data-role="page">
+	
 
 
 	<div data-role="header" data-theme="b">
@@ -63,6 +64,22 @@
 		<h1>Statistics</h1>
 		<a href="logout.jsp" data-role="button" data-icon="delete">LogOut</a>
 	</div><!-- /header -->
+	
+	<div>
+	<a href="#popupBasic" data-rel="popup">Recorded Activities</a>
+
+	<div data-role="popup" id="popupBasic">
+	<% 	String[] names = (String[])request.getAttribute("names");
+	String[] startT = (String[])request.getAttribute("startT");
+	String[] stopT = (String[])request.getAttribute("stopT"); 
+	int j = 0;
+	while(j<names.length) {
+	%>
+	<p><%out.println(names[j] + " " + startT[j] + " " + stopT[j]); %><p>
+	<%j++;}%>
+
+	</div>
+
 
 	<div id="chart_div"></div>
 </div><!-- /page -->

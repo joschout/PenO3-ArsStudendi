@@ -6,7 +6,7 @@ import DomainModel.*;
 import graphPackage.*;
 import graphPackage.Graph;
 import graphPackage.GraphType;
-
+import java.text.SimpleDateFormat;
 
 
 import java.util.*;
@@ -94,6 +94,49 @@ public class GraphController {
 		return GraphBuilder.makeChartOfActivities(student, graphName, GraphType.BARCHART);
 	}
 	
+	public List<Activity> getOldActivityList(Student student){
+		return student.getOldActivityList();
+	}
+	
+	public String[] getOldActivityNames(Student student){
+		List<Activity> oldActivityList = getOldActivityList(student);
+		int size = oldActivityList.size();
+		ArrayList<String> nameList = new ArrayList<String>();
+		for(Activity activity: oldActivityList){
+			String name = activity.getActivityName();
+					nameList.add(name);
+		}
+		String [] nameString = nameList.toArray(new String[size]);
+		return nameString;
+	}
+	
+	public String[] getOldActivityStartDates(Student student){
+		List<Activity> oldActivityList = getOldActivityList(student);
+		int size = oldActivityList.size();
+		ArrayList<String> startList = new ArrayList<String>();
+		for(Activity activity: oldActivityList){
+			Calendar startDate = activity.getStartTime();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		    String start = sdf.format(startDate.getTime());
+					startList.add(start);
+		}
+		String [] startString = startList.toArray(new String[size]);
+		return startString;
+	}
+	
+	public String[] getOldActivityStopDates(Student student){
+		List<Activity> oldActivityList = getOldActivityList(student);
+		int size = oldActivityList.size();
+		ArrayList<String> stopList = new ArrayList<String>();
+		for(Activity activity: oldActivityList){
+			Calendar stopDate = activity.getStopTime();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		    String stop = sdf.format(stopDate.getTime());
+					stopList.add(stop);
+		}
+		String [] stopString = stopList.toArray(new String[size]);
+		return stopString;
+	}
 	
 	
 

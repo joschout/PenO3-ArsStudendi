@@ -29,9 +29,13 @@ public class GraphServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		Long currentID = (Long)session.getAttribute("currentID");
 		Student student = StudentRegistry.getSingletonObject().getStudent(currentID);
-		
 		Graph pieChart = controller.makePieChartOfCourses(student, "Dit is een test.");
-		
+		String[] activityNames = controller.getOldActivityNames(student);
+		String[] startTimes = controller.getOldActivityStartDates(student);
+		String[] stopTimes = controller.getOldActivityStopDates(student);
+		req.setAttribute("names", activityNames);
+		req.setAttribute("startT", startTimes);
+		req.setAttribute("stopT", stopTimes);
 		Set<Entry<String,Long>> pieChartSet = ((PieChart)pieChart).getPieChartMap().entrySet();
 		
 		List<String> pieChartKeys = new ArrayList<String>();
