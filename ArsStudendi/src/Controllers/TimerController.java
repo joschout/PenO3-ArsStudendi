@@ -80,6 +80,7 @@ public void addActivity(Student student, Long studentID, Calendar startTime, Cal
 	Activity activity = new Activity(startTime, studentID, activityName);
 	activity.setStopTime(stopTime);
 	student.addActivityToOldActivityList(activity);
+	StudentRegistry.getSingletonObject().putStudent(student);
 }
 
 public Student getStudent(long ID){

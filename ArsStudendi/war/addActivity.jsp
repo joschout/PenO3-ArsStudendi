@@ -99,7 +99,7 @@
 	
 	
 		<div data-role="content" >
-		<form action="/tracking" method="POST" data-ajax="false">
+		<form action="/addActivity" method="POST" data-ajax="false">
 	
 		<div data-role="fieldcontain">
 		<legend>StartTime</legend>
@@ -214,7 +214,7 @@
 		</div>
 		
 		
-		<div id="submit"><button type="submit"  name="submit" data-theme="b" value="submit" >submit</button></div>
+		<div id="submit"><button type="submit"  name="AddActivity" data-theme="b" value="submit" >submit</button></div>
 		
 		
 		
