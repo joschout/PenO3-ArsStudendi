@@ -160,7 +160,7 @@
         <% j1++;}%>
         </select>
         
-       	<select name="select-stop-month" id="select-stop-month" onChange="changeStop();>           
+       	<select name="select-stop-month" id="select-stop-month" onChange="changeStop();">           
         <% int j2 = 1;
            while(j2<13){%>
          <option value=<%out.println(j2);%>><%if(j2<10){out.println("0" + j2);} else{out.println(j2);}%></option>
