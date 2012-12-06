@@ -6,6 +6,8 @@ import java.util.*;
 import java.text.*;
 
 import DomainModel.*;
+import activityTypePackage.*;
+import arsstudendi.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,20 +30,21 @@ public class MilestoneServlet extends HttpServlet {
 
 		String milestoneName = req.getParameter("nameMilestone");
 		
-		String milestoneDate = req.getParameter("milestoneDate");
-		Calendar cal = Calendar.getInstance();
-		int year = Integer.parseInt(milestoneDate.substring(0,4));
-		int month = Integer.parseInt(milestoneDate.substring(5,7));
-		int day = Integer.parseInt(milestoneDate.substring(8,10));
-		cal.set(year, month-1, day, 23, 59, 59);
+		Calendar stopTime = Calendar.getInstance();
+		int stopyear = Integer.parseInt(req.getParameter("select-stop-year"));
+		int stopmonth = Integer.parseInt(req.getParameter("select-stop-month"));
+		stopmonth = stopmonth -1;
+		int stopday = Integer.parseInt(req.getParameter("select-stop-day"));
+		stopTime.set(stopyear, stopmonth, stopday, 00, 01);
 		
 		
 		//String startTime = req.getParameter("start");
 		//String stopTime = req.getParameter("end");
 		
 		String milestoneType = req.getParameter("milestoneType");
-		int goal;
+		int goal = 0;
 			if(milestoneType.equals("Study")) {
+				String courseString = req.getParameter("select-choice-0");
 				String milestoneSort = req.getParameter("milestoneSort");
 				if(milestoneSort.equals("Page")) {
 					String amountOfPages = req.getParameter("amountOfPages");
@@ -49,18 +52,16 @@ public class MilestoneServlet extends HttpServlet {
 					
 				}
 				else if(milestoneSort.equals("Time")) {
-					String time = req.getParameter("time");
-					int hour = Integer.parseInt(time.substring(0,2));
-					int min = Integer.parseInt(time.substring(3,5));
-					goal = 60*hour+min;
-					
+					int studyHour = Integer.parseInt(req.getParameter("studyHour"));
+					int studyMinute = Integer.parseInt(req.getParameter("studyMinute"));
+					goal = 60*studyHour+studyMinute;	
 				}
+			milestoneController.makeNewMilestone(student, milestoneName, stopTime, courseString, milestoneType, goal);
 			}
 			else if(milestoneType.equals("Sports")) {
-					String time = req.getParameter("sportsTime");
-					int hour = Integer.parseInt(time.substring(0,2));
-					int min = Integer.parseInt(time.substring(3,5));
-					goal = 60*hour+min;
+					int sportsHour = Integer.parseInt(req.getParameter("sportsHour"));
+					int sportsMinute = Integer.parseInt(req.getParameter("sportsMinute"));
+					goal = 60*sportsHour+sportsMinute;
 				}
 			
 			
