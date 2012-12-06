@@ -19,7 +19,7 @@ public class Activity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Calendar startTime;
 	private Calendar stopTime;
-
+	private int amountOfPages;
 	private long studentID;
 	private String activityName;
 	private ActivityType activityType;
@@ -31,7 +31,12 @@ public class Activity implements Serializable{
 //		setName(activityName);
 //
 //	}
-	
+	public void setAmountOfPages(int pages){
+		amountOfPages=pages;
+	}
+	public int getAmountOfPages(){
+		return amountOfPages;
+	}
 	public Activity(Calendar startTime, long studentID, String activityName) {
 		setStartTime(startTime);
 		setStudentID(studentID);
