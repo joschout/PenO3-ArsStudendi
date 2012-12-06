@@ -133,6 +133,9 @@ public class GraphController {
 			
 			//@ Nils, ik heb hier een test ingevuld die checht of stopDate null is. 
 			// DIt lijkt bij mij de oplossing te zijn voor een nullpointer exception
+			
+			//vreemd, want een oldActivity mag geen stopdate == null hebben
+			//blijkbaar is het nu toch opgelost, ik laat de test voor de zekerheid even staan
 			if(stopDate != null){
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		    String stop = sdf.format(stopDate.getTime());
