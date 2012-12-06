@@ -35,7 +35,7 @@ public class Parser {
 			Practice practice = new Practice(null);
 			return practice;
 		}
-		if (tempParsString.equals("selfteaching")) {
+		if (tempParsString.equals("selfteaching") || tempParsString.equals("study")) {
 			SelfTeaching selfTeaching = new SelfTeaching(null);
 			return selfTeaching;
 		}
