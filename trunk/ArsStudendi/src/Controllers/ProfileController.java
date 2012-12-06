@@ -16,17 +16,27 @@ public class ProfileController {
 		}
 		return succeed;
 	}
-	public boolean changeName(Student student, String firstName, String lastName){
+	
+	
+	public boolean changeFirstName(Student student, String firstName){
 	boolean succeed = false;
-	if (firstName!= null && lastName!= null && student != null){
+	if (firstName!= null && student != null){
 		succeed = true;
-		student.setLastName(lastName)	;
 		student.setFirstName(firstName);
 		StudentRegistry.getSingletonObject().putStudent(student);
 	}
 	return succeed;
 	}
 	
+	public boolean changeLastName(Student student, String lastName){
+	boolean succeed = false;
+	if ( lastName!= null && student != null){
+		succeed = true;
+		student.setLastName(lastName)	;
+		StudentRegistry.getSingletonObject().putStudent(student);
+	}
+	return succeed;
+	}
 	public boolean addCourse(Student student, Course course){
 		boolean succeed = false;
 		if(course != null && student != null){
@@ -36,6 +46,8 @@ public class ProfileController {
 		}
 		return succeed;
 	}
+	
+	
 	
 	public boolean removeCourse(Student student, Course course){
 		boolean succeed = false;
