@@ -130,9 +130,14 @@ public class GraphController {
 		ArrayList<String> stopList = new ArrayList<String>();
 		for(Activity activity: oldActivityList){
 			Calendar stopDate = activity.getStopTime();
+			
+			//@ Nils, ik heb hier een test ingevuld die checht of stopDate null is. 
+			// DIt lijkt bij mij de oplossing te zijn voor een nullpointer exception
+			if(stopDate != null){
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		    String stop = sdf.format(stopDate.getTime());
 					stopList.add(stop);
+			}
 		}
 		String [] stopString = stopList.toArray(new String[size]);
 		return stopString;
