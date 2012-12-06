@@ -1,11 +1,10 @@
 package Controllers;
 //
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.*;
 import DomainModel.*;
 
 import activityTypePackage.ActivityType;
+import arsstudendi.Parser;
 import arsstudendi.StudentRegistry;
 import arsstudendi.CourseRegistry;
 import DomainModel.Activity;
@@ -36,7 +35,7 @@ return succeed;
  * @param activityType
  * @return true if (student != null && activityType != null && student.getCurrentActivity() !=null)
  */
-	public List<Milestone> stopActivity(Student student, String description, String courseStudied, String activityType, int amountOfPages) {
+	public List<Milestone> stopActivity(Student student, String description, String courseStudied, String activityString, int amountOfPages) {
 		MilestoneController milestoneController = new MilestoneController();
 			Activity tempActivity = student.getCurrentActivity();
 
@@ -46,18 +45,22 @@ return succeed;
 			if(amountOfPages != -1){
 				tempActivity.setAmountOfPages(amountOfPages);
 			}
+			ActivityType activityType = Parser.parseActivityType(activityString);
+			if (activityType == null){
+				System.out.println("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+			}
 			tempActivity.setActivityType(activityType);
 			tempActivity.setStopTime(Calendar.getInstance());
+			System.out.println(courseStudied);
 			if(courseStudied != null){
 				Course course = CourseRegistry.getSingletonObject().getCourse(courseStudied);
 				if (activityType instanceof activityTypePackage.Study) {
 					((activityTypePackage.Study) activityType).setCourse(course);
 			}}
 			student.addActivityToOldActivityList(tempActivity);
-			student.setCurrentActivity(null);
-			StudentRegistry.getSingletonObject().putStudent(student);
-			
+			student.setCurrentActivity(null);	
 			List<Milestone> succeedMilestones = milestoneController.updateMilestone(student, tempActivity);
+			StudentRegistry.getSingletonObject().putStudent(student);
 
 		return succeedMilestones;
 	}
@@ -86,7 +89,8 @@ public boolean cancelActivity(Student student){
 return succeed;
 }
 public void addActivity(Student student, Long studentID, Calendar startTime, Calendar stopTime, String activityName){
-	Activity activity = new Activity(startTime, studentID, activityName);
+	Activity activity = new Activity(startTime, studentID);
+	activity.setName(activityName);
 	activity.setStopTime(stopTime);
 	student.addActivityToOldActivityList(activity);
 	StudentRegistry.getSingletonObject().putStudent(student);
