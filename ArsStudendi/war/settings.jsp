@@ -32,7 +32,7 @@
 	</div><!-- /header -->
 	
 	<br>
-	<a href="account.jsp" data-role="button" target="_self">Account</a> <br>
+	<a href="/profile" data-role="button" target="_self">Account</a> <br>
 	<a href="courses.jsp" data-role="button" target="_self">Courses</a> <br>
 	<a href="layout.jsp" data-role="button" target="_self">Layout</a>
 	
