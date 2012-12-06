@@ -11,11 +11,11 @@ public class SettingsController {
 	public void changeLastName(Student student, String lastName) {
 		student.setLastName(lastName);
 	}
-
-	public void changeCourses(Student student, List<Course> courses) {
-		student.setCourses(courses);
+//voor te deleten: geef een volledig nieuwe lijst met courses door
+	public void removeCourses(Student student, Course course) {
+		student.removeCourse(course);
 	}
-
+//voor toe te voegen: geef een object door
 	public boolean addCourse(Student student, Course course) {
 		boolean succeed = true;
 		if (student.getCourses().contains(course)) {
@@ -34,5 +34,4 @@ public class SettingsController {
 		}
 		return succeed;
 	}
-
 }
