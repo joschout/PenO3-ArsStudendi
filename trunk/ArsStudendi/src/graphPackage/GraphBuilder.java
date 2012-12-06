@@ -92,8 +92,7 @@ public class GraphBuilder {
 		HashMap<String, Long> chartMap = new HashMap<String, Long>();
 		for (Activity activity : oldActivityList) {
 			if (activity.getActivityType() instanceof Study) {
-				String course = ((Study) activity.getActivityType())
-						.getCourse().getCourseName();
+				String course = ((Study) activity.getActivityType()).getCourse().getCourseName();
 				if (!chartMap.containsKey(course)) {
 					chartMap.put(course, activity.getDurationActivity());
 				} else {

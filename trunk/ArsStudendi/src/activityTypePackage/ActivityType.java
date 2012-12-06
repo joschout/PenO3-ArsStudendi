@@ -1,6 +1,8 @@
 package activityTypePackage;
 
-public  interface ActivityType {
+import java.io.Serializable;
+
+public interface ActivityType extends Serializable {
 	
 	
 }
