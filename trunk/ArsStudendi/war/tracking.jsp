@@ -26,10 +26,7 @@ function reNew(){
 		<%}
 		else{%>	
 		check= "started"; 
-		<% if(!(aCheck.equals("STUDY"))){%>
-		$("#numPages").hide();
-		$("#courses").hide();
-		<%}}%>
+		<%}%>
  }
 
 	var timePassed = "<%= request.getAttribute("timePassed")%>";
@@ -55,36 +52,57 @@ function reNew(){
 
 		
 function hideList2(){
-	if($("#option1 option:selected").val() != "STUDY"){
+	if($("#option1 option:selected").val() == "SLEEP"){
 	$("#option2").hide();
+	$("#option3").hide();
+	$("#description").hide();
+	$("#pageSlider").hide();
+	$("#courses").hide();
 	}
-	else{
+	if($("#option1 option:selected").val() == "FREETIME"){
+	$("#option2").hide();
+	$("#option3").show();
+	$("#description").show();
+	$("#pageSlider").hide();
+	$("#courses").hide();
+	}
+	if($("#option1 option:selected").val() == "STUDY"){
 	$("#option2").show();
+	$("#option3").hide();
+	$("#description").show();
+	$("#pageSlider").hide();
+	$("#courses").show();
+		if($("#option2 option:selected").val() == "Practice")
+		{
+		$("#pageSlider").show();}
 	}
 	}
 
 function testF(){
 if(check == "started"){
 	$("#start").hide();
-	$("#option1").hide();
-	$("#option2").hide();
-
 
 }
 else{
 	$("#stop").hide();
 	$("#cancel").hide();
 	$("#numPages").hide();
+	$("#description").hide();
+	$("#pageSlider").hide();
 	$("#courses").hide();
-	
+	$("#option1").hide();
+	$("#option2").hide();
+	$("#option3").hide();
 }
 }
+
 
 
 function myLiveEventHandler(event)
 {
   if(event.handled !== true)
   {
+ 	hideList2();
   	reNew();
   	localTime();
   	display();
@@ -116,19 +134,27 @@ $(document).bind("pageinit", myLiveEventHandler);
 						<label for="option1" class="select"></label>
 						<select name="option1" id="option1" onChange="hideList2();">
 							<option value=STUDY>Study</option>
-							<option value=SPORT>Sport</option>
-   							<option value=SOCIAL>Social</option>
+							<option value=FREETIME>FreeTime</option>
    							<option value=SLEEP>Sleep</option>
    						</select>
    					</div>
    			
    					<div id="option2">
    						<label for="option2" class="select"></label>
-						<select name="option2">
+						<select name="option2" onChange="hideList2();">
 							<option value="Lecture">Lecture</option>
-   							<option value="SelfTeaching">Self Teaching</option>
-   							<option value="TeamWork">Teamwork</option>
+   							<option value="TeamWork">TeamWork</option>
    							<option value="Practice">Practice</option>
+   						</select>
+   					</div>
+   					
+   					<div id="option3">
+   						<label for="option3" class="select"></label>
+						<select name="option3">
+							<option value="Sport">Sport</option>
+   							<option value="Social">Social</option>
+   							<option value="Hobby">Hobby</option>
+   							<option value="Other">Other</option>
    						</select>
    					</div>
    			
@@ -144,10 +170,15 @@ $(document).bind("pageinit", myLiveEventHandler);
 		
 			
 			
-			<div data-role="fieldcontain" class="ui-hide-label" id="numPages">
-				<label for="numberOfPages" class="select">Amount Studied</label><br>
-				<input type="text" name="numberOfPages"  value="" placeholder="# Pages"/>
+			<div data-role="fieldcontain" class="ui-hide-label" id="description">
+				<label for="numberOfPages" class="select">Description</label><br>
+				<input type="text" name="numberOfPages"  value="" placeholder="ActivityDescription"/>
 			</div>
+			
+			<div id="pageSlider">
+				<label for="amountOfPages">Amount of pages:</label>
+				<input type="range" name="amountOfPages" id="amountOfPages" value="pages" min="0" max="100" data-highlight="true" onchange="emptyFields()"/>
+			</div>	
 			
 			<div data-role="fieldcontain" id="courses">
 			<label for="select-choice-0" class="select">Course</label><br>

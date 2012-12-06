@@ -36,16 +36,33 @@ public class TrackingServlet extends HttpServlet
 		String cancel = req.getParameter("cancel");
 		String add = req.getParameter("addActivity");
 		String option1 = req.getParameter("option1");
-		String option2 = req.getParameter("option2");		
+		String option2 = req.getParameter("option2");
+		String option3 = req.getParameter("option3");
 		if( start != null){
-			controller.startActivity(student, option1);
+			controller.startActivity(student);
 			long timePassed = controller.getTimePassed(controller.getActivity(student));
 			req.setAttribute("timePassed", timePassed); 
 		}
 		if (stop != null){
 			Long numPages = (Long)req.getAttribute("numPages");
-			String courseStudied = (String)req.getAttribute("courses");
-			controller.stopActivity(student);
+			String description= req.getParameter("description");
+			String courseStudied = new String();
+			String activityType = new String();
+			int amountOfPages = -1;
+			if (option1.equals("STUDY")){
+				activityType= option2;
+				courseStudied = (String)req.getParameter("courses");
+				if(option3.equals("Practice")){
+					amountOfPages = Integer.getInteger(req.getParameter("amountOfPages"));
+				}
+			}
+			else if(option1.equals("FREETIME")){
+				activityType= option3;
+			}
+			else if(option1.equals("SLEEP")){
+				activityType=option1;
+			}
+			controller.stopActivity(student, description, courseStudied, activityType, amountOfPages);
 			int i=-1;
 			String s = Integer.toString(i);
 			req.setAttribute("timePassed", s);

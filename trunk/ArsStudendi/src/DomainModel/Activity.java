@@ -24,6 +24,7 @@ public class Activity implements Serializable{
 	private String activityName;
 	private ActivityType activityType;
 
+
 	
 //	public Activity(Calendar startTime, Key<Student> studentKey, String activityName) {
 //		setStartTime(startTime);
@@ -37,11 +38,9 @@ public class Activity implements Serializable{
 	public int getAmountOfPages(){
 		return amountOfPages;
 	}
-	public Activity(Calendar startTime, long studentID, String activityName) {
+	public Activity(Calendar startTime, long studentID) {
 		setStartTime(startTime);
 		setStudentID(studentID);
-		setName(activityName);
-
 	}
 
 	public String getActivityName() {
