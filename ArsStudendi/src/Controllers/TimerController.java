@@ -2,21 +2,24 @@ package Controllers;
 //
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.*;
+import DomainModel.*;
 
 import activityTypePackage.ActivityType;
 import arsstudendi.StudentRegistry;
+import arsstudendi.CourseRegistry;
 import DomainModel.Activity;
 import DomainModel.Course;
 import DomainModel.Student;
 
 public class TimerController {
 
-public boolean startActivity(Student student, String activityName){
+public boolean startActivity(Student student){
 	boolean succeed = false;
 		if(student != null && student.getCurrentActivity() == null){
 		
 	Calendar startTime = Calendar.getInstance();
-	Activity newActivity = new Activity(startTime, student.getStudentID(), activityName);
+	Activity newActivity = new Activity(startTime, student.getStudentID());
 	student.setCurrentActivity(newActivity);
 	succeed = true;
 	StudentRegistry.getSingletonObject().putStudent(student);
@@ -33,25 +36,30 @@ return succeed;
  * @param activityType
  * @return true if (student != null && activityType != null && student.getCurrentActivity() !=null)
  */
-	public boolean stopActivity(Student student, ActivityType activityType,
-			Course course) {
-		boolean succeed = false;
-		if (student != null && activityType != null
-				&& student.getCurrentActivity() != null) {
-
+	public List<Milestone> stopActivity(Student student, String description, String courseStudied, String activityType, int amountOfPages) {
+		MilestoneController milestoneController = new MilestoneController();
 			Activity tempActivity = student.getCurrentActivity();
+
+			if(description != null){
+				tempActivity.setName(description);
+			}
+			if(amountOfPages != -1){
+				tempActivity.setAmountOfPages(amountOfPages);
+			}
 			tempActivity.setActivityType(activityType);
 			tempActivity.setStopTime(Calendar.getInstance());
-			if (activityType instanceof activityTypePackage.Study) {
-				((activityTypePackage.Study) activityType).setCourse(course);
-			}
+			if(courseStudied != null){
+				Course course = CourseRegistry.getSingletonObject().getCourse(courseStudied);
+				if (activityType instanceof activityTypePackage.Study) {
+					((activityTypePackage.Study) activityType).setCourse(course);
+			}}
 			student.addActivityToOldActivityList(tempActivity);
 			student.setCurrentActivity(null);
 			StudentRegistry.getSingletonObject().putStudent(student);
-			succeed = true;
+			
+			List<Milestone> succeedMilestones = milestoneController.updateMilestone(student, tempActivity);
 
-		}
-		return succeed;
+		return succeedMilestones;
 	}
 
 
@@ -97,8 +105,7 @@ public Activity getActivity(Student student){
 public String checkActivity(Student student){
 	Activity activity = student.getCurrentActivity();
 	if ( activity != null){
-		String name = activity.getName();
-		return name;
+		return "OK";
 	}
 	return null;
 }
