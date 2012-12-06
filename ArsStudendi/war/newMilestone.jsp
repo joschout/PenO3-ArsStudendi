@@ -15,6 +15,9 @@
 
 <body>
 
+
+
+
 <script>
 var typeCheck = "";
 var sortCheck = "";

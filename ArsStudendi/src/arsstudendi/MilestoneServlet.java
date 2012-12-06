@@ -43,9 +43,10 @@ public class MilestoneServlet extends HttpServlet {
 		
 		String milestoneType = req.getParameter("milestoneType");
 		int goal = 0;
+		String milestoneSort = "";
 			if(milestoneType.equals("Study")) {
 				String courseString = req.getParameter("select-choice-0");
-				String milestoneSort = req.getParameter("milestoneSort");
+				milestoneSort = req.getParameter("milestoneSort");
 				if(milestoneSort.equals("Page")) {
 					String amountOfPages = req.getParameter("amountOfPages");
 					goal = Integer.parseInt(amountOfPages);
@@ -56,12 +57,14 @@ public class MilestoneServlet extends HttpServlet {
 					int studyMinute = Integer.parseInt(req.getParameter("studyMinute"));
 					goal = 60*studyHour+studyMinute;	
 				}
-			milestoneController.makeNewMilestone(student, milestoneName, stopTime, courseString, milestoneType, goal);
+			milestoneController.makeNewMilestone(student, milestoneName, stopTime, courseString, milestoneSort, milestoneType, goal);
 			}
 			else if(milestoneType.equals("Sports")) {
 					int sportsHour = Integer.parseInt(req.getParameter("sportsHour"));
 					int sportsMinute = Integer.parseInt(req.getParameter("sportsMinute"));
 					goal = 60*sportsHour+sportsMinute;
+					milestoneSort = "Sports";
+			milestoneController.makeNewMilestone(student, milestoneName, stopTime, "", milestoneSort, milestoneType, goal);
 				}
 			
 			

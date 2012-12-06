@@ -19,14 +19,18 @@ public class LogOutServlet extends HttpServlet
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException 
 	{
+		LogController controller = new LogController();
 		HttpSession session = req.getSession();
 		
-		Student student = (Student)session.getAttribute("currentUser");		
+		long ID = (Long)session.getAttribute("currentID");
+		Student student = controller.getStudent(ID);
 		
 		if(student!= null){
 		controller.logOut(student);
+		session.setAttribute("currentID", "null");
    	 	session.invalidate();
 		}
+		
 		
 		resp.sendRedirect("/home.jsp");
 
