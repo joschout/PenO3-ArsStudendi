@@ -4,6 +4,7 @@
 	<title>ArsStudendi</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" type="text/css" href="main.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	
@@ -21,6 +22,7 @@ function reNew(){
 		if(aCheck == null){
 		%>
 		check= "stopped";
+		$("#footer").hide();
 		$("#demo").hide();
 		$("#numPages").hide();
 		<%}
@@ -144,6 +146,8 @@ $(document).bind("pageinit", myLiveEventHandler);
 		<a href="/index" data-role="button" data-icon="home" data-iconpos="notext" data-ajax="false">Home</a> 
 		<h1><%out.println("Tracking");%></h1>
 		<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
+		
+		
 	</div>
 	
 		<div data-role="content" >
@@ -186,7 +190,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 			</div>
 			
 			<div id="start">
-				<button type="submit" name="start" data-theme="b" value="start">Start</button>
+				<button type="submit" name="start" data-theme="c" value="start">Start</button>
 			</div>
 			
 			
@@ -215,25 +219,18 @@ $(document).bind("pageinit", myLiveEventHandler);
    					
 			<fieldset class="ui-grid-a">
 				<div class="ui-block-a" id="stop"><button type="submit" name="stop" data-theme="b" value="stop">Stop</button></div>
-				<div class="ui-block-b" id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" >Cancel</button></div>	   
+				<div class="ui-block-b" id="cancel"><button type="submit"  name="cancel" data-theme="c" value="cancel" >Cancel</button></div>	   
 			</fieldset>
 			
-			<div id="demo"></div>
+			
 			
 		</form>  
         </div>
-		
- 
-		
-		
-
         
-
-
-	
-	
-	
-	
+		<div data-role="footer" id="footer"> 
+			<div id="demo" class="center-align"></div>
+		</div>
+ 
 
 </div>
 
