@@ -189,10 +189,6 @@ $(document).bind("pageinit", myLiveEventHandler);
 				<button type="submit" name="start" data-theme="b" value="start">Start</button>
 			</div>
 			
-			<div id="demo"></div>
-			
-		
-			
 			
 			<div data-role="fieldcontain" class="ui-hide-label" id="description">
 				<label for="ActivityDescription" class="select">Description</label><br>
@@ -221,6 +217,8 @@ $(document).bind("pageinit", myLiveEventHandler);
 				<div class="ui-block-a" id="stop"><button type="submit" name="stop" data-theme="b" value="stop">Stop</button></div>
 				<div class="ui-block-b" id="cancel"><button type="submit"  name="cancel" data-theme="b" value="cancel" >Cancel</button></div>	   
 			</fieldset>
+			
+			<div id="demo"></div>
 			
 		</form>  
         </div>

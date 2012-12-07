@@ -45,10 +45,12 @@ public class RegisterServlet extends HttpServlet {
 			}
 			i++;
 		}
+		req.setAttribute("courseNames", courseNames);
 		
 		
 		// vreemde code voor: if(getObjectify().query(Student.class).filter("emailAdress", emailAdress).get() == null)
 		// DUS: als er nog geen gebruiker met dit emailadres in de datastore zit
+		if(emailAdress != null){
 		if(registerController.isEmailAvailable(emailAdress)){
 		boolean newStudentSucceeded = registerController.makeStudent(nStudyProgram, studentFirstName,studentLastName , password, courses, emailAdress);
 		if(newStudentSucceeded){
@@ -65,8 +67,16 @@ public class RegisterServlet extends HttpServlet {
 		session.setAttribute("currentID", ID);
 		resp.sendRedirect("/index");
 		}
+		try {
+			req.getRequestDispatcher("/register.jsp").forward(req, resp);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			System.out.println("ERROR DETECTED");
+			e.printStackTrace();}
+		
+		}
 		else{
-			req.setAttribute("courseNames", courseNames);
+			
 			
 			try {
 				req.getRequestDispatcher("/register.jsp").forward(req, resp);
@@ -80,42 +90,6 @@ public class RegisterServlet extends HttpServlet {
 	}
 		
 		public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		String[] courseNames = registerController.getCourseNames();
-		System.out.println(courseNames);
-		req.setAttribute("courseNames", courseNames);
-		
-		try {
-			req.getRequestDispatcher("/register.jsp").forward(req, resp);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			System.out.println("ERROR DETECTED");
-			e.printStackTrace();
+			doPost(req,resp);
+	}		
 	}
-//		String s = null;
-				
-//		if(!controller.checkPassword(password)){
-//			s = "Password is empty";
-//			}
-//		if(!controller.checkUser(studentFirstName)){
-//			s += "User's first name is empty";
-//			}
-//		if(!controller.checkUser(studentLastName)){
-//			s += "User's last name is empty";
-//			}
-//		if(!controller.checkEmail(emailAdress)){
-//			s += "E-mail is empty";
-//			}
-//		if(!controller.checkList(courses)){
-//			s += "Courses are empty";
-//			}
-//		
-//		
-//		resp.sendRedirect("/guestbook.jsp?emptyFields=" + s);
-		
-		//controller.makeStudent(studyProgram, studentName, studentID, password, courses, emailAdress);
-		
-			
-		
-		
-	}
-}

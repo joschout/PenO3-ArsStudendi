@@ -25,7 +25,7 @@
 	
 	<form id="LogOut" action="/logout" method="post">
 	<fieldset class="ui-grid-a">
-			<div class="ui-block-a"><a href="home.jsp" button type="submit" data-theme="b">Yes</a></button></div>
+			<div class="ui-block-a"><a href="/home" button type="submit" data-theme="b" data-ajax="false">Yes</a></button></div>
 			<div class="ui-block-b"><a href="/index" data-role="button" data-ajax="false">No</a></button></div>	   
 	</fieldset>
 	</form>

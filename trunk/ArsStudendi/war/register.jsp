@@ -12,10 +12,7 @@
 	
 	<script type="text/javascript">
 
-	$(document).ready(function() {
-		emptyFields();
-	});
-		
+
 
 		
  	function emptyFields() {
@@ -42,13 +39,22 @@
  			if(pass != pass2) {
  				$('[type="submit"]').button('disable');
  				$('[type="submit"]').button('refresh');	
- 				//alert("Please confirm your password correctly")
+ 				alert("Please confirm your password correctly")
  			}
+ 			else{
+ 			 				$('[type="submit"]').button('disable');
+ 				$('[type="submit"]').button('refresh');	}
  	}
  	
- 	 
-	
-	//String[] courseNames = request.getAttribute("courseNames");
+function myLiveEventHandler(event)
+{
+  if(event.handled !== true)
+  {
+	emptyFields();
+  }
+  return false;
+}
+$(document).bind("pageinit", myLiveEventHandler);
 	
 	</script>
 	
@@ -86,7 +92,7 @@
 		
 		
 		<div data-role="fieldcontain" class="ui-hide-label">
-    		<input type="password" name="passwordRepeat" id="passwordRepeat" value="" placeholder="Confirm Password" onchange="emptyFields()"/>	
+    		<input type="password" name="passwordRepeat" id="passwordRepeat" value="" placeholder="Confirm Password" onchange="emptyFields();checkPassword();"/>	
 		</div>
 		
 		<div data-role="fieldcontain" class="ui-hide-label">

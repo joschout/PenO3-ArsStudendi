@@ -30,11 +30,14 @@ public class LogOutServlet extends HttpServlet
 		session.setAttribute("currentID", "null");
    	 	session.invalidate();
 		}
-		
-		
 		resp.sendRedirect("/home.jsp");
-
-		}
+	}
+	
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException 
+	{
+		doPost(req, resp);
+	}
 
 
 		
