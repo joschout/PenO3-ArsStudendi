@@ -6,6 +6,15 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script>
+		function isLoggedIn(){
+		var checker = "<%= session.getAttribute("currentID")%>";
+		if(checker == "null"){
+			window.location.replace("/home");
+		}
+	}
+	$(document).bind("pagecreate", isLoggedIn);
+	</script>
 </head> 
 <body> 
 
@@ -30,8 +39,8 @@
 	
 	var timePassed = "<%= request.getAttribute("timePassed")%>";
 	timePassed = parseInt(timePassed);
-	alert(timePassed)
 	var localTP;
+	
 	
 	function localTime(){
 	if(timePassed == -1){
@@ -84,11 +93,12 @@
   	return false;
 	}
 	$(document).bind("pageinit", myLiveEventHandler);
+	
 	</script>
 
 	<div data-role="header" data-theme="b">
 		<h1>Ars Studendi</h1>
-	<a href="logout.jsp" data-role="button" data-icon="delete" class="ui-btn-right">Log Out</a>
+	<a href="logout.jsp" data-role="button" data-icon="delete" class="ui-btn-right" data-ajax="false">Log Out</a>
 	</div><!-- /header -->
 	<br>	
 	<a href="/tracking" data-role="button" data-ajax="false">Tracking</a> <br>

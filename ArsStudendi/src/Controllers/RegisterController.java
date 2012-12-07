@@ -24,6 +24,7 @@ public class RegisterController {
 			}
 		}
 	Student student = new Student(studyProgram, studentFirstName, studentLastName, password, courses, newEmailAdress);
+	StudentRegistry.getSingletonObject().putStudent(student);
 	succeed = StudentRegistry.getSingletonObject().putStudent(student);
 
 	return succeed;

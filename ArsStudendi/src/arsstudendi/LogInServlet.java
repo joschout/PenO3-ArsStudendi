@@ -36,23 +36,20 @@ public class LogInServlet extends HttpServlet
                 }
                 else
                 {
-                        resp.sendRedirect("/home");
+            		try {
+            			req.getRequestDispatcher("/home.jsp").forward(req, resp);
+            		} catch (ServletException e) {
+            			// TODO Auto-generated catch block
+            			System.out.println("ERROR DETECTED");
+            			e.printStackTrace();
+            	}}
                 }
 
-
-
-        }
         
         public void doGet(HttpServletRequest req, HttpServletResponse resp) 
                 throws IOException
                 {
-                        req.setAttribute("student", student);
-                        try {
-                                req.getRequestDispatcher("/register.jsp").forward(req, resp);
-                        } catch (ServletException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
-                }
+        			doPost(req, resp);
                 }
                 
 }
