@@ -63,7 +63,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		Long ID = student.getStudentID();
 		session.setAttribute("currentID", ID);
-		resp.sendRedirect("/index.jsp");
+		resp.sendRedirect("/index");
 		}
 		else{
 			req.setAttribute("courseNames", courseNames);

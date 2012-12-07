@@ -44,8 +44,7 @@ public class TrackingServlet extends HttpServlet
 			req.setAttribute("timePassed", timePassed); 
 		}
 		if (stop != null){
-			Long numPages = (Long)req.getAttribute("numPages");
-			String description= req.getParameter("description");
+			String description= req.getParameter("ActivityDescription");
 			String courseStudied = new String();
 			String activityType = new String();
 			int amountOfPages = -1;
@@ -53,7 +52,7 @@ public class TrackingServlet extends HttpServlet
 				activityType= option2;
 				courseStudied = (String)req.getParameter("courses");
 				if(option3.equals("Practice")){
-					amountOfPages = Integer.getInteger(req.getParameter("amountOfPages"));
+					amountOfPages = Integer.parseInt(req.getParameter("amountOfPages"));
 				}
 			}
 			else if(option1.equals("FREETIME")){
