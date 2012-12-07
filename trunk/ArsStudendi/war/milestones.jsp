@@ -22,7 +22,7 @@
 	
 	<br>
 	<a href="/newMilestone" data-role="button" target="_self">Create Milestone</a> <br>
-	<a href="showMilestones.jsp" data-role="button" target="_self">Show Milestones</a>
+	<a href="/showMilestones" data-role="button" target="_self">Show Milestones</a>
 
 </div><!-- /page -->
 

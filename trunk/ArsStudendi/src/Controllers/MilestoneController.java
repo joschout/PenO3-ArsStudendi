@@ -146,4 +146,15 @@ public class MilestoneController {
                 Student student = StudentRegistry.getSingletonObject().getStudent(ID);
                 return student;
         }
+        
+        public String[] getMilestoneNames(Student student) {
+        	List<Milestone> milestones = new ArrayList<Milestone>();
+        	milestones = student.getMilestones();
+        	String[] milestoneNames = new String[milestones.size()];
+        	for(int i = 0; i<milestones.size(); i++) {
+        		String milestoneName = milestones.get(i).getMilestoneName();
+        		milestoneNames[i] = milestoneName;
+        	}
+        	return milestoneNames;
+        }
 }
