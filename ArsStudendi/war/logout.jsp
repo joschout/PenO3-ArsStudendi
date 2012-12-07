@@ -15,7 +15,7 @@
 <div data-role="page">
 
 	<div data-role="header" data-theme="b">
-	 	<a href="index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+	 	<a href="/index" data-role="button" data-icon="home" data-iconpos="notext" data-ajax="false">Home</a> 
 		<h1>Log Out</h1>
 	</div><!-- /header -->
 
@@ -25,8 +25,8 @@
 	
 	<form id="LogOut" action="/logout" method="post">
 	<fieldset class="ui-grid-a">
-			<div class="ui-block-a"><button type="submit" data-theme="b">Yes</button></div>
-			<div class="ui-block-b"><a href="index.jsp" data-role="button">No</a></button></div>	   
+			<div class="ui-block-a"><a href="home.jsp" button type="submit" data-theme="b">Yes</a></button></div>
+			<div class="ui-block-b"><a href="/index" data-role="button" data-ajax="false">No</a></button></div>	   
 	</fieldset>
 	</form>
 
