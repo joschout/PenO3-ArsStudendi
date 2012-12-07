@@ -44,7 +44,27 @@
 	function myTimer()
 	{
 	localTP = localTP + 1;
-	$("#demo").text(localTP);
+	time = localTP;
+	hours = time/3600;
+	hours = parseInt(hours);
+	time = time % 3600;
+	if(hours<10){
+	hours = "0" + hours;
+	}
+	minutes = time/60;
+	minutes = parseInt(minutes);
+	time = time % 60;
+	if(minutes<10){
+	minutes = "0" + minutes;
+	}
+	seconds = time;
+	if(seconds<10){
+	seconds = "0" + seconds;
+	}
+	timeString = hours +":" + minutes +":" + seconds;
+	
+	
+	$("#demo").text(timeString);
 	}
 	function display(){
 	
