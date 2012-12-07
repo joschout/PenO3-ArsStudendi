@@ -49,7 +49,7 @@
 	<div data-role="content">
 		<form id="logIn" action="/home" method="post" data-ajax="false">
 				
-						<div class="logo">
+						<div class="center-align">
 							<img src="/images/Logo_final.png" alt="logo"/>
 						</div>
 							
