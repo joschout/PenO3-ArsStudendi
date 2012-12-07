@@ -46,7 +46,7 @@
 	</div><!-- /header -->
 	
 	<div data-role="content">
-		<form id="createMile" action="/createMilestone" method="post">
+		<form id="createMile" action="/createMilestone" method="post" data-ajax="false">
 			<br>
 			<div data-role="fieldcontain" class="ui-hide-label">
 				<input type="text" name="nameMilestone" id="nameMilestone" value="" placeholder="Description" class="center-button" onchange="emptyFields()"/>

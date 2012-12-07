@@ -162,12 +162,12 @@ $(document).bind('pageinit', function() {
 	<div data-role="header" data-theme="b">
 	 	<a href="index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
 		<h1>Create Milestone</h1>
-		<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
+		<a href="logout.jsp" data-role="button" data-icon="delete" data-ajax="false">Log Out</a>
 	</div>
 	
 	<div data-role="content">
 	
-		<form action="/newMilestone" method="post" id="newMilestone">
+		<form action="/newMilestone" method="post" id="newMilestone" data-ajax="false">
 			
 		<div>
 				<input type="text" name="nameMilestone" id="nameMilestone" value="" placeholder="Description" onchange="emptyFields()"/>
