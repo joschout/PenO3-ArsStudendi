@@ -3,6 +3,7 @@ package graphPackage;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import Controllers.GraphController;
 import Controllers.TimerController;
 import DomainModel.Activity;
 import DomainModel.Student;
@@ -13,6 +14,7 @@ import activityTypePackage.SelfTeaching;
 import activityTypePackage.Sleep;
 import activityTypePackage.Study;
 import activityTypePackage.Teamwork;
+import arsstudendi.StudentRegistry;
 
 public class GraphBuilder {
 
@@ -182,6 +184,139 @@ public class GraphBuilder {
 			if (graphType == GraphType.BARCHART) {
 			BarChart barChart = new BarChart(graphName, chartMap);
 			return (Graph) barChart;
+			}
+		}
+		return null;
+	}
+	
+	public static Graph makeChartOfAllStudyActivity(Student student, String graphName, GraphType graphType) {
+		if (graphType == GraphType.PIECHART || graphType == GraphType.BARCHART) {
+		GraphController controller = new GraphController();
+		java.util.List<Activity> oldActivityList =  controller.getAllOldActivityList(student);
+
+
+		ArrayList<Activity> selfTeachingActivities = new ArrayList<Activity>();
+		ArrayList<Activity> lectureActivities = new ArrayList<Activity>();
+		ArrayList<Activity> practiceActivities = new ArrayList<Activity>();
+		ArrayList<Activity> teamworkActivities = new ArrayList<Activity>();
+		for (Activity activity : oldActivityList) {
+
+			if (activity.getActivityType() instanceof SelfTeaching) {
+				selfTeachingActivities.add(activity);
+				if (activity.getActivityType() instanceof Lecture) {
+					lectureActivities.add(activity);
+				}
+				if (activity.getActivityType() instanceof Practice) {
+					practiceActivities.add(activity);
+				}
+				if (activity.getActivityType() instanceof Teamwork) {
+					teamworkActivities.add(activity);
+				}
+			}			
+		}
+		long totalSelfTeachingTime = TimerController.getTotalTimeOfActivityList(selfTeachingActivities);
+		long totalLectureTime = TimerController.getTotalTimeOfActivityList(lectureActivities);
+		long totalPracticeTime =TimerController.getTotalTimeOfActivityList(practiceActivities);
+		long totalTeamworkTime = TimerController.getTotalTimeOfActivityList(teamworkActivities);
+		
+		long totalStudyTime = totalSelfTeachingTime + totalLectureTime+totalPracticeTime+totalTeamworkTime;
+		
+		
+		
+		HashMap<String,Long> chartMap= new HashMap<String, Long>();
+		chartMap.put("Self Teaching", totalSelfTeachingTime);
+		chartMap.put("Lecture", totalLectureTime);
+		chartMap.put("Practice", totalLectureTime);
+		chartMap.put("Teamwork", totalTeamworkTime);
+		
+		
+			if (graphType == GraphType.PIECHART) {
+			PieChart pieChart = new PieChart(graphName, chartMap);
+			return (Graph) pieChart;
+			}
+			if (graphType == GraphType.BARCHART) {
+			BarChart barChart = new BarChart(graphName, chartMap);
+			return (Graph) barChart;
+			}
+		}
+		return null;
+	}
+	
+	public static Graph makeChartOfAllCourses(Student student,
+			String graphName, GraphType graphType) {
+		if (graphType == GraphType.PIECHART || graphType == GraphType.BARCHART) {
+			GraphController controller = new GraphController();
+			java.util.List<Activity> oldActivityList =  controller.getAllOldActivityList(student);
+
+		HashMap<String, Long> chartMap = new HashMap<String, Long>();
+		for (Activity activity : oldActivityList) {
+			if (activity.getActivityType() instanceof Study) {
+				String course = ((Study) activity.getActivityType()).getCourse().getCourseName();
+				if (!chartMap.containsKey(course)) {
+					chartMap.put(course, activity.getDurationActivity());
+				} else {
+					Long oldTotalTime = chartMap.get(course);
+					Long newTotalTime = oldTotalTime
+							+ activity.getDurationActivity();
+					chartMap.put(course, newTotalTime);
+				}
+			}
+		}
+		if (graphType == GraphType.PIECHART) {
+			PieChart pieChart = new PieChart(graphName, chartMap);
+			return (Graph) pieChart;
+		}
+		if (graphType == GraphType.BARCHART) {
+			BarChart barChart = new BarChart(graphName, chartMap);
+			return (Graph) barChart;
+
+		}
+	}
+	return null;
+	
+	}
+	
+	public static Graph makeChartOfAllActivities(Student student,
+			String graphName, GraphType graphType) {
+		if (graphType == GraphType.PIECHART || graphType == GraphType.BARCHART) {
+			GraphController controller = new GraphController();
+			java.util.List<Activity> oldActivityList =  controller.getAllOldActivityList(student);
+
+			HashMap<String, Long> chartMap = new HashMap<String, Long>();
+
+			chartMap.put("Study", Long.valueOf(0));
+			chartMap.put("FreeTime", Long.valueOf(0));
+			chartMap.put("Sleep", Long.valueOf(0));
+
+			for (Activity activity : oldActivityList) {
+				if (activity.getActivityType() instanceof Study) {
+					Long oldTotalTime = chartMap.get("Study");
+					Long newTotalTime = oldTotalTime
+							+ activity.getDurationActivity();
+					chartMap.put("Study", newTotalTime);
+				}
+				if (activity.getActivityType() instanceof FreeTime) {
+					Long oldTotalTime = chartMap.get("FreeTime");
+					Long newTotalTime = oldTotalTime
+							+ activity.getDurationActivity();
+					chartMap.put("FreeTime", newTotalTime);
+				}
+				if (activity.getActivityType() instanceof Sleep) {
+					Long oldTotalTime = chartMap.get("Sleep");
+					Long newTotalTime = oldTotalTime
+							+ activity.getDurationActivity();
+					chartMap.put("Sleep", newTotalTime);
+				}
+			}
+
+			if (graphType == GraphType.PIECHART) {
+				PieChart pieChart = new PieChart(graphName, chartMap);
+				return (Graph) pieChart;
+			}
+			if (graphType == GraphType.BARCHART) {
+				BarChart barChart = new BarChart(graphName, chartMap);
+				return (Graph) barChart;
+
 			}
 		}
 		return null;

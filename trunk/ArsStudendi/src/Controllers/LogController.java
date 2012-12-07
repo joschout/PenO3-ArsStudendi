@@ -27,6 +27,11 @@ public class LogController {
 		}
 		return false;
 	}
+	
+	public Student getStudent(long ID){
+		Student student = StudentRegistry.getSingletonObject().getStudent(ID);
+		return student;
+	}
 
 	public void logOut(Student student) {
 		StudentRegistry.getSingletonObject().putStudent(student);
