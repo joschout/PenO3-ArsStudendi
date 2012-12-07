@@ -53,10 +53,17 @@ public class CourseRegistry extends Objectifiable {
 		ArrayList<Course> courses = makeCourses();
 		return courses;
 	}
-	public Course getCourse(String courseName) {
+	public Course getCourse(String courseN) {
 		ArrayList<Course> courses = makeCourses();
+		
 		for (Course course : courses) {
-			if (course.getCourseName().equals(courseName)) {
+			
+			String name = course.getCourseName();
+			System.out.println(name);
+			System.out.println(courseN);
+			boolean b = courseN.equals(name);
+			if (b) {
+				System.out.println("Ok");
 				return course;
 			}
 

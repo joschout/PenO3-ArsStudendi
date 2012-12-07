@@ -27,6 +27,8 @@
 			<%
 				String[] milestoneNames = (String[])request.getAttribute("milestoneNames");
 				int[] milestoneProcents = (int[])request.getAttribute("milestoneProcents");
+				String[] deadlines = (String[])request.getAttribute("deadlines");
+				String[] activityTypes = (String[])request.getAttribute("activityTypes");
 				
 				int i = 0;
 				if( milestoneNames != null){
@@ -34,7 +36,9 @@
 			%>
 				<div data-role="collapsible" data-collapsed="false">
 					<h3><% out.println(milestoneNames[i]);%></h3>
+					<p><% out.println("Type: " + activityTypes[i]);%></p>
 					<p><% out.println("The fraction of your work that's done: " + milestoneProcents[i] + "%");%></p>
+					<p><% out.println("deadline: " + deadlines[i]);%></p>
 				</div>
 			<% i++; } }%>
 		</div>	

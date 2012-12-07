@@ -35,7 +35,7 @@ public class Parser {
 			Practice practice = new Practice(null);
 			return practice;
 		}
-		if (tempParsString.equals("selfteaching") || tempParsString.equals("study")) {
+		if (tempParsString.equals("selfteaching")) {
 			SelfTeaching selfTeaching = new SelfTeaching(null);
 			return selfTeaching;
 		}
@@ -50,6 +50,10 @@ public class Parser {
 		if (tempParsString.equals("teamwork")) {
 			Teamwork teamwork = new Teamwork(null);
 			return teamwork;
+		}
+		if(tempParsString.equals("study")) {
+			Study study = new Study(null);
+			return study;
 		}
 		return null;
 	}

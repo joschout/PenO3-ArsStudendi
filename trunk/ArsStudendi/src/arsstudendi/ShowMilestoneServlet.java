@@ -35,9 +35,14 @@ public class ShowMilestoneServlet extends HttpServlet {
 		
 		String[] milestoneNames = milestoneController.getMilestoneNames(student);
 		int[] milestoneProcents = milestoneController.getMilestoneProgress(student);
+		String[] deadlines = milestoneController.getDeadlines(student);
+		String[] activityTypes = milestoneController.getActivityTypes(student);
 		
 		req.setAttribute("milestoneProcents", milestoneProcents);
 		req.setAttribute("milestoneNames", milestoneNames);
+		req.setAttribute("deadlines", deadlines);
+		req.setAttribute("activityTypes", activityTypes);
+		
 		
 		try {
 			req.getRequestDispatcher("/showMilestones.jsp").forward(req, resp);

@@ -27,7 +27,8 @@ public class MilestoneController {
                 Milestone milestone = new Milestone(name, activityType, milestoneType,
                                 goal, stopTime);
                 if(!course.equals("")) {	
-        			setCourse(milestone,course);
+                	Course realCourse = CourseRegistry.getSingletonObject().getCourse(course);
+        			milestone.setCourse(realCourse);
         		}
                 student.addMilestone(milestone);
                 StudentRegistry.getSingletonObject().putStudent(student);
@@ -97,19 +98,21 @@ public class MilestoneController {
                         if (milestone.getActivityType() instanceof activityTypePackage.Study
                                         && activity.getActivityType() instanceof activityTypePackage.Study) {
                                 if (((activityTypePackage.Study) activity.getActivityType())
-                                                .getCourse() == ((activityTypePackage.Study) milestone
-                                                .getActivityType()).getCourse())
+                                                .getCourse().getCourseName().equals(((activityTypePackage.Study) milestone
+                                                .getActivityType()).getCourse().getCourseName())) {
                                         if (milestone.getMilestoneType() == MilestoneType.TIME) {
                                                 int timePassed = (int) activity.getDurationActivity();
                                                 succeed = updateMilestone(milestone, timePassed);
-                                        } else if (milestone.getMilestoneType() == MilestoneType.TIME) {
+                                        } else if (milestone.getMilestoneType() == MilestoneType.PAGES) {
                                                 {
                                                         succeed = updateMilestone(milestone,
                                                                         activity.getAmountOfPages());
                                                 }
                                         }
+                                }
+                        }
 
-                                        else {
+                        else {
                                                 if (activity.getActivityType() instanceof activityTypePackage.Sports
                                                                 && activity.getActivityType() instanceof activityTypePackage.Sports) {
                                                         if (milestone.getMilestoneType() == MilestoneType.TIME) {
@@ -119,14 +122,15 @@ public class MilestoneController {
                                                         }
                                                 }
 
-                                        }
-                        }
-                        if (succeed = true) {
+                         }
+                        
+                        if (succeed == true) {
                                 succeededMilestones.add(milestone);
                                 milestone.setIsAchieved(true);
                                 StudentRegistry.getSingletonObject().putStudent(student);
                         }
-                }}
+                }
+                }
                 return succeededMilestones;     
         }
 
@@ -162,11 +166,47 @@ public class MilestoneController {
         	milestones = student.getMilestones();
         	int[] milestoneProcents = new int[milestones.size()];
         	for(int i = 0; i<milestones.size(); i++) {
-        		int milestoneProgress = milestones.get(i).getProgress();
-        		int milestoneGoal = milestones.get(i).getGoal();
-        		int milestoneProcent = milestoneProgress/milestoneGoal;
-        		milestoneProcents[i] = milestoneProcent;
+        		if(milestones.get(i).isAchieved()) {
+        			milestoneProcents[i] = 100;
+        		}
+        		else {
+        			int milestoneProgress = milestones.get(i).getProgress();
+            		int milestoneGoal = milestones.get(i).getGoal();
+            		if(milestoneGoal == 0) {
+            			milestoneProcents[i] = 100;
+            		}
+            		else {
+            			int milestoneProcent = (milestoneProgress*100)/milestoneGoal;
+            			milestoneProcents[i] = milestoneProcent;
+            		}
+            		
+        		}	
         	}
         	return milestoneProcents;
+        }
+        
+        public String[] getDeadlines(Student student) {
+        	List<Milestone> milestones = new ArrayList<Milestone>();
+        	milestones = student.getMilestones();
+        	String[] deadlines = new String[milestones.size()];
+        	for(int i = 0; i<milestones.size(); i++) {
+        		Calendar cal = milestones.get(i).getStopTime();
+        		int month = cal.get(Calendar.MONTH)+1;
+        		deadlines[i] = (cal.get(Calendar.DAY_OF_MONTH) + "/" + month + "/" + cal.get(Calendar.YEAR));
+        	}
+        	return deadlines;
+        }
+        
+        public String[] getActivityTypes(Student student) {
+        	List<Milestone> milestones = new ArrayList<Milestone>();
+        	milestones = student.getMilestones();
+        	String[] activityTypes = new String[milestones.size()];
+        	for(int i = 0; i<milestones.size(); i++) {
+        		ActivityType activityType = milestones.get(i).getActivityType();
+        		String actType = activityType.getClass().getName().replaceFirst("activityTypePackage.", "");
+        		activityTypes[i] = actType;
+        	}
+        	return activityTypes;
+        	
         }
 }

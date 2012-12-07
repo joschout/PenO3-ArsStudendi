@@ -46,7 +46,7 @@ public class Student {
 		this.emailAdress = newEmailAdress;
 		currentActivity = null;
 		oldActivityList = new ArrayList<Activity>();
-		milestoneList = null;
+		milestoneList = new ArrayList<Milestone>();
 	}
 
 	public Calendar getLastLogin() {

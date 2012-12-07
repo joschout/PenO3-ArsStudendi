@@ -36,7 +36,7 @@ public class MilestoneServlet extends HttpServlet {
 		stopmonth = stopmonth -1;
 		int stopday = Integer.parseInt(req.getParameter("select-stop-day"));
 		stopTime.set(stopyear, stopmonth, stopday, 00, 01);
-		
+		//System.out.println("day: " + stopTime.get(Calendar.DAY_OF_MONTH) + " month: " + stopTime.get(Calendar.MONTH) + " year: " + stopTime.get(Calendar.YEAR));
 		
 		//String startTime = req.getParameter("start");
 		//String stopTime = req.getParameter("end");
@@ -55,14 +55,14 @@ public class MilestoneServlet extends HttpServlet {
 				else if(milestoneSort.equals("Time")) {
 					int studyHour = Integer.parseInt(req.getParameter("studyHour"));
 					int studyMinute = Integer.parseInt(req.getParameter("studyMinute"));
-					goal = 60*studyHour+studyMinute;	
+					goal = 3600*studyHour+60*studyMinute;	
 				}
 			milestoneController.makeNewMilestone(student, milestoneName, stopTime, courseString, milestoneSort, milestoneType, goal);
 			}
 			else if(milestoneType.equals("Sports")) {
 					int sportsHour = Integer.parseInt(req.getParameter("sportsHour"));
 					int sportsMinute = Integer.parseInt(req.getParameter("sportsMinute"));
-					goal = 60*sportsHour+sportsMinute;
+					goal = 3600*sportsHour+60*sportsMinute;
 					milestoneSort = "Sports";
 			milestoneController.makeNewMilestone(student, milestoneName, stopTime, "", milestoneSort, milestoneType, goal);
 				}
