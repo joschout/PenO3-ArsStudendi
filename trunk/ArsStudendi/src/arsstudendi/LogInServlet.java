@@ -25,6 +25,7 @@ public class LogInServlet extends HttpServlet
                 String emailAdress = req.getParameter("emailAdress");
                 String password = req.getParameter("password");
                 
+                
                 session = req.getSession();
                 
                 Student student = controller.logIn(password, emailAdress);

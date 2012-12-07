@@ -97,7 +97,6 @@ else{
 }
 
 
-
 function myLiveEventHandler(event)
 {
   if(event.handled !== true)
