@@ -30,27 +30,40 @@ public class GraphServlet extends HttpServlet {
 		Long currentID = (Long)session.getAttribute("currentID");
 		Student student = StudentRegistry.getSingletonObject().getStudent(currentID);
 		Graph pieChart = controller.makePieChartOfCourses(student, "Dit is een test.");
+		Graph pieChart2 = controller.makePieChartOfAllCourses(student, "Dit is een test.");
 		String[] activityNames = controller.getOldActivityNames(student);
 		String[] startTimes = controller.getOldActivityStartDates(student);
 		String[] stopTimes = controller.getOldActivityStopDates(student);
-		String[] allactivityNames = controller.getAllOldActivityNames();
-		String[] allstartTimes = controller.getAllOldActivityStartDates();
-		String[] allstopTimes = controller.getAllOldActivityStopDates();
+		String[] allactivityNames = controller.getAllOldActivityNames(student);
+		String[] allstartTimes = controller.getAllOldActivityStartDates(student);
+		String[] allstopTimes = controller.getAllOldActivityStopDates(student);
 		req.setAttribute("names", activityNames);
 		req.setAttribute("startT", startTimes);
 		req.setAttribute("stopT", stopTimes);
+		req.setAttribute("allnames", activityNames);
+		req.setAttribute("allstartT", startTimes);
+		req.setAttribute("allstopT", stopTimes);
 		Set<Entry<String,Long>> pieChartSet = ((PieChart)pieChart).getPieChartMap().entrySet();
+		Set<Entry<String,Long>> pieChartSet2 = ((PieChart)pieChart2).getPieChartMap().entrySet();
 		
 		List<String> pieChartKeys = new ArrayList<String>();
 		List<String> pieChartValues = new ArrayList<String>();
+		List<String> allpieChartKeys = new ArrayList<String>();
+		List<String> allpieChartValues = new ArrayList<String>();
 		
 		for(Entry entry: pieChartSet){
 			pieChartKeys.add((String)entry.getKey());
 			pieChartValues.add(((Long)entry.getValue()).toString());
 		}
+		for(Entry entry: pieChartSet2){
+			allpieChartKeys.add((String)entry.getKey());
+			allpieChartValues.add(((Long)entry.getValue()).toString());
+		}
 		
 		String[] pieChartKeysArray = pieChartKeys.toArray(new String[pieChartKeys.size()]);
 		String[] pieChartValuesArray =  pieChartValues.toArray(new String[pieChartValues.size()]);
+		String[] allpieChartKeysArray = allpieChartKeys.toArray(new String[allpieChartKeys.size()]);
+		String[] allpieChartValuesArray =  allpieChartValues.toArray(new String[allpieChartValues.size()]);
 
 		
 		
@@ -65,6 +78,9 @@ public class GraphServlet extends HttpServlet {
 		req.setAttribute("pieChartKeysArray", pieChartKeysArray);
 		req.setAttribute("pieChartValuesArray", pieChartValuesArray);
 		req.setAttribute("pieChartTitle", "Dit is een test.");
+		req.setAttribute("allpieChartKeysArray", allpieChartKeysArray);
+		req.setAttribute("allpieChartValuesArray", allpieChartValuesArray);
+		req.setAttribute("allpieChartTitle", "Dit is een test.");
 		try {
 			req.getRequestDispatcher("/statistics.jsp").forward(req, resp);
 		} catch (ServletException e) {

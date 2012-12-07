@@ -16,6 +16,7 @@
 
       // Set a callback to run when the Google Visualization API is loaded.
       google.setOnLoadCallback(drawChart);
+      google.setOnLoadCallback(drawChart2);
 
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
@@ -55,6 +56,47 @@
         var chart2 = new google.visualization.BarChart(document.getElementById('chart_div2'));
         chart2.draw(data, options);
       }
+      
+      function drawChart2() {
+
+        // Create the data table.
+        var data2 = new google.visualization.DataTable();
+
+        
+		data2.addColumn('string', 'Keys');
+		data2.addColumn('number', 'Values');
+		
+		<% String[] allpieChartKeysArray = (String[])request.getAttribute("allpieChartKeysArray");
+       	String[] allpieChartValuesArray = (String[])request.getAttribute("allpieChartValuesArray");
+        int k =0;
+        if(allpieChartKeysArray!= null && allpieChartValuesArray != null){
+        	while(k<=allpieChartKeysArray.length-1){%>		
+        data2.addRows([
+        	 ['<%out.print(allpieChartKeysArray[k]);%>', <%out.print(allpieChartValuesArray[k]);%>]	
+        ]);
+ 	 <%	
+        k++;
+        	}
+        }        
+        %>
+        
+		
+        // Set chart options
+        var options3 = {'title':'All Students Pie Chart',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart3 = new google.visualization.PieChart(document.getElementById('chart_div3'));
+        chart3.draw(data2, options3);
+        var chart4 = new google.visualization.BarChart(document.getElementById('chart_div4'));
+        chart4.draw(data2, options3);
+      }
+      
+      
+      
+      
+      
       </script>
 </head>
 <body> 
@@ -86,6 +128,8 @@
 
 	<div id="chart_div1"></div>
 	<div id="chart_div2"></div>
+	<div id="chart_div3"></div>
+	<div id="chart_div4"></div>
 </div><!-- /page -->
 
 </body>
