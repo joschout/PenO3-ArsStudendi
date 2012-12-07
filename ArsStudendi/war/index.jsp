@@ -4,6 +4,7 @@
 	<title>ArsStudendi</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" type="text/css" href="main.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	<script>
@@ -104,12 +105,12 @@
 	<a href="/tracking" data-role="button" data-ajax="false">Tracking</a> <br>
 	<a href="milestones" data-role="button" data-ajax="false">Milestones</a> <br>
 	<a href="/statistics" data-role="button" data-ajax="false">Statistics</a> <br>
-	<a href="settings" data-role="button" data-ajax="false">Settings</a>
+	<a href="settings" data-role="button" data-ajax="false">Settings</a><br>
 	
 
 	
 	<div data-role="footer" id="footer"> 
-	<div id="demo"></div>
+		<div id="demo" class="center-align"></div>
 	</div>
 
 
