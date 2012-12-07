@@ -103,7 +103,8 @@ public class GraphController {
 		int size = oldActivityList.size();
 		ArrayList<String> nameList = new ArrayList<String>();
 		for(Activity activity: oldActivityList){
-			String name = activity.getActivityName();
+			String name = activity.getActivityType().getClass().getName();
+			name = name.replaceFirst("activityTypePackage.", "");
 					nameList.add(name);
 		}
 		String [] nameString = nameList.toArray(new String[size]);

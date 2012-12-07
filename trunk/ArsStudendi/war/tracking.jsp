@@ -170,13 +170,13 @@ $(document).bind("pageinit", myLiveEventHandler);
 			
 			
 			<div data-role="fieldcontain" class="ui-hide-label" id="description">
-				<label for="numberOfPages" class="select">Description</label><br>
-				<input type="text" name="numberOfPages"  value="" placeholder="ActivityDescription"/>
+				<label for="ActivityDescription" class="select">Description</label><br>
+				<input type="text" name="ActivityDescription"  value="" placeholder="ActivityDescription"/>
 			</div>
 			
 			<div id="pageSlider">
 				<label for="amountOfPages">Amount of pages:</label>
-				<input type="range" name="amountOfPages" id="amountOfPages" value="pages" min="0" max="100" data-highlight="true" onchange="emptyFields()"/>
+				<input type="range" name="amountOfPages" id="amountOfPages" value="pages" min="0" max="100" data-highlight="true"/>
 			</div>	
 			
 			<div data-role="fieldcontain" id="courses">

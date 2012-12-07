@@ -9,7 +9,7 @@
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+    <script>
 
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
@@ -26,21 +26,23 @@
         var data = new google.visualization.DataTable();
 
         
-        data.addColumn('string', 'Keys');
-        data.addColumn('number', 'Values');
-        data.addRows([
-        <% String[] pieChartKeysArray = (String[])request.getAttribute("pieChartKeysArray");
-       	   String[] pieChartValuesArray = (String[])request.getAttribute("pieChartValuesArray");
+		data.addColumn('string', 'Keys');
+		data.addColumn('number', 'Values');
+		
+		<% String[] pieChartKeysArray = (String[])request.getAttribute("pieChartKeysArray");
+       	String[] pieChartValuesArray = (String[])request.getAttribute("pieChartValuesArray");
         int i =0;
         if(pieChartKeysArray!= null && pieChartValuesArray != null){
-        	while(i<=pieChartKeysArray.length-1){%>
-        	 [<%out.println(pieChartKeysArray[i]);%>, <%out.println(pieChartValuesArray[i]);%>]       	
-        	<%	
-        	i++;
+        	while(i<=pieChartKeysArray.length-1){%>		
+        data.addRows([
+        	 ['<%out.print(pieChartKeysArray[i]);%>', <%out.print(pieChartValuesArray[i]);%>]	
+        ]);
+ 	 <%	
+        i++;
         	}
         }        
         %>
-        ]);
+        
 		
         // Set chart options
         var options = {'title':'How Much Pizza I Ate Last Night',
