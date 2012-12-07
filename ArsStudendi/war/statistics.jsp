@@ -45,13 +45,15 @@
         
 		
         // Set chart options
-        var options = {'title':'How Much Pizza I Ate Last Night',
+        var options = {'title':'Your Lessons Pie Chart',
                        'width':400,
                        'height':300};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
         chart.draw(data, options);
+        var chart2 = new google.visualization.BarChart(document.getElementById('chart_div2'));
+        chart2.draw(data, options);
       }
       </script>
 </head>
@@ -82,8 +84,8 @@
 
 	</div>
 
-
-	<div id="chart_div"></div>
+	<div id="chart_div1"></div>
+	<div id="chart_div2"></div>
 </div><!-- /page -->
 
 </body>

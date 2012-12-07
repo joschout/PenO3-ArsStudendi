@@ -88,6 +88,8 @@ public class MilestoneController {
 
         public List<Milestone> updateMilestone(Student student, Activity activity) {
                 List<Milestone> succeededMilestones = new ArrayList<Milestone>();
+                List<Milestone> milestones = student.getMilestones();
+                if (milestones != null){
                 for (Milestone milestone : student.getMilestones()) {
 
                         boolean succeed = false;
@@ -124,7 +126,7 @@ public class MilestoneController {
                                 milestone.setIsAchieved(true);
                                 StudentRegistry.getSingletonObject().putStudent(student);
                         }
-                }
+                }}
                 return succeededMilestones;     
         }
 
