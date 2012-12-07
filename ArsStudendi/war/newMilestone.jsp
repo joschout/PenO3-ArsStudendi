@@ -225,7 +225,7 @@ $(document).bind('pageinit', function() {
 							if( courseNames != null){
 							while(i<courseNames.length) {
 						%>
-   								<option value="<% out.println(courseNames[i]);%>"><% out.println(courseNames[i]);%></option>
+   								<option value=<%out.println(courseNames[i]);%>><% out.println(courseNames[i]);%></option>
 						<% i++; } }%>
 					</select>	
 				</div>
