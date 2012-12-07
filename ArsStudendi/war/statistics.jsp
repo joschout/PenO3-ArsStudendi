@@ -126,10 +126,13 @@
 
 	</div>
 
+
 	<div id="chart_div1"></div>
 	<div id="chart_div2"></div>
+
 	<div id="chart_div3"></div>
 	<div id="chart_div4"></div>
+
 </div><!-- /page -->
 
 </body>

@@ -109,8 +109,10 @@
 	
 
 	
-	<div data-role="footer" id="footer"> 
-		<div id="demo" class="center-align"></div>
+	<div data-role="footer" id="footer">
+		<div class="center-align">
+		<a href="/tracking" data-role="button" id="demo" data-iconpos="right" data-ajax="false"></a>
+		</div>
 	</div>
 
 
