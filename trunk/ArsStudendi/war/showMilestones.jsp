@@ -22,15 +22,23 @@
 	
 	<div data-role="content">
 		<div>
+			<form action="/showMilestones" method="post">
+			<div data-role="collapsible-set" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-content-theme="d">
 			<%
 				String[] milestoneNames = (String[])request.getAttribute("milestoneNames");
-				//out.println(milestoneNames);
+				int[] milestoneProcents = (int[])request.getAttribute("milestoneProcents");
+				
 				int i = 0;
 				if( milestoneNames != null){
 				while(i<milestoneNames.length) {
 			%>
-   				<p><% out.println(milestoneNames[i]);%></p>
-				<% i++; } }%>
+				<div data-role="collapsible" data-collapsed="false">
+					<h3><% out.println(milestoneNames[i]);%></h3>
+					<p><% out.println("The fraction of your work that's done: " + milestoneProcents[i] + "%");%></p>
+				</div>
+			<% i++; } }%>
+		</div>	
+			</form>
 			
 		</div>
 	

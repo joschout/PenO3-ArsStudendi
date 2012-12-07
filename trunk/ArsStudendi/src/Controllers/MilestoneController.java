@@ -157,4 +157,16 @@ public class MilestoneController {
         	}
         	return milestoneNames;
         }
+        public int[] getMilestoneProgress(Student student) {
+        	List<Milestone> milestones = new ArrayList<Milestone>();
+        	milestones = student.getMilestones();
+        	int[] milestoneProcents = new int[milestones.size()];
+        	for(int i = 0; i<milestones.size(); i++) {
+        		int milestoneProgress = milestones.get(i).getProgress();
+        		int milestoneGoal = milestones.get(i).getGoal();
+        		int milestoneProcent = milestoneProgress/milestoneGoal;
+        		milestoneProcents[i] = milestoneProcent;
+        	}
+        	return milestoneProcents;
+        }
 }
