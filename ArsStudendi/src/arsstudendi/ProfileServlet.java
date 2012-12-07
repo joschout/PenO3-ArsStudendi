@@ -15,7 +15,7 @@ import DomainModel.Student;
 public class ProfileServlet  extends HttpServlet{
 
 	ProfileController profileController = new ProfileController();
-	
+	RegisterController registerController = new RegisterController();
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 
@@ -37,27 +37,28 @@ public class ProfileServlet  extends HttpServlet{
 		profileController.changeFirstName(student, newFirstName);
 		req.setAttribute("studentFirstName", newFirstName);
 		System.out.println(newFirstName);
-		
+		}
 		String newLastName = (String)req.getParameter("changedLastName");
 		if (newLastName != null){
 		profileController.changeLastName(student, newLastName);
 		req.setAttribute("studentLastName", newLastName);
 		System.out.println(newLastName);
-		
+		}
 		
 		String newEmailAdress = (String)req.getParameter("changedEmailAdress");
-		if(newEmailAdress != null){
+		if(newEmailAdress != null && registerController.isEmailAvailable(newEmailAdress)){
+			
+			
 			profileController.changeEmail(student, newEmailAdress);
 			req.setAttribute("email", newEmailAdress);
-			System.out.print
-		}
-		}
-		
-		
-		
-		
+			System.out.print(newEmailAdress);
 		}
 		
+		
+		String newPassword1 =(String)req.getParameter("changedPassword1");
+		String newPassword2 = (String)req.getParameter("changedPassword2");
+		
+
 		
 		try {
 			req.getRequestDispatcher("/profile.jsp").forward(req, resp);

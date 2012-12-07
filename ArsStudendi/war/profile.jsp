@@ -27,48 +27,79 @@
 	
 	
 	
-	<br>
-	<div>
-	<p>First name: <%String firstName = (String)request.getAttribute("studentFirstName"); %>
+	<div>First name: <%String firstName = (String)request.getAttribute("studentFirstName"); %>
 		<%out.println(firstName); %> 	
-		
-	<a href="#popupFirstName" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" aria-haspopup="true" aria-owns="#popupFirstName" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Form</span></span></a>
+		<a href="#popupFirstName" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" aria-haspopup="true" aria-owns="#popupFirstName" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Change your first name</span></span></a>
 	
-	<div class=​"ui-popup-container ui-popup-active" id=​"popupFirstName-popup" style=​"max-width:​ 1570px;​ top:​ 432.5px;​ left:​ 682px;​" tabindex=​"0">​<div class="ui-popup-container ui-popup-active" id="popupFirstName-popup" style="max-width: 1570px; top: 432.5px; left: 682px;" tabindex="0"><div data-role="popup" id="popupFirstName" data-theme="a" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow" aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-transition="none" data-position-to="origin">
+	<div class=​"ui-popup-container ui-popup-active" id=​"popupFirstName" style=​"max-width:​ 1570px;​ top:​ 432.5px;​ left:​ 682px;​" tabindex=​"0">​<div class="ui-popup-container ui-popup-active" id="popupFirstName1" style="max-width: 1570px; top: 432.5px; left: 682px;" tabindex="0"><div data-role="popup" id="popupFirstName" data-theme="a" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow" aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-transition="none" data-position-to="origin">
 			<form action="/profile" method="POST" data-ajax="false">
 				<div style="padding:10px 20px;">
 				  <h3>Please enter your new first name</h3>
-		          <label for="un" class="ui-hidden-accessible ui-input-text">Username:</label>
-		          <input type="text" name="changedFirstName" id="un" value="" placeholder="first name" data-theme="a" class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset"></input>
+		          <label for="un1" class="ui-hidden-accessible ui-input-text">Username:</label>
+		          <input type="text" name="changedFirstName" id="un1" value="" placeholder="first name" data-theme="a" class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset"></input>
 		    	  <button type="submit" data-theme="b" class="ui-btn-hidden" aria-disabled="false">Save</button>
 				</div>
 			</form>
 	</div>
-	<p>
+	</div>
 	
-	<p>Surname: <%String lastName = (String)request.getAttribute("studentLastName"); %>
+	<div>Surname: <%String lastName = (String)request.getAttribute("studentLastName"); %>
 		<%out.println(lastName); %>
-		
-	<a href="#popupLastName" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" aria-haspopup="true" aria-owns="#popupLastName" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Form</span></span></a>
+			<a href="#popupLastName" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" aria-haspopup="true" aria-owns="#popupLastName" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Change surname</span></span></a>
 	
-	<div class=​"ui-popup-container ui-popup-active" id=​"popupLastName-popup" style=​"max-width:​ 1570px;​ top:​ 432.5px;​ left:​ 682px;​" tabindex=​"0">​<div class="ui-popup-container ui-popup-active" id="popupLastName-popup" style="max-width: 1570px; top: 432.5px; left: 682px;" tabindex="0"><div data-role="popup" id="popupLastName" data-theme="a" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow" aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-transition="none" data-position-to="origin">
+	<div class=​"ui-popup-container ui-popup-active" id=​"popupLastName" style=​"max-width:​ 1570px;​ top:​ 432.5px;​ left:​ 682px;​" tabindex=​"0">​<div class="ui-popup-container ui-popup-active" id="popupLastName1" style="max-width: 1570px; top: 432.5px; left: 682px;" tabindex="0"><div data-role="popup" id="popupLastName" data-theme="a" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow" aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-transition="none" data-position-to="origin">
 			<form action="/profile" method="POST" data-ajax="false">
 				<div style="padding:10px 20px;">
 				  <h3>Please enter your new last name</h3>
-		          <label for="un" class="ui-hidden-accessible ui-input-text">Username:</label>
-		          <input type="text" name="changedLastName" id="un" value="" placeholder="last name" data-theme="a" class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset"></input>
+		          <label for="un2" class="ui-hidden-accessible ui-input-text">Username:</label>
+		          <input type="text" name="changedLastName" id="un2" value="" placeholder="last name" data-theme="a" class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset"></input>
 		    	  <button type="submit" data-theme="b" class="ui-btn-hidden" aria-disabled="false">Save</button>
 				</div>
 			</form>
 	</div>	
-	<p>
 	
-	
-	<p>E-mail adress: <%String email = (String)request.getAttribute("email"); %>
-		<%out.println(email); %><p>	
-		
 	</div>
 	
+	
+	<div>E-mail adress: <%String email = (String)request.getAttribute("email"); %>
+		<%out.println(email); %>
+		
+	<a href="#popupEmail" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" aria-haspopup="true" aria-owns="#popupEmail" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Change e-mail</span></span></a>
+	
+	<div class=​"ui-popup-container ui-popup-active" id=​"popupEmail" style=​"max-width:​ 1570px;​ top:​ 432.5px;​ left:​ 682px;​" tabindex=​"0">​<div class="ui-popup-container ui-popup-active" id="popupEmail1" style="max-width: 1570px; top: 432.5px; left: 682px;" tabindex="0"><div data-role="popup" id="popupEmail" data-theme="a" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow" aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-transition="none" data-position-to="origin">
+			<form action="/profile" method="POST" data-ajax="false">
+				<div style="padding:10px 20px;">
+				  <h3>Please enter your new e-mail adress</h3>
+		          <label for="un3" class="ui-hidden-accessible ui-input-text">Username:</label>
+		          <input type="text" name="changedEmailAdress" id="un3" value="" placeholder="e-mail adress" data-theme="a" class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset"></input>
+		    	  <button type="submit" data-theme="b" class="ui-btn-hidden" aria-disabled="false">Save</button>
+				</div>
+			</form>
+	</div>	
+	
+	</div>
+	
+	<div>
+		
+	<a href="#popupPassword" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" aria-haspopup="true" aria-owns="#popupPassword" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Change e-mail</span></span></a>
+	
+	<div class=​"ui-popup-container ui-popup-active" id=​"popupPassword" style=​"max-width:​ 1570px;​ top:​ 432.5px;​ left:​ 682px;​" tabindex=​"0">​<div class="ui-popup-container ui-popup-active" id="popupPassword1" style="max-width: 1570px; top: 432.5px; left: 682px;" tabindex="0"><div data-role="popup" id="popupPassword" data-theme="a" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow" aria-disabled="false" data-disabled="false" data-shadow="true" data-corners="true" data-transition="none" data-position-to="origin">
+			<form action="/profile" method="POST" data-ajax="false">
+				<div style="padding:10px 20px;">
+				  <h3>Please enter your new e-mail adress</h3>
+		          <label for="un3" class="ui-hidden-accessible ui-input-text">Username:</label>
+		          <input type="password" name="changedPassword1" id="un4" value="" placeholder="password1" data-theme="a" class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset"></input>
+		    	  <button type="submit" data-theme="b" class="ui-btn-hidden" aria-disabled="false">Save</button>
+				</div>
+			</form>
+	</div>	
+	
+	</div>
+	
+			
+
+	
+
 
 
 	
