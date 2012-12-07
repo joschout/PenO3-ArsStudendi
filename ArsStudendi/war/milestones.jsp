@@ -21,8 +21,8 @@
 	</div><!-- /header -->
 	
 	<br>
-	<a href="/newMilestone" data-role="button" target="_self">Create Milestone</a> <br>
-	<a href="/showMilestones" data-role="button" target="_self">Show Milestones</a>
+	<a href="/newMilestone" data-role="button" target="_self" data-ajax="false">Create Milestone</a> <br>
+	<a href="/showMilestones" data-role="button" target="_self" data-ajax="false">Show Milestones</a>
 
 </div><!-- /page -->
 

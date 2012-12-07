@@ -22,7 +22,7 @@
 	
 	<div data-role="content">
 		<div>
-			<form action="/showMilestones" method="post">
+			<form action="/showMilestones" method="post" data-ajax="false">
 			<div data-role="collapsible-set" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-content-theme="d">
 			<%
 				String[] milestoneNames = (String[])request.getAttribute("milestoneNames");
