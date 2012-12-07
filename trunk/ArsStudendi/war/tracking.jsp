@@ -32,6 +32,11 @@ function reNew(){
 	var timePassed = "<%= request.getAttribute("timePassed")%>";
 	timePassed = parseInt(timePassed);
 	var localTP;
+	var time;
+	var hours;
+	var minutes;
+	var seconds;
+	var timeString
 	
 	function localTime(){
 	if(timePassed == -1){
@@ -44,7 +49,27 @@ function reNew(){
 	function myTimer()
 	{
 	localTP = localTP + 1;
-	$("#demo").text(localTP);
+	time = localTP;
+	hours = time/3600;
+	hours = parseInt(hours);
+	time = time % 3600;
+	if(hours<10){
+	hours = "0" + hours;
+	}
+	minutes = time/60;
+	minutes = parseInt(minutes);
+	time = time % 60;
+	if(minutes<10){
+	minutes = "0" + minutes;
+	}
+	seconds = time;
+	if(seconds<10){
+	seconds = "0" + seconds;
+	}
+	timeString = hours +":" + minutes +":" + seconds;
+	
+	
+	$("#demo").text(timeString);
 	}
 	function display(){
 	setInterval("myTimer()",1000);
