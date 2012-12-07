@@ -21,22 +21,16 @@
 <div data-role="page">
 
 	<div data-role="header" data-theme="b">
-	 	<a href="index.jsp" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+	 	<a href="/index" data-role="button" data-icon="home" data-iconpos="notext" data-ajax="false">Home</a> 
 		<h1>Settings</h1>
-		
-		<div data-role="content">	
-			
-	</div><!-- /content -->
-	
 		<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
 	</div><!-- /header -->
 	
+<div data-role="content">	
 	<br>
 	<a href="/profile" data-role="button" target="_self">Account</a> <br>
 	<a href="courses.jsp" data-role="button" target="_self">Courses</a> <br>
-	<a href="layout.jsp" data-role="button" target="_self">Layout</a>
-	
-
+</div><!-- /content -->
 </div><!-- /page -->
 
      
