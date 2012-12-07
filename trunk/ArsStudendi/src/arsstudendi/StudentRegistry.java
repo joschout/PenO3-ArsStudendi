@@ -82,6 +82,16 @@ public class StudentRegistry extends Objectifiable {
 	public Student getStudent(Long studentID) {
 		return getObjectify().get(Student.class, studentID);
 	}
+	
+	public List<Student> getAllStudents2(){
+		Iterable<Key<Student>> allKeys = getObjectify().query(Student.class).fetchKeys();
+		List<Student> studentList = new ArrayList<Student>();
+		for(Key<Student> key : allKeys){
+			studentList.add(getStudent(key));
+		}
+		return studentList;
+		
+	}
 
 //	private ArrayList<Course> makeCourses() {
 //		String[] arr = CourseRegistry.getSingletonObject().getCourseNames();
