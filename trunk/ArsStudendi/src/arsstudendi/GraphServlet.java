@@ -33,6 +33,9 @@ public class GraphServlet extends HttpServlet {
 		String[] activityNames = controller.getOldActivityNames(student);
 		String[] startTimes = controller.getOldActivityStartDates(student);
 		String[] stopTimes = controller.getOldActivityStopDates(student);
+		String[] allactivityNames = controller.getAllOldActivityNames();
+		String[] allstartTimes = controller.getAllOldActivityStartDates();
+		String[] allstopTimes = controller.getAllOldActivityStopDates();
 		req.setAttribute("names", activityNames);
 		req.setAttribute("startT", startTimes);
 		req.setAttribute("stopT", stopTimes);
