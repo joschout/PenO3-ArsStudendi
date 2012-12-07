@@ -77,7 +77,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 
 	<div data-role="content">
 	
-	<form action="/register" method="post">
+	<form action="/register" method="post" data-ajax="false">
 		<div data-role="fieldcontain" class="ui-hide-label">
 			<input type="text" name="studentFirstName" id="studentFirstName" value="" placeholder="First Name" onchange="emptyFields()"/>
 		</div>

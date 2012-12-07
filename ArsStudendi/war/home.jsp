@@ -47,7 +47,7 @@
 	
 	
 	<div data-role="content">
-		<form id="logIn" action="/home" method="post">
+		<form id="logIn" action="/home" method="post" data-ajax="false">
 				
 						<div class="logo">
 							<img src="/images/Logo_final.png" alt="logo"/>
