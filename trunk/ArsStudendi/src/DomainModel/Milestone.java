@@ -1,8 +1,9 @@
 package DomainModel;
 
+import java.io.Serializable;
 import java.util.*;
 import activityTypePackage.*;
-public class Milestone {
+public class Milestone implements Serializable{
 
 	private String name;
 	private Calendar stopTime;
