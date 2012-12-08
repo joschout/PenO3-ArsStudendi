@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class PieChart extends Graph{
 
-	public java.util.HashMap<String, Long> pieChartMap;
+	private java.util.HashMap<String, Long> pieChartMap;
 	
 
 	public java.util.HashMap<String, Long> getPieChartMap() {
