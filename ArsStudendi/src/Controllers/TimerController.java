@@ -144,7 +144,7 @@ public long getTimePassedCurrentActivity(Student student){
 }
 
 
-public static long getTotalTimeOfActivityList(ArrayList<Activity> activityList){
+public static long getTotalTimeOfActivityList(List<Activity> activityList){
 	long totalTime = 0;
 	for(Activity activity: activityList){
 		totalTime += getTimePassed(activity);
