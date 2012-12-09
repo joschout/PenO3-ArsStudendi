@@ -9,7 +9,7 @@
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	<script type="text/javascript"></script>
-	<script>
+		<script>
 		function isLoggedIn(){
 		var checker = "<%= session.getAttribute("currentID")%>";
 		if(checker == "null"){
@@ -21,8 +21,6 @@
 	
 </head>
 <body> 
-
-<div data-role="page">
 	<div data-role="header" data-theme="b">
 	 	<a href="/index" data-role="button" data-icon="home" data-iconpos="notext" data-ajax="false">Home</a> 
 		<h1>Milestones</h1>
@@ -30,40 +28,30 @@
 	</div><!-- /header -->
 	
 	<div data-role="content">
-		<div>
-			<form action="/showMilestones" method="post" data-ajax="false">
-			<div data-role="collapsible-set" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-content-theme="d">
+	<form action="/removeMilestones" method="post">
+	
+	<p>Select the milestones you want to delete: </p>
+		<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup">
 			<%
 				String[] milestoneNames = (String[])request.getAttribute("milestoneNames");
-				int[] milestoneProcents = (int[])request.getAttribute("milestoneProcents");
-				String[] deadlines = (String[])request.getAttribute("deadlines");
-				String[] activityTypes = (String[])request.getAttribute("activityTypes");
-				
 				int i = 0;
 				if( milestoneNames != null){
 				while(i<milestoneNames.length) {
 			%>
-				<div data-role="collapsible" data-collapsed="false">
-					<h3><% out.println(milestoneNames[i]);%></h3>
-					<p><% out.println("Type: " + activityTypes[i]);%></p>
-					<p><% out.println("The fraction of your work that's done: " + milestoneProcents[i] + "%");%></p>
-					<p><% out.println("deadline: " + deadlines[i]);%></p>
-			</div>
+			<input type="checkbox" name=<% out.println(milestoneNames[i]);%> id=<% out.println(milestoneNames[i]);%> class="custom";"/>
+			<label for=<% out.println(milestoneNames[i]);%>> <% out.println(milestoneNames[i]);%> </label>
 			<% i++; } }%>
-		</div>	
-			</form>
+			</fieldset>
 			
-		<div>
-			<a href="/removeMilestones" data-role="button" data-mini="true">remove milestones</a>
 		</div>
+			<fieldset class="ui-grid-a">
+			<div class="ui-block-a"><button type="submit" data-theme="b">Delete</button></div>
+			<div class="ui-block-b"><a href="milestones.jsp" data-role="button">Cancel</a></button></div>	   
+		</fieldset>
 		
-		
-	
-	
+	</form>
 	</div>
-	
-	
-</div><!-- /page -->
 
 </body>
 </html>
