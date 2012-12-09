@@ -89,7 +89,7 @@ public class RegisterServlet extends HttpServlet {
 
 	}
 		
-		public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 			doPost(req,resp);
 	}		
 	}
