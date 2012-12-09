@@ -72,8 +72,22 @@
 <servlet-name>Account</servlet-name>
 <url-pattern>/profile</url-pattern>
 </servlet-mapping>
-
-
+<servlet>
+<servlet-name>removeMilestones</servlet-name>
+<servlet-class>arsstudendi.RemoveMilestonesServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>removeMilestones</servlet-name>
+<url-pattern>/removeMilestones</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>showMilestones</servlet-name>
+<servlet-class>arsstudendi.ShowMilestoneServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>showMilestones</servlet-name>
+<url-pattern>/showMilestones</url-pattern>
+</servlet-mapping>
 
 
 

@@ -40,8 +40,18 @@ public class MilestoneController {
         	milestone.setCourse(course);
         }
         
+        public void removeMilestone(Student student, String milestoneName) {
+        	List<Milestone> milestones = new ArrayList<Milestone>();
+        	milestones = student.getMilestones();
+        	for(int i = 0; i<milestones.size(); i++) {
+        		Milestone milestone = milestones.get(i);
+        		if(milestoneName.equals(milestone.getMilestoneName())) {
+        			removeMilestone(student, milestone);
+        		}
+        	}
+        }
         
-        public void removeMilestone(Student student, Milestone milestone) {
+        private void removeMilestone(Student student, Milestone milestone) {
                 student.removeMilestone(milestone);
                 StudentRegistry.getSingletonObject().putStudent(student);
         }
@@ -161,6 +171,8 @@ public class MilestoneController {
         	}
         	return milestoneNames;
         }
+        
+        
         public int[] getMilestoneProgress(Student student) {
         	List<Milestone> milestones = new ArrayList<Milestone>();
         	milestones = student.getMilestones();
@@ -202,8 +214,20 @@ public class MilestoneController {
         	milestones = student.getMilestones();
         	String[] activityTypes = new String[milestones.size()];
         	for(int i = 0; i<milestones.size(); i++) {
-        		ActivityType activityType = milestones.get(i).getActivityType();
+        		Milestone milestone = milestones.get(i);
+        		ActivityType activityType = milestone.getActivityType();
         		String actType = activityType.getClass().getName().replaceFirst("activityTypePackage.", "");
+        		if (activityType instanceof activityTypePackage.Study) {
+        			Study study = (Study)activityType;
+        			if (milestone.getMilestoneType() == MilestoneType.TIME) {
+        				actType = (actType + " - Time");
+        			}
+        			if (milestone.getMilestoneType() == MilestoneType.PAGES) {
+        				actType = (actType + " - Pages");
+        			}
+        			String course = study.getCourse().getCourseName();
+        			actType = (actType + " - " + course);
+        		}
         		activityTypes[i] = actType;
         	}
         	return activityTypes;
