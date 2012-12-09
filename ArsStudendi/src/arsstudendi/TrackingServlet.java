@@ -51,7 +51,7 @@ public class TrackingServlet extends HttpServlet
 			if (option1.equals("STUDY")){
 				activityType= option2;
 				courseStudied = (String)req.getParameter("courses");
-				if(option3.equals("Practice")){
+				if(option2.equals("Practice")){
 					amountOfPages = Integer.parseInt(req.getParameter("amountOfPages"));
 				}
 			}
