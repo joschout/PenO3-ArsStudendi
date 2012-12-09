@@ -8,17 +8,23 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-	
-	
-	<script type="text/javascript">
-	
+	<script type="text/javascript"></script>
+		<script>
+		function isLoggedIn(){
+		var checker = "<%= session.getAttribute("currentID")%>";
+		if(checker == "null"){
+			window.location.replace("/home");
+		}
+	}
+	$(document).bind("pagecreate", isLoggedIn);
+	</script>
 	
 </head> 
 <body> 
 
 <script>
 
-</script>
+
 <div data-role="page">
 
 	<div data-role="header" data-theme="b">
