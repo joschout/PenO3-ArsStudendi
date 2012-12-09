@@ -13,8 +13,16 @@
 	<link rel="stylesheet" href="jquery.ui.datepicker.mobile.css" /> 
   	<script src="jQuery.ui.datepicker.js"></script>
   	<script src="jquery.ui.datepicker.mobile.js"></script>
-	
-  	
+		<script>
+		function isLoggedIn(){
+		var checker = "<%= session.getAttribute("currentID")%>";
+		if(checker == "null"){
+			window.location.replace("/home");
+		}
+	}
+	$(document).bind("pagecreate", isLoggedIn);
+	</script>
+	  	
 	<script>
 	function emptyFields() {
 		var name = $("#nameMilestone").val();

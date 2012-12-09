@@ -10,6 +10,15 @@
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script>
+		function isLoggedIn(){
+		var checker = "<%= session.getAttribute("currentID")%>";
+		if(checker == "null"){
+			window.location.replace("/home");
+		}
+	}
+	$(document).bind("pagecreate", isLoggedIn);
+	</script>
+    <script>
 
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
