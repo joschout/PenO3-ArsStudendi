@@ -69,9 +69,7 @@ public class StudentRegistry extends Objectifiable {
 	 *         object niet wordt gevonden?
 	 */
 	public Student getStudent(String inLogEmailAdress, String password) {
-		return getObjectify().query(Student.class)
-				.filter("emailAdress", inLogEmailAdress)
-				.filter("password", password).get();// load().type(Student.class)
+		return getObjectify().query(Student.class).filter("emailAdress", inLogEmailAdress).filter("password", password).get();// load().type(Student.class)
 	}
 
 	/**

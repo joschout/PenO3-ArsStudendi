@@ -1,7 +1,9 @@
 package Controllers;
 
+import arsstudendi.CourseRegistry;
 import arsstudendi.StudentRegistry;
 import DomainModel.*;
+import java.util.*;
 
 public class ProfileController {
 
@@ -48,7 +50,6 @@ public class ProfileController {
 	}
 	
 	
-	
 	public boolean removeCourse(Student student, Course course){
 		boolean succeed = false;
 		if(student != null && course != null){
@@ -65,5 +66,45 @@ public class ProfileController {
 			 StudentRegistry.getSingletonObject().putStudent(student);
 		 }
 		 return succeed;
+	 }
+	 public String [] getCourseNames(Student student)
+	 {
+	 	int size = student.getCourses().size();
+	 	String [] courseNames = new String[size];
+	 	int i = 0;
+	 	while(i<size){
+	 		courseNames[i] = student.getCourses().get(i).getCourseName();
+	 		i++;
+	 	}   	
+	 	return courseNames;
+
+	 }
+	 
+	 public String [] getaddedCourseNames(Student student)
+	 {
+		 List<Course> studentCourses = student.getCourses();
+		 List<Course> allCourses = CourseRegistry.getSingletonObject().getCourseList();
+		 List<String> addedCourses = new ArrayList<String>();
+		Collections.addAll(addedCourses, CourseRegistry.getSingletonObject().getCourseNames());
+		 for(Course studentCourse: studentCourses){
+			 String name1 = studentCourse.getCourseName();
+			 for(Course course: allCourses){
+				 Course nextCourse = course;
+				 String name2 = nextCourse.getCourseName();
+				 if (name1.equals(name2)){
+					addedCourses.remove(name1);
+				 }
+			 }
+		 }
+		 	int size = addedCourses.size();
+		 	String [] courseNames = new String[size];
+		 	int i = 0;
+		 	while(i<size){
+		 		courseNames[i] = addedCourses.get(i);
+		 		i++;
+		 	}   	
+		 	return courseNames;
+		 
+
 	 }
 }

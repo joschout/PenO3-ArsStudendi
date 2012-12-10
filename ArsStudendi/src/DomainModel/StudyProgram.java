@@ -35,5 +35,8 @@ public class StudyProgram implements Serializable {
 	public String getStudyProgramName() {
 		return name;
 	}
-
+	public List<Course> getCourses(){
+		return courseList;
+	}
+ 
 }

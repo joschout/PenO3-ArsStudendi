@@ -27,7 +27,7 @@ public class RegisterServlet extends HttpServlet {
 		String studentLastName = req.getParameter("studentLastName");
 		String password = req.getParameter("password");
 		String emailAdress = req.getParameter("emailAdress");
-		String nStudyProgram = req.getParameter("studyProgram");	
+			
 		//String StrStudentID = req.getParameter ("studentID");
 		//Long studentID = Long.valueOf(StrStudentID);
 //		long l = Long.valueOf(nStudyProgram).longValue();
@@ -45,8 +45,10 @@ public class RegisterServlet extends HttpServlet {
 			}
 			i++;
 		}
+		String[] studyProgramNames = registerController.getStudyProgramNames();
+		req.setAttribute("studyProgramNames", studyProgramNames);
 		req.setAttribute("courseNames", courseNames);
-		
+		String nStudyProgram = req.getParameter("studyProgram");
 		
 		// vreemde code voor: if(getObjectify().query(Student.class).filter("emailAdress", emailAdress).get() == null)
 		// DUS: als er nog geen gebruiker met dit emailadres in de datastore zit

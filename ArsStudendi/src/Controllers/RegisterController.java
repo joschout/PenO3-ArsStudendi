@@ -23,6 +23,21 @@ public class RegisterController {
 			courses.add(course);	
 			}
 		}
+	if(studyProgram != null){
+	List<Course> programCourses = studyProgram.getCourses();
+	for(Course programCourse: programCourses){
+		boolean nameCheck = true;
+		for(Course course: courses){
+			String name1 = programCourse.getCourseName();	
+			String name2 = course.getCourseName();		
+			if(name2.equals(name1)){
+				nameCheck = false;			
+			}
+		}
+		if(nameCheck){
+			courses.add(programCourse);
+		}
+	}}
 	Student student = new Student(studyProgram, studentFirstName, studentLastName, password, courses, newEmailAdress);
 	StudentRegistry.getSingletonObject().putStudent(student);
 	succeed = StudentRegistry.getSingletonObject().putStudent(student);
@@ -39,6 +54,9 @@ public class RegisterController {
 	
 	public String[] getCourseNames(){
 		return CourseRegistry.getSingletonObject().getCourseNames();
+	}
+	public String[] getStudyProgramNames(){
+		return StudyProgramRegistry.getSingletonObject().getStudyProgamNames();
 	}
 	public String getProgramNameWithLong(long i) {
 		String s = StudyProgramRegistry.getSingletonObject().getProgramNameWithLong(i);

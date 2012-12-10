@@ -48,7 +48,7 @@ public class StudyProgramRegistry extends Objectifiable {
 	public StudyProgram getStudyProgram(String studyProgramName) {
 		ArrayList<StudyProgram> studyPrograms = makeProgramList(CourseRegistry.getSingletonObject().makeCourses());
 		for (StudyProgram studyProgram : studyPrograms) {
-			if (studyProgram.getStudyProgramName() == studyProgramName) {
+			if (studyProgram.getStudyProgramName().equals(studyProgramName)) {
 				return studyProgram;
 			}
 
