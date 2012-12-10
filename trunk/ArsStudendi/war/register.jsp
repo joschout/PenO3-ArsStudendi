@@ -102,12 +102,15 @@ $(document).bind("pageinit", myLiveEventHandler);
 
 		<label for="select-choice-0" class="select">Study Program</label>
 			<select name="studyProgram" id="studyProgram">
-   			<option value=TESTPROGRAM1>TESTPROGRAM1</option>
-   			<option value=TESTPROGRAM2>TESTPROGRAM2</option>
-   			<option value=TESTPROGRAM3>TESTPROGRAM3</option>
-   			<option value=TESTPROGRAM4>TESTPROGRAM4</option>
-   			<option value=TESTPROGRAM5>TESTPROGRAM5</option>
-   			<option value=TESTPROGRAM6>TESTPROGRAM6</option>
+			<%
+				String[] studyProgramNames = (String[])request.getAttribute("studyProgramNames");
+				int j = 0;
+				if( studyProgramNames != null){
+				while(j<studyProgramNames.length) {
+			%>
+   			<option value=<% out.println(studyProgramNames[j]);%>><% out.println(studyProgramNames[j]);%></option>
+
+   			<% j++; } }%>
 		</select>
 		
 		<div data-role="fieldcontain">

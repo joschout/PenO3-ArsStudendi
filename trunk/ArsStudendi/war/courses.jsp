@@ -38,28 +38,71 @@
 
 	<div data-role="content">
 	
-	<form action="/account" method="post">
-	
-		
-
-		<label for="select-choice-0" class="select">Change Your Study Program</label>
-			<select name="studyProgram" id="studyProgram">
-   			<option value=TESTPROGRAM1>TESTPROGRAM1</option>
-   			<option value=TESTPROGRAM2>TESTPROGRAM2</option>
-   			<option value=TESTPROGRAM3>TESTPROGRAM3</option>
-   			<option value=TESTPROGRAM4>TESTPROGRAM4</option>
-   			<option value=TESTPROGRAM5>TESTPROGRAM5</option>
-   			<option value=TESTPROGRAM6>TESTPROGRAM6</option>
-		</select>
-		
-		
-			
+	<form action="/courses" method="post" data-ajax="false">
+		<div>
+		<b> Courses you are enrolled in:</b>
+		<%String[] courseNames = (String[])request.getAttribute("studentCourses");
+			int i = 0;
+			if( courseNames != null){
+			while(i<courseNames.length) {
+		%>
+		<div class="center-align">
+		<p><%out.println(courseNames[i]);%></p>
 		</div>
+		<%i++;}}%>
+		</div>
+		</form>
 		
+				<a href="#popupBasic" data-rel="popup">Add Courses</a>
+
+				<div data-role="popup" id="popupBasic">
+					<form action="/courses" method="post" data-ajax="false">
+					<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<legend>Courses:</legend>
+							<%
+								String[] addCourses = (String[])request.getAttribute("addCourses");							
+								int i2 = 0;
+								if( addCourses != null){
+								while(i2<addCourses.length) {
+								%>
+								<input type="checkbox" name=<%out.println(addCourses[i2]);%> id=<% out.println(addCourses[i2]);%> class="custom";"/>
+								<label for=<%out.println(addCourses[i2]);%>> <% out.println(addCourses[i2]);%> </label>
+								<% i2++; }}%>
+								<button type="submit" data-theme="b" class="ui-btn-hidden" aria-disabled="false">Save</button>
+							</fieldset>
+						</div>
+						</form>
+					</div>	
+					
+				<a href="#popupBasic2" data-rel="popup">Remove Courses</a>
+
+				<div data-role="popup" id="popupBasic2">
+					<form action="/courses" method="post" data-ajax="false">
+					<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<legend>Courses:</legend>
+							<%
+								String[] removeCourses = (String[])request.getAttribute("removeCourses");							
+								int i3 = 0;
+								if( removeCourses != null){
+								while(i3<removeCourses.length) {
+								%>
+								<input type="checkbox" name=<%out.println("test" + removeCourses[i3]);%> id=<% out.println("test" + removeCourses[i3]);%> class="custom";"/>
+								<label for=<%out.println("test" + removeCourses[i3]);%>> <% out.println(removeCourses[i3]);%> </label>
+								<% i3++; }}%>
+								<button type="submit" data-theme="b" class="ui-btn-hidden" aria-disabled="false">Save</button>
+							</fieldset>
+						</div>
+						</form>
+					</div>		
+		
+		<form action="/courses" method="post" data-ajax="false">
 		<fieldset class="ui-grid-a">
-			<div  class="ui-block-a"><a href="confirm.jsp"  data-role="button">Submit</a></button></div>
+			<div class="ui-block-a" id="submit"><button type="submit" name="submit" data-theme="b" value="stop">Submit</button></div>
 			<div  class="ui-block-b"><a href="settings.jsp" data-role="button">Cancel</a></button></div>	   
 		</fieldset>
+		</form>
 		
 
 		

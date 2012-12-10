@@ -82,13 +82,20 @@ public class Student {
 
 	public void addCourse(Course course) {
 		if (course != null) {
-			getCourses().add(course);
+			courses.add(course);
 		}
 	}
 
 	public void removeCourse(Course course) {
-		if (course != null && getCourses().contains(course)) {
-			getCourses().remove(course);
+		if (course != null) {
+			int i = 0;
+			while(i<courses.size()){
+				if((courses.get(i).getCourseName()).equals(course.getCourseName())){
+					courses.remove(i);				
+				}
+				i++;
+			}
+			
 		}
 	}
 

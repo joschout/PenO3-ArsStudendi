@@ -38,7 +38,7 @@
 <div data-role="content">	
 	<br>
 	<a href="/profile" data-role="button" target="_self">Account</a> <br>
-	<a href="courses.jsp" data-role="button" target="_self">Courses</a> <br>
+	<a href="/courses" data-role="button" target="_self" data-ajax="false">Courses</a> <br>
 </div><!-- /content -->
 </div><!-- /page -->
 
