@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="main.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
 
 	<script>
 	function emptyFields() {
@@ -25,10 +26,14 @@
 		}
 	}
 
-	
+
 	$(document).ready(function() {
 		emptyFields();
+	
+		
 	});
+	
+	
 	
 	
 
@@ -54,7 +59,7 @@
 						</div>
 							
 						<div data-role="fieldcontain" class="ui-hide-label">
-							<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="emailadress" class="center-button" onchange="emptyFields()"/>
+							<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="emailadress" class="center-button" class="required email" onchange="emptyFields()"/>
 						</div>
 			
 						<div data-role="fieldcontain" class="ui-hide-label">

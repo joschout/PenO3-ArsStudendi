@@ -98,15 +98,9 @@
 						</form>
 					</div>		
 		
-		<form action="/courses" method="post" data-ajax="false">
 		
-		<br>
-		
-		<fieldset class="ui-grid-a">
-			<div class="ui-block-a" id="submit"><button type="submit" name="submit" data-theme="b" value="stop">Submit</button></div>
-			<div  class="ui-block-b"><a href="settings.jsp" data-role="button">Cancel</a></button></div>	   
-		</fieldset>
 		</form>
+		
 		
 
 		
