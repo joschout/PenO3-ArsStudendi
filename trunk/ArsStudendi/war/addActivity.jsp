@@ -386,7 +386,7 @@
 			</div>
    					
 			<fieldset class="ui-grid-a">
-				<div class="ui-block-a" id="stop"><button type="submit" name="stop" data-theme="b" value="stop">Stop</button></div>	   
+				<div class="ui-block-a" id="stop"><button type="submit" name="stop" data-theme="b" value="stop">Add</button></div>	   
 			</fieldset>
 		
 			<div id="warningMessage" class="center-align"></div>
