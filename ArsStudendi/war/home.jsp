@@ -54,19 +54,27 @@
 	<div data-role="content">
 		<form id="logIn" action="/home" method="post" data-ajax="false">
 				
+						<br>
+						
 						<div class="center-align" width="45%">
 							<img src="/images/Logo_final.png" alt="logo" width="45%"/>
 						</div>
+						
+						<br>
 							
 						<div data-role="fieldcontain" class="ui-hide-label">
-							<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="emailadress" class="center-button" class="required email" onchange="emptyFields()"/>
+
+							<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="E-mail Adress" class="center-button" class="required email" onchange="emptyFields()"/>
+
 						</div>
 			
 						<div data-role="fieldcontain" class="ui-hide-label">
-    						<input type="password" name="password" id="password" value="" placeholder="password" class="center-button" onchange="emptyFields()" />
+    						<input type="password" name="password" id="password" value="" placeholder="Password" class="center-button" onchange="emptyFields()" />
 						</div>	
-							<input type="submit" value="Log In"/>
-						</div>
+						
+						<br>
+						
+						<div><button type="submit" data-theme="b" value="Log In"/>Log In</div>
 
 
 		</form>

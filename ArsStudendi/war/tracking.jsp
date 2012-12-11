@@ -153,15 +153,19 @@ $(document).bind("pageinit", myLiveEventHandler);
 	<div data-role="header" data-theme="b">
 		<a href="/index" data-role="button" data-icon="home" data-iconpos="notext" data-ajax="false">Home</a> 
 		<h1><%out.println("Tracking");%></h1>
-		<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
-		
-		
+		<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>		
 	</div>
 	
 		<div data-role="content" >
 		<form action="/tracking" method="POST" data-ajax="false">
 		
-			<div id="addActivity"><button type="submit" name="addActivity" data-theme="b" value="addActivity">addActivity</button></div>
+			<div id="addActivity"><button type="submit" name="addActivity" data-theme="d" value="addActivity">Add Manually</button></div>
+			
+			<br>
+			
+			<div id="start">
+				<button type="submit" name="start" data-theme="b" value="start">Start</button>
+			</div>
 			
 			<div data-role="fieldcontain">
    				<fieldset data-role="controlgroup">
@@ -197,14 +201,12 @@ $(document).bind("pageinit", myLiveEventHandler);
    				</fieldset>
 			</div>
 			
-			<div id="start">
-				<button type="submit" name="start" data-theme="c" value="start">Start</button>
-			</div>
+			
 			
 			
 			<div data-role="fieldcontain" class="ui-hide-label" id="description">
-				<label for="ActivityDescription" class="select">Description</label><br>
-				<input type="text" name="ActivityDescription"  value="" placeholder="ActivityDescription"/>
+				<label for="ActivityDescription" class="select">Description:</label><br><br>
+				<input type="text" name="ActivityDescription"  value="" placeholder="Activity Description"/>
 			</div>
 			
 			<div id="pageSlider">
@@ -213,7 +215,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 			</div>	
 			
 			<div data-role="fieldcontain" id="courses">
-			<label for="select-choice-0" class="select">Course</label><br>
+			<label for="select-choice-0" class="select">Course: </label><br><br>
 			<select name="courses">
 			<%
 				String[] courseNames = (String[])request.getAttribute("studentCourses");
