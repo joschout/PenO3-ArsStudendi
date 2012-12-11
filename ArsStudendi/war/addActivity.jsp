@@ -53,9 +53,90 @@
 	}
 	}
 	
-	function testDates(){
-		
+	function disableB(){
+				$("#warningMessage").text("Dates Invalid");
+				$('[type="submit"]').button('disable');
+				$('[type="submit"]').button('refresh');	
 	
+	}
+	function enableB(){
+				$("#warningMessage").text("");
+				$('[type="submit"]').button('enable');
+				$('[type="submit"]').button('refresh');	
+	}
+	function testDates(){
+		var starty = parseInt($("#select-start-year option:selected").val());
+		var startm = parseInt($("#select-start-month option:selected").val());
+		var startd = parseInt($("#select-start-day option:selected").val());
+		var starth = parseInt($("#select-start-hour option:selected").val());
+		var starts = parseInt($("#select-start-minute option:selected").val());
+	
+	
+		var stopy = parseInt($("#select-stop-year option:selected").val());
+		var stopm = parseInt($("#select-stop-month option:selected").val());
+		var stopd = parseInt($("#select-stop-day option:selected").val());
+		var stoph = parseInt($("#select-stop-hour option:selected").val());
+		var stops = parseInt($("#select-stop-minute option:selected").val());
+		
+		if((stopy-starty)<0)
+		{
+			disableB();
+		}
+		else if((stopm-startm)<0)
+		{
+			disableB();
+		}		
+		else if((stopd-startd)<0)
+		{
+			disableB();
+		}	
+		else if((stoph-starth)<0)
+		{
+			disableB();
+		}	
+		else if((stops-starts)<0)
+		{
+			disableB();
+		}
+		else if((stopy-starty) == 0)
+		{
+			if((stopm-startm)== 0){
+				if((stopd-startd) == 0){
+					if((stoph-starth) == 0){
+						if((stops-starts) <= 0){
+								disableB();
+						}
+						else{ enableB();}
+					}
+					else if((stoph-starth)<0){
+						disableB();
+					}
+					else{
+						enableB();
+					}	
+				}
+				else if((stopd-startd)<0){
+				disableB();
+				}
+				else{
+				enableB();
+				}
+			}
+			else if((stopm-startm)<0){
+				disableB();
+			}
+			else {
+			enableB();
+			}
+		}			
+		else
+		{
+			$("#warningMessage").text("");
+			$('[type="submit"]').button('enable');
+			$('[type="submit"]').button('refresh');		
+		}
+	}
+		
 	function changeStop(){
 	var a = new Array(1,3,5,7,8,10,12);
 	var x = parseInt($("#select-stop-month option:selected").val());
@@ -123,6 +204,7 @@
 	{
   	if(event.handled !== true)
   	{
+  	testDates();
   	hideList2();
   	changeStop();
 	changeStart();
@@ -152,21 +234,21 @@
 		<fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Day, Month, Year)</legend>
 		
-		<select name="select-start-day" id="select-start-day">           
+		<select name="select-start-day" id="select-start-day" onChange="testDates();">           
         <% int k1 = 1;
            while(k1<32){%>
          <option id=<%out.println(k1);%> value=<%out.println(k1);%>><%if(k1<10){out.println("0" + k1);} else{out.println(k1);}%></option>
         <% k1++;}%>
         </select>
         
-       	<select name="select-start-month" id="select-start-month" onChange="changeStart();">           
+       	<select name="select-start-month" id="select-start-month" onChange="changeStart();testDates();">           
         <% int k2 = 1;
            while(k2<13){%>
          <option value=<%out.println(k2);%>><%if(k2<10){out.println("0" + k2);} else{out.println(k2);}%></option>
         <% k2++;}%>
         </select>
         
-		<select name="select-start-year" id="select-start-year">           
+		<select name="select-start-year" id="select-start-year" onChange="testDates();">           
         <% int k3 = 2010;
            while(k3<2030){%>
          <option value=<%out.println(k3);%>><%out.println(k3);%></option>
@@ -178,13 +260,13 @@
         <div data-role="fieldcontain">
         <fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Hours, Minutes)</legend>
-        <select name="select-start-hour" id="select-start-hour">           
+        <select name="select-start-hour" id="select-start-hour" onChange="testDates();">           
             <% int k4 = 0;
            		while(k4<24){%>
             <option value=<%out.println(k4);%>><%if(k4<10){out.println("0" + k4);} else{out.println(k4);}%></option>
             <% k4++;}%>
         </select>
-        <select name="select-start-minute" id="select-start-minute">
+        <select name="select-start-minute" id="select-start-minute" onChange="testDates();">
             <% int k5 = 0;
             	while(k5<60){%>
             <option value=<%out.println(k5);%>><%if(k5<10){out.println("0" + k5);} else{out.println(k5);}%></option>
@@ -199,21 +281,21 @@
 		<fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Day, Month, Year)</legend>
 		
-		<select name="select-stop-day" id="select-stop-day">           
+		<select name="select-stop-day" id="select-stop-day" onChange="testDates();">           
         <% int j1 = 1;
            while(j1<32){%>
          <option id=<%out.println(j1);%> value=<%out.println(j1);%>><%if(j1<10){out.println("0" + j1);} else{out.println(j1);}%></option>
         <% j1++;}%>
         </select>
         
-       	<select name="select-stop-month" id="select-stop-month" onChange="changeStop();">           
+       	<select name="select-stop-month" id="select-stop-month" onChange="changeStop();testDates();">           
         <% int j2 = 1;
            while(j2<13){%>
          <option value=<%out.println(j2);%>><%if(j2<10){out.println("0" + j2);} else{out.println(j2);}%></option>
         <% j2++;}%>
         </select>
         
-		<select name="select-stop-year" id="select-stop-year">           
+		<select name="select-stop-year" id="select-stop-year" onChange="testDates();">           
         <% int j3 = 2010;
            while(j3<2030){%>
          <option value=<%out.println(j3);%>><%out.println(j3);%></option>
@@ -225,13 +307,13 @@
         <div data-role="fieldcontain">
         <fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Hours, Minutes)</legend>
-        <select name="select-stop-hour" id="select-stop-hour">           
+        <select name="select-stop-hour" id="select-stop-hour" onChange="testDates();">           
             <% int j4 = 0;
            		while(j4<24){%>
-            <option value=<%out.println(k4);%>><%if(k4<10){out.println("0" + j4);} else{out.println(j4);}%></option>
+            <option value=<%out.println(j4);%>><%if(j4<10){out.println("0" + j4);} else{out.println(j4);}%></option>
             <% j4++;}%>
         </select>
-        <select name="select-stop-minute" id="select-stop-minute">
+        <select name="select-stop-minute" id="select-stop-minute" onChange="testDates();">
             <% int j5 = 0;
             	while(j5<60){%>
             <option value=<%out.println(j5);%>><%if(j5<10){out.println("0" + j5);} else{out.println(j5);}%></option>
@@ -307,7 +389,7 @@
 				<div class="ui-block-a" id="stop"><button type="submit" name="stop" data-theme="b" value="stop">Stop</button></div>	   
 			</fieldset>
 		
-			<div id="WarningMessage" class="center-align"></div>
+			<div id="warningMessage" class="center-align"></div>
 		
 		
 		
