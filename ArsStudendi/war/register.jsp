@@ -164,9 +164,6 @@ $(document).bind("pageinit", myLiveEventHandler);
 </head> 
 <body> 
 
-<script>
-
-</script>
 <div data-role="page">
 	
 	<div data-role="header" data-theme="b">
@@ -234,7 +231,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 			<% i++; }}%>			
 			</fieldset>
 			</div>
-		</div>
+		
 
 		<div><a button type="button" id="hideboxes2" name ="hideboxes2" value="test" onClick="showRemove()">Remove Courses from Program</a></button></div> 
 				<div id="Boxes2">
@@ -258,7 +255,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 
 		
 
-	<div><button type="submit" name ="submit1" value="submit" data-theme="b">Register</button></div>
+	<button type="submit" name ="submit" value="submit" data-theme="b">Register</button>
 	<div><a href="/home" name="cancel" value="cancel" data-role="button" data-ajax="false">Cancel</a></button></div>	   
 		
 		
@@ -267,6 +264,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 		
 		
 	</form>
+	
 
 
 
