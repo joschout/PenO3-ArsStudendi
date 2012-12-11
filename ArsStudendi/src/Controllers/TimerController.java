@@ -88,10 +88,23 @@ public boolean cancelActivity(Student student){
 	}
 return succeed;
 }
-public void addActivity(Student student, Long studentID, Calendar startTime, Calendar stopTime, String activityName){
+public void addActivity(Student student, Long studentID, Calendar startTime, Calendar stopTime, String activityName, String description, String courseStudied, String activityType, int amountOfPages){
 	Activity activity = new Activity(startTime, studentID);
 	activity.setName(activityName);
 	activity.setStopTime(stopTime);
+	ActivityType activityT = Parser.parseActivityType(activityType);
+	if(amountOfPages != -1){
+	activity.setAmountOfPages(amountOfPages);
+	}
+	if(courseStudied != null){
+		Course course = CourseRegistry.getSingletonObject().getCourse(courseStudied);
+		if (activityT instanceof activityTypePackage.Study) {
+			((activityTypePackage.Study) activityT).setCourse(course);
+	}}
+	if(description != null){
+		activity.setName(description);
+	}
+	activity.setActivityType(activityT);
 	student.addActivityToOldActivityList(activity);
 	StudentRegistry.getSingletonObject().putStudent(student);
 }

@@ -52,6 +52,10 @@
 	$("#31").show();
 	}
 	}
+	
+	function testDates(){
+		
+	
 	function changeStop(){
 	var a = new Array(1,3,5,7,8,10,12);
 	var x = parseInt($("#select-stop-month option:selected").val());
@@ -83,10 +87,43 @@
 	$("#31").show();
 	}
 	}
+	
+	function hideList2(){
+	if($("#option1 option:selected").val() == "SLEEP"){
+	$("#option2").hide();
+	$("#option3").hide();
+	$("#description").hide();
+	$("#pageSlider").hide();
+	$("#courses").hide();
+	}
+	if($("#option1 option:selected").val() == "FREETIME"){
+	$("#option2").hide();
+	$("#option3").show();
+	$("#description").show();
+	$("#pageSlider").hide();
+	$("#courses").hide();
+	}
+	if($("#option1 option:selected").val() == "STUDY"){
+	$("#option2").show();
+	$("#option3").hide();
+	$("#description").show();
+	$("#pageSlider").hide();
+	$("#courses").show();
+		if($("#option2 option:selected").val() == "Practice")
+		{
+		$("#pageSlider").show();}
+	}
+	}
+	
+	
+	
+	
+	
 	function myLiveEventHandler(event)
 	{
   	if(event.handled !== true)
   	{
+  	hideList2();
   	changeStop();
 	changeStart();
     event.handled = true;
@@ -99,7 +136,7 @@
 
 
 	<div data-role="header" data-theme="b">
-		<h1><%out.println("Add Activity"); %></h1>
+		<h1><%out.println("header"); %></h1>
 		 <a href="/index" data-role="button" data-icon="home" data-iconpos="notext" data-ajax="false">Home</a> 
 		<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
 	</div>
@@ -111,7 +148,7 @@
 		<form action="/addActivity" method="POST" data-ajax="false">
 	
 		<div data-role="fieldcontain">
-		<legend>Start Date</legend>
+		<legend>StartTime</legend>
 		<fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Day, Month, Year)</legend>
 		
@@ -139,7 +176,6 @@
         </div>
         
         <div data-role="fieldcontain">
-        <legend>Start Time</legend>
         <fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Hours, Minutes)</legend>
         <select name="select-start-hour" id="select-start-hour">           
@@ -159,7 +195,7 @@
 		
 		
 		<div data-role="fieldcontain">
-		<legend>Stop Date</legend>
+		<legend>StopTime</legend>
 		<fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Day, Month, Year)</legend>
 		
@@ -187,7 +223,6 @@
         </div>
         
         <div data-role="fieldcontain">
-        <legend>Start Time</legend>
         <fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Hours, Minutes)</legend>
         <select name="select-stop-hour" id="select-stop-hour">           
@@ -205,12 +240,58 @@
         </fieldset>
         </div>
 		
-		<br>
 		
 		
+
 		
-		<div data-role="fieldcontain" id="courses">
-			<label for="select-choice-0" class="select">Course: </label><br><br>
+		
+					<div data-role="fieldcontain">
+   				<fieldset data-role="controlgroup">
+   			
+   					<div id="option1">
+						<label for="option1" class="select"></label>
+						<select name="option1" id="option1" onChange="hideList2();">
+							<option value=STUDY>Study</option>
+							<option value=FREETIME>FreeTime</option>
+   							<option value=SLEEP>Sleep</option>
+   						</select>
+   					</div>
+   			
+   					<div id="option2">
+   						<label for="option2" class="select"></label>
+						<select name="option2" onChange="hideList2();">
+							<option value="Lecture">Lecture</option>
+   							<option value="TeamWork">TeamWork</option>
+   							<option value="Practice">Practice</option>
+   						</select>
+   					</div>
+   					
+   					<div id="option3">
+   						<label for="option3" class="select"></label>
+						<select name="option3">
+							<option value="Sport">Sport</option>
+   							<option value="Social">Social</option>
+   							<option value="Hobby">Hobby</option>
+   							<option value="Other">Other</option>
+   						</select>
+   					</div>
+   			
+   				</fieldset>
+			</div>
+		
+		
+			<div data-role="fieldcontain" class="ui-hide-label" id="description">
+				<label for="ActivityDescription" class="select">Description</label><br>
+				<input type="text" name="ActivityDescription"  value="" placeholder="ActivityDescription"/>
+			</div>
+			
+			<div id="pageSlider">
+				<label for="amountOfPages">Amount of pages:</label>
+				<input type="range" name="amountOfPages" id="amountOfPages" value="pages" min="0" max="100" data-highlight="true"/>
+			</div>	
+			
+			<div data-role="fieldcontain" id="courses">
+			<label for="select-choice-0" class="select">Course</label><br>
 			<select name="courses">
 			<%
 				String[] courseNames = (String[])request.getAttribute("studentCourses");
@@ -220,14 +301,13 @@
    			<option value = <%out.println(courseNames[i]);%>> <%out.println(courseNames[i]);%> </option>
    			<%i++;}}%>
 			</select>
-		</div>
+			</div>
+   					
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a" id="stop"><button type="submit" name="stop" data-theme="b" value="stop">Stop</button></div>	   
+			</fieldset>
 		
-		
-		<br>
-		
-		<div id="submit"><button type="submit"  name="AddActivity" data-theme="b" value="submit" >Submit</button></div>
-		
-		
+			<div id="WarningMessage" class="center-align"></div>
 		
 		
 		
