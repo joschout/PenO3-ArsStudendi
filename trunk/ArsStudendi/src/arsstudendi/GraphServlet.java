@@ -3,6 +3,7 @@ package arsstudendi;
 import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -81,6 +82,25 @@ public class GraphServlet extends HttpServlet {
 		req.setAttribute("allpieChartKeysArray", allpieChartKeysArray);
 		req.setAttribute("allpieChartValuesArray", allpieChartValuesArray);
 		req.setAttribute("allpieChartTitle", "Dit is een test.");
+		
+		
+		
+//		Graph lineChart = controller.makeLineChartOfCourse(student, "Dit is een test.");
+//		List<String> lineChartCourseNames= ((LineChart)lineChart).getNamesOfAllDataSeries();
+//		String[] lineChartCourseNamesArray = lineChartCourseNames.toArray(new String[lineChartCourseNames.size()]);
+//		req.setAttribute("lineChartCourseNamesArray", lineChartCourseNamesArray);
+//		
+//		List<String> lastWeek= ((LineChart)lineChart).getXAxis();
+//		String[] lastWeekArray= lastWeek.toArray(new String[lastWeek.size()]);
+//		req.setAttribute("lastWeekArray", lastWeekArray);
+//		
+//		int j=0;
+//		while(j<= ((LineChart)lineChart).getData().size()-1){
+//			List<String> tempList = ((LineChart)lineChart).getData().get(0).getHoursPerTime().get(lastWeek.get(j));
+//		}
+		
+		
+
 		try {
 			req.getRequestDispatcher("/statistics.jsp").forward(req, resp);
 		} catch (ServletException e) {
@@ -105,4 +125,45 @@ public class GraphServlet extends HttpServlet {
 //		
 //	}
 //	
+    
+    
+//    private void prepareLineChart(Student student, String graphName){
+//    	Graph graph= controller.makeLineChartOfCourse(student, graphName);
+//    	LineChart lineChart = (LineChart)graph;
+//		int dayOfMonth = Calendar.DAY_OF_MONTH;
+//		int month = Calendar.MONTH;  // gaat van 0 tot 11
+//		int realMonth = month +1;
+//		int year = Calendar.YEAR;
+//		String currentDate = "" + dayOfMonth + "/" + realMonth + "/" + year;
+//		List<String> lastWeek = new ArrayList<String>();
+//		int i=6;
+//		while(i>=0){
+//			Calendar tempDate =Calendar.getInstance();
+//			tempDate.set(Calendar.DAY_OF_MONTH, -i);
+//			int tempDay = tempDate.DAY_OF_MONTH;
+//			int tempMonth = tempDate.MONTH +1;
+//			int tempYear = tempDate.YEAR;
+//			String tempDateString = "" + tempDay + "/" + tempMonth + "/" + tempYear;		
+//			lastWeek.add(tempDateString);
+//		}
+//		List<ArrayList<String>> columns = new ArrayList<ArrayList<String>>();
+//		
+//		ArrayList<String> columnOne = new ArrayList<String>();
+//		columnOne.add("day");
+//		columnOne.addAll(lastWeek);
+//		columns.add(columnOne);
+//		
+//		for( LineGraphDataSeries data: lineChart.getData()){
+//			String courseName = data.getName();
+//			
+//		}
+//    	
+//    	
+//    }
+    
+    
+    
+    
+    
+    
 }
