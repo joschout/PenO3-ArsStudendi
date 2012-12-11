@@ -49,8 +49,8 @@
 	<div data-role="content">
 		<form id="logIn" action="/home" method="post" data-ajax="false">
 				
-						<div class="center-align">
-							<img src="/images/Logo_final.png" alt="logo"/>
+						<div class="center-align" width="45%">
+							<img src="/images/Logo_final.png" alt="logo" width="45%"/>
 						</div>
 							
 						<div data-role="fieldcontain" class="ui-hide-label">
