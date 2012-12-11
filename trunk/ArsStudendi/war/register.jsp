@@ -112,11 +112,40 @@ function changeRemove(){
 		}
 	}
 }
+ 	var showA = "false"
+ 	var showR = "false"
+ 	
+ function showAdd()
+{
+	if(showA == "true"){
+	$("#Boxes1").show();
+	showA = "false";
+	}
+	else{
+	$("#Boxes1").hide();
+	showA = "true";
+	}
+}	
+function showRemove()
+{
+	if(showR == "true"){
+	$("#Boxes2").show();
+	showR = "false";
+	}
+	else{
+	$("#Boxes2").hide();
+	showR = "true";
+	}
+}
+ 	
+ 	
  	
 function myLiveEventHandler(event)
 {
   if(event.handled !== true)
   {
+  	showAdd();
+  	showRemove();
   	changeRemove();
 	emptyFields();
   }
@@ -187,9 +216,8 @@ $(document).bind("pageinit", myLiveEventHandler);
 		</select>
 		</div>
 		
-		<div>
-		<a href="#popupBasic1" data-rel="popup">Add extra Courses</a>
-		<div data-role="popup" id="popupBasic1">
+		<div class="ui-block-a"><button type="button" id="hideboxes1" name ="hideboxes1" onClick="showAdd()" data-theme="b">Add Extra Courses</button></div> 
+		<div id="Boxes1">
 			<div data-role="fieldcontain" id="AddBoxes">
 				<fieldset data-role="controlgroup">
 					<legend>Courses:</legend>
@@ -207,11 +235,9 @@ $(document).bind("pageinit", myLiveEventHandler);
 			</fieldset>
 			</div>
 		</div>
-		</div>
-		
-		<div>
-		<a href="#popupBasic" data-rel="popup" >Remove courses from your StudyProgram</a>
-		<div data-role="popup" id="popupBasic">
+
+		<div class="ui-block-a"><button type="button" id="hideboxes2" name ="hideboxes2" value="test" onClick="showRemove()" data-theme="b">Remove Courses from Program</button></div> 
+				<div id="Boxes2">
 					<div data-role="fieldcontain" id="RemoveBoxes">
 						<fieldset data-role="controlgroup">
 							<legend>Courses:</legend>
@@ -228,7 +254,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 							</fieldset>
 						</div>
 					</div>	
-					</div>
+
 		
 		<fieldset class="ui-grid-a">
 			<div class="ui-block-a"><button type="submit" name ="submit1" value="submit" data-theme="b">Register</button></div>
