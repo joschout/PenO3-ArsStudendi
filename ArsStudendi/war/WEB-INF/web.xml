@@ -88,7 +88,14 @@
 <servlet-name>showMilestones</servlet-name>
 <url-pattern>/showMilestones</url-pattern>
 </servlet-mapping>
-
+<servlet>
+<servlet-name>courses</servlet-name>
+<servlet-class>arsstudendi.CourseServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>courses</servlet-name>
+<url-pattern>/courses</url-pattern>
+</servlet-mapping>
 
 
 
