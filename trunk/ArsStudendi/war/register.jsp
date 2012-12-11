@@ -234,6 +234,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 			<% i++; }}%>			
 			</fieldset>
 			</div>
+		</div>
 		
 
 		<div><a button type="button" id="hideboxes2" name ="hideboxes2" value="test" onClick="showRemove()">Remove Courses from Program</a></button></div> 
@@ -258,7 +259,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 
 		
 
-	<button type="submit" name ="submit" value="submit" data-theme="b">Register</button>
+	<div><button type="submit" name ="submit" value="submit" data-theme="b">Register</button><div>
 	<div><a href="/home" name="cancel" value="cancel" data-role="button" data-ajax="false">Cancel</a></button></div>	   
 		
 		
