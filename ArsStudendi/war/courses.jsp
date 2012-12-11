@@ -6,6 +6,7 @@
 	<title>ArsStudendi</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" type="text/css" href="main.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	<script type="text/javascript"></script>
@@ -51,7 +52,9 @@
 		</div>
 		</form>
 		
-				<a href="#popupBasic" data-rel="popup">Add Courses</a>
+		<br>
+		
+				<div><a href="#popupBasic" data-rel="popup">Add Courses</a></div>
 
 				<div data-role="popup" id="popupBasic">
 					<form action="/courses" method="post" data-ajax="false">
@@ -73,7 +76,7 @@
 						</form>
 					</div>	
 					
-				<a href="#popupBasic2" data-rel="popup">Remove Courses</a>
+				<div><a href="#popupBasic2" data-rel="popup">Remove Courses</a></div>
 
 				<div data-role="popup" id="popupBasic2">
 					<form action="/courses" method="post" data-ajax="false">
@@ -96,6 +99,9 @@
 					</div>		
 		
 		<form action="/courses" method="post" data-ajax="false">
+		
+		<br>
+		
 		<fieldset class="ui-grid-a">
 			<div class="ui-block-a" id="submit"><button type="submit" name="submit" data-theme="b" value="stop">Submit</button></div>
 			<div  class="ui-block-b"><a href="settings.jsp" data-role="button">Cancel</a></button></div>	   
