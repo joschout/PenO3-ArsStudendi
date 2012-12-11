@@ -30,6 +30,7 @@
 	</div><!-- /header -->
 	
 	<div data-role="content">
+	<br>
 		<div>
 			<form action="/showMilestones" method="post" data-ajax="false">
 			<div data-role="collapsible-set" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" data-content-theme="d">
@@ -52,9 +53,9 @@
 			<% i++; } }%>
 		</div>	
 			</form>
-			
+		<br>
 		<div>
-			<a href="/removeMilestones" data-role="button" data-mini="true">remove milestones</a>
+			<a href="/removeMilestones" data-role="button">Remove Milestones</a>
 		</div>
 		
 		

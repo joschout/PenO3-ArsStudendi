@@ -215,8 +215,8 @@ $(document).bind("pageinit", myLiveEventHandler);
    			<% j++; } }%>
 		</select>
 		</div>
-		
-		<div class="ui-block-a"><button type="button" id="hideboxes1" name ="hideboxes1" onClick="showAdd()" data-theme="b">Add Extra Courses</button></div> 
+		<br>
+		<div><a button type="button" id="hideboxes1" name ="hideboxes1" onClick="showAdd()">Add Extra Courses</a></button></div> 
 		<div id="Boxes1">
 			<div data-role="fieldcontain" id="AddBoxes">
 				<fieldset data-role="controlgroup">
@@ -236,7 +236,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 			</div>
 		</div>
 
-		<div class="ui-block-a"><button type="button" id="hideboxes2" name ="hideboxes2" value="test" onClick="showRemove()" data-theme="b">Remove Courses from Program</button></div> 
+		<div><a button type="button" id="hideboxes2" name ="hideboxes2" value="test" onClick="showRemove()">Remove Courses from Program</a></button></div> 
 				<div id="Boxes2">
 					<div data-role="fieldcontain" id="RemoveBoxes">
 						<fieldset data-role="controlgroup">
@@ -252,14 +252,15 @@ $(document).bind("pageinit", myLiveEventHandler);
 								</div>
 								<% i2++; }}%>
 							</fieldset>
-						</div>
-					</div>	
+					</div>
+				</div>
+		</div>	
 
 		
-		<fieldset class="ui-grid-a">
-			<div class="ui-block-a"><button type="submit" name ="submit1" value="submit" data-theme="b">Register</button></div>
-			<div class="ui-block-b"><a href="/home" name="cancel" value="cancel" data-role="button" data-ajax="false">Cancel</a></button></div>	   
-		</fieldset>
+
+	<div><button type="submit" name ="submit1" value="submit" data-theme="b">Register</button></div>
+	<div><a href="/home" name="cancel" value="cancel" data-role="button" data-ajax="false">Cancel</a></button></div>	   
+		
 		
 
 		
