@@ -9,7 +9,7 @@ public class RegisterController {
 	public RegisterController (){
 		
 	}
-	public boolean makeStudent(String program, String studentFirstName, String studentLastName, String password, List<String> strCourses, String newEmailAdress)
+	public Student makeStudent(String program, String studentFirstName, String studentLastName, String password, List<String> strCourses, String newEmailAdress)
 	{
 		boolean succeed = false;
 		// een boolean terug geven of het emailadres geldig is
@@ -42,7 +42,7 @@ public class RegisterController {
 	StudentRegistry.getSingletonObject().putStudent(student);
 	succeed = StudentRegistry.getSingletonObject().putStudent(student);
 
-	return succeed;
+	return student;
 	}
 	
 	public boolean isEmailAvailable(String emailAdress){

@@ -54,16 +54,11 @@ public class RegisterServlet extends HttpServlet {
 		// DUS: als er nog geen gebruiker met dit emailadres in de datastore zit
 		if(emailAdress != null){
 		if(registerController.isEmailAvailable(emailAdress)){
-		boolean newStudentSucceeded = registerController.makeStudent(nStudyProgram, studentFirstName,studentLastName , password, courses, emailAdress);
-		if(newStudentSucceeded){
+		Student student = registerController.makeStudent(nStudyProgram, studentFirstName,studentLastName , password, courses, emailAdress);
+		if(student != null){
 			System.out.println("the student has been made");
 		}
-		
-		Student student = logController.logIn(password, emailAdress);
-		if(student == null){
-			System.out.println("the student is a null reference");
-		}
-		
+		logController.logIn(password, emailAdress);
 		
 		Long ID = student.getStudentID();
 		session.setAttribute("currentID", ID);
