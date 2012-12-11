@@ -120,6 +120,8 @@
 		<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
 	</div><!-- /header -->
 	
+	<br>
+	
 	<div>
 	<a href="#popupBasic" data-rel="popup">Recorded Activities</a>
 

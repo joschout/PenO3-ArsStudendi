@@ -28,7 +28,7 @@
 
 	<div data-role="header" data-theme="b">
 	 <a href="/index" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
-	<h1>Course</h1>
+	<h1>Courses</h1>
 	<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
 
 	</div><!-- /header -->

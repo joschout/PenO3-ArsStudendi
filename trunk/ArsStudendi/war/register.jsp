@@ -6,6 +6,7 @@
 	<title>ArsStudendi</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" type="text/css" href="main.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	
@@ -170,7 +171,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 		<h1>Register</h1>
 	</div><!-- /header -->
 
-	<div data-role="content">	
+	<div class="center-align" data-role="content">	
 		<p>Sign up for an Ars Studendi account and enjoy the benefits of learning analytics!</p>		
 	</div><!-- /content -->
 
@@ -198,8 +199,10 @@ $(document).bind("pageinit", myLiveEventHandler);
 			<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="E-mail" onchange="emptyFields()"/>
 		</div>
 		
+		<br>
+		
 		<div>
-		<label for="select-choice-0" class="select">Study Program</label>
+		<label for="select-choice-0" class="select">Study Program:</label>
 			<select name="studyProgram" id="studyProgram" onChange="changeRemove()">
 			<%
 				String[] studyProgramNames = (String[])request.getAttribute("studyProgramNames");

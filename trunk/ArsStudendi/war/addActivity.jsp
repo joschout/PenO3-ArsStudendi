@@ -99,7 +99,7 @@
 
 
 	<div data-role="header" data-theme="b">
-		<h1><%out.println("header"); %></h1>
+		<h1><%out.println("Add Activity"); %></h1>
 		 <a href="/index" data-role="button" data-icon="home" data-iconpos="notext" data-ajax="false">Home</a> 
 		<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
 	</div>
@@ -111,7 +111,7 @@
 		<form action="/addActivity" method="POST" data-ajax="false">
 	
 		<div data-role="fieldcontain">
-		<legend>StartTime</legend>
+		<legend>Start Date</legend>
 		<fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Day, Month, Year)</legend>
 		
@@ -139,6 +139,7 @@
         </div>
         
         <div data-role="fieldcontain">
+        <legend>Start Time</legend>
         <fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Hours, Minutes)</legend>
         <select name="select-start-hour" id="select-start-hour">           
@@ -158,7 +159,7 @@
 		
 		
 		<div data-role="fieldcontain">
-		<legend>StopTime</legend>
+		<legend>Stop Date</legend>
 		<fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Day, Month, Year)</legend>
 		
@@ -186,6 +187,7 @@
         </div>
         
         <div data-role="fieldcontain">
+        <legend>Start Time</legend>
         <fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Hours, Minutes)</legend>
         <select name="select-stop-hour" id="select-stop-hour">           
@@ -203,14 +205,12 @@
         </fieldset>
         </div>
 		
-		
-		
-		
+		<br>
 		
 		
 		
 		<div data-role="fieldcontain" id="courses">
-			<label for="select-choice-0" class="select">courses</label>
+			<label for="select-choice-0" class="select">Course: </label><br><br>
 			<select name="courses">
 			<%
 				String[] courseNames = (String[])request.getAttribute("studentCourses");
@@ -223,7 +223,9 @@
 		</div>
 		
 		
-		<div id="submit"><button type="submit"  name="AddActivity" data-theme="b" value="submit" >submit</button></div>
+		<br>
+		
+		<div id="submit"><button type="submit"  name="AddActivity" data-theme="b" value="submit" >Submit</button></div>
 		
 		
 		
