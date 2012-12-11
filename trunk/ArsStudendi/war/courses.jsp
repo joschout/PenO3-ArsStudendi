@@ -22,8 +22,6 @@
 </head> 
 <body> 
 
-<script>
-
 
 <div data-role="page">
 

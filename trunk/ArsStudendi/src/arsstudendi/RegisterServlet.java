@@ -37,8 +37,10 @@ public class RegisterServlet extends HttpServlet {
 		int length = courseNames.length;
 		while(i < length){
 			String s = new String();
-			s = req.getParameter("test" + courseNames[i]);
+			String v = "test" + courseNames[i];
+			s = req.getParameter(v);
 			if (s != null){
+				System.out.println(v);
 				courses.add(courseNames[i]);
 			}
 			i++;
@@ -49,8 +51,10 @@ public class RegisterServlet extends HttpServlet {
 		int length2 = removeNames.length;
 		while(i2 < length2){
 			String s = new String();
-			s = req.getParameter("" + removeNames[i2]);
+			String v = removeNames[i2];
+			s = req.getParameter(v);
 			if (s != null){
+				System.out.println(v);
 				removeCourses.add(removeNames[i2]);
 			}
 			i2++;
@@ -62,7 +66,6 @@ public class RegisterServlet extends HttpServlet {
 		{
 			String[] programCourseNames = registerController.getProgramCourseNames(studyProgramNames[j]);
 			String set = studyProgramNames[j];
-			System.out.println(set);
 			req.setAttribute(set, programCourseNames);
 			j++;
 		}

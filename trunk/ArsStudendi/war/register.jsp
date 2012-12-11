@@ -201,7 +201,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 			%>
 			<div id=<% out.println("test"+ courseNames[i]);%>>
 			<input type="checkbox" name=<% out.println("test" + courseNames[i]);%>  id=<%out.println("test" + i);%>  class="custom"/>
-			<label for=<% out.println("test" + courseNames[i]);%>> <% out.println(courseNames[i]);%> </label>
+			<label for=<% out.println("test" + i);%>> <% out.println(courseNames[i]);%> </label>
 			</div>
 			<% i++; }}%>			
 			</fieldset>
