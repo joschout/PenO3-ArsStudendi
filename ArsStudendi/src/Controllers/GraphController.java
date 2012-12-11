@@ -236,6 +236,8 @@ public class GraphController {
 		return stopString;
 	}
 	
-	
+//	public Graph makeLineChartOfCourse(Student student, String graphName){
+//		return GraphBuilder.makeLineChart(student, graphName);
+//	}
 
 }
