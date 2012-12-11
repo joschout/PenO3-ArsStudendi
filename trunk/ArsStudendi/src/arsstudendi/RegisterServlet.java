@@ -3,8 +3,7 @@ package arsstudendi;
 import Controllers.*;
 import DomainModel.Student;
 import DomainModel.StudyProgram;
-
-
+import com.google.gson.*;
 import java.util.*;
 import java.io.IOException;
 import javax.servlet.http.*;
@@ -46,9 +45,24 @@ public class RegisterServlet extends HttpServlet {
 			i++;
 		}
 		String[] studyProgramNames = registerController.getStudyProgramNames();
+		int j = 0;
+		while (j < studyProgramNames.length)
+		{
+			String[] programCourseNames = registerController.getProgramCourseNames(studyProgramNames[j]);
+			String set = studyProgramNames[j];
+			System.out.println(set);
+			req.setAttribute(set, programCourseNames);
+			j++;
+		}
 		req.setAttribute("studyProgramNames", studyProgramNames);
 		req.setAttribute("courseNames", courseNames);
 		String nStudyProgram = req.getParameter("studyProgram");
+		
+//		Gson gson = new Gson();
+//	    String json = gson.toJson(studyProgramNames);
+//		String json = gson.toJson("TESTAZERTY");
+//	    System.out.println(json);
+//	    resp.getWriter().write(json);
 		
 		// vreemde code voor: if(getObjectify().query(Student.class).filter("emailAdress", emailAdress).get() == null)
 		// DUS: als er nog geen gebruiker met dit emailadres in de datastore zit
