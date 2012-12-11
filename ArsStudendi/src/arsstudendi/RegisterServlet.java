@@ -3,7 +3,6 @@ package arsstudendi;
 import Controllers.*;
 import DomainModel.Student;
 import DomainModel.StudyProgram;
-import com.google.gson.*;
 import java.util.*;
 import java.io.IOException;
 import javax.servlet.http.*;
@@ -38,12 +37,25 @@ public class RegisterServlet extends HttpServlet {
 		int length = courseNames.length;
 		while(i < length){
 			String s = new String();
-			s = req.getParameter("" + courseNames[i]);
+			s = req.getParameter("test" + courseNames[i]);
 			if (s != null){
 				courses.add(courseNames[i]);
 			}
 			i++;
 		}
+		ArrayList<String> removeCourses = new ArrayList<String>();
+		int i2 =0;
+		String[] removeNames = registerController.getCourseNames();
+		int length2 = removeNames.length;
+		while(i2 < length2){
+			String s = new String();
+			s = req.getParameter("" + removeNames[i2]);
+			if (s != null){
+				removeCourses.add(removeNames[i2]);
+			}
+			i2++;
+		}
+		
 		String[] studyProgramNames = registerController.getStudyProgramNames();
 		int j = 0;
 		while (j < studyProgramNames.length)
@@ -68,7 +80,7 @@ public class RegisterServlet extends HttpServlet {
 		// DUS: als er nog geen gebruiker met dit emailadres in de datastore zit
 		if(emailAdress != null){
 		if(registerController.isEmailAvailable(emailAdress)){
-		Student student = registerController.makeStudent(nStudyProgram, studentFirstName,studentLastName , password, courses, emailAdress);
+		Student student = registerController.makeStudent(nStudyProgram, studentFirstName,studentLastName , password, courses, removeCourses, emailAdress);
 		if(student != null){
 			System.out.println("the student has been made");
 		}

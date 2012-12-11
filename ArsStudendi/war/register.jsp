@@ -172,7 +172,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 			<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="E-mail" onchange="emptyFields()"/>
 		</div>
 		
-		
+		<div>
 		<label for="select-choice-0" class="select">Study Program</label>
 			<select name="studyProgram" id="studyProgram" onChange="changeRemove()">
 			<%
@@ -185,12 +185,14 @@ $(document).bind("pageinit", myLiveEventHandler);
 
    			<% j++; } }%>
 		</select>
+		</div>
 		
+		<div>
 		<a href="#popupBasic1" data-rel="popup">Add extra Courses</a>
 		<div data-role="popup" id="popupBasic1">
-			<div data-role="fieldcontain">
-			<fieldset data-role="controlgroup">
-			<legend>Courses:</legend>
+			<div data-role="fieldcontain" id="AddBoxes">
+				<fieldset data-role="controlgroup">
+					<legend>Courses:</legend>
 			<%
 				String[] courseNames = (String[])request.getAttribute("courseNames");
 				int i = 0;
@@ -198,15 +200,16 @@ $(document).bind("pageinit", myLiveEventHandler);
 				while(i<courseNames.length) {
 			%>
 			<div id=<% out.println("test"+ courseNames[i]);%>>
-			<input type="checkbox" name=<% out.println("test"+ courseNames[i]);%>  class="custom"/>
-			<label for=<% out.println("test"+ courseNames[i]);%>> <% out.println(courseNames[i]);%> </label>
+			<input type="checkbox" name=<% out.println("test" + courseNames[i]);%>  id=<%out.println("test" + i);%>  class="custom"/>
+			<label for=<% out.println("test" + courseNames[i]);%>> <% out.println(courseNames[i]);%> </label>
 			</div>
-			<% i++; } }%>			
+			<% i++; }}%>			
 			</fieldset>
 			</div>
 		</div>
-
+		</div>
 		
+		<div>
 		<a href="#popupBasic" data-rel="popup" >Remove courses from your StudyProgram</a>
 		<div data-role="popup" id="popupBasic">
 					<div data-role="fieldcontain" id="RemoveBoxes">
@@ -225,6 +228,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 							</fieldset>
 						</div>
 					</div>	
+					</div>
 		
 		<fieldset class="ui-grid-a">
 			<div class="ui-block-a"><button type="submit" name ="submit1" value="submit" data-theme="b">Register</button></div>
