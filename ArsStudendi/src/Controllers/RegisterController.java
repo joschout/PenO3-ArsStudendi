@@ -58,6 +58,17 @@ public class RegisterController {
 	public String[] getStudyProgramNames(){
 		return StudyProgramRegistry.getSingletonObject().getStudyProgamNames();
 	}
+	public String[] getProgramCourseNames(String program){
+		StudyProgram studyProgram = StudyProgramRegistry.getSingletonObject().getStudyProgram(program);
+		List<Course> programCourses = studyProgram.getCourses();
+		String[] programCourseNames = new String[programCourses.size()];
+		int i = 0;
+		while(i<programCourses.size()){
+			programCourseNames[i] = programCourses.get(i).getCourseName();
+			i++;
+		}
+		return programCourseNames;
+	}
 	public String getProgramNameWithLong(long i) {
 		String s = StudyProgramRegistry.getSingletonObject().getProgramNameWithLong(i);
 		return s;

@@ -11,9 +11,6 @@
 	
 	
 	<script type="text/javascript">
-
-
-
 		
  	function emptyFields() {
 		var name = $("#studentName").val();
@@ -42,19 +39,95 @@
  				alert("Please confirm your password correctly")
  			}
  			else{
- 			 				$('[type="submit"]').button('disable');
+ 			 	$('[type="submit"]').button('disable');
  				$('[type="submit"]').button('refresh');	}
- 	}
+ 	}	
+ 	
+ 	var allNames = new Array();
+ 	<%String[] allNames = (String[])request.getAttribute("courseNames");%>
+	<%  
+		for(int n = 0; n<allNames.length; n++){%>
+		allNames[parseInt(<%out.println(n);%>)] = "<%= allNames[n]%>";
+		<%}%>
+ 	var program2 = {};
+	program2["TESTPROGRAM1"] = new Array();
+	<%String[] TESTPROGRAM1 = (String[])request.getAttribute("TESTPROGRAM1");%>
+	<%  
+		for(int n = 0; n<TESTPROGRAM1.length; n++){%>
+		program2["TESTPROGRAM1"][parseInt(<%out.println(n);%>)] = "<%= TESTPROGRAM1[n]%>";
+		<%}%>
+	program2["TESTPROGRAM2"] = new Array();
+	<%String[] TESTPROGRAM2 = (String[])request.getAttribute("TESTPROGRAM2");%>
+	<%  
+		for(int n = 0; n<TESTPROGRAM2.length; n++){%>
+		program2["TESTPROGRAM2"][parseInt(<%out.println(n);%>)] = "<%= TESTPROGRAM2[n]%>";
+		<%}%>
+	program2["TESTPROGRAM3"] = new Array();
+	<%String[] TESTPROGRAM3 = (String[])request.getAttribute("TESTPROGRAM3");%>
+	<%  
+		for(int n = 0; n<TESTPROGRAM3.length; n++){%>
+		program2["TESTPROGRAM3"][parseInt(<%out.println(n);%>)] = "<%= TESTPROGRAM3[n]%>";
+		<%}%>
+	program2["TESTPROGRAM4"] = new Array();
+	<%String[] TESTPROGRAM4 = (String[])request.getAttribute("TESTPROGRAM4");%>
+	<%  
+		for(int n = 0; n<TESTPROGRAM4.length; n++){%>
+		program2["TESTPROGRAM4"][parseInt(<%out.println(n);%>)] = "<%= TESTPROGRAM4[n]%>";
+			<%}%>
+	program2["TESTPROGRAM5"] = new Array();
+	<%String[] TESTPROGRAM5 = (String[])request.getAttribute("TESTPROGRAM5");%>
+	<%  
+		for(int n = 0; n<TESTPROGRAM5.length; n++){%>
+		program2["TESTPROGRAM5"][parseInt(<%out.println(n);%>)] = "<%= TESTPROGRAM5[n]%>";
+		<%}%>
+	program2["TESTPROGRAM6"] = new Array();
+	<%String[] TESTPROGRAM6 = (String[])request.getAttribute("TESTPROGRAM6");%>
+	<%  
+		for(int n = 0; n<TESTPROGRAM6.length; n++){%>
+		program2["TESTPROGRAM6"][parseInt(<%out.println(n);%>)] = "<%= TESTPROGRAM6[n]%>";
+		<%}%>
+function changeRemove(){
+	var v = $("#studyProgram option:selected").val();
+	var b = new Array();
+	var a = allNames;
+	for(var n = 0; n<program2[v].length; n++){
+		var optionName = "#" + program2[v][n];
+		var optionName2 = "#test" + program2[v][n];
+		$(optionName).show();
+		$(optionName2).hide();
+		for(var n2 = 0; n2<a.length; n2++){
+			var optionName2 = "#" + a[n2];
+			if( optionName2 == optionName)
+			{
+				b[n2] = "show";
+			}
+		}
+	}
+	for(var n = 0; n<a.length; n++){
+		if(b[n] !== "show"){
+		var optionName = "#" + a[n];
+		var optionName2 = "#test" + a[n];
+		$(optionName).hide();
+		$(optionName2).show();
+		}
+	}
+}
  	
 function myLiveEventHandler(event)
 {
   if(event.handled !== true)
   {
+  	changeRemove();
 	emptyFields();
   }
   return false;
 }
+
+
 $(document).bind("pageinit", myLiveEventHandler);
+
+
+
 	
 	</script>
 	
@@ -66,7 +139,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 
 </script>
 <div data-role="page">
-
+	
 	<div data-role="header" data-theme="b">
 		<h1>Register</h1>
 	</div><!-- /header -->
@@ -77,7 +150,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 
 	<div data-role="content">
 	
-	<form action="/register" method="post" data-ajax="false">
+	<form id="form1" action="/register" method="post" data-ajax="false">
 		<div data-role="fieldcontain" class="ui-hide-label">
 			<input type="text" name="studentFirstName" id="studentFirstName" value="" placeholder="First Name" onchange="emptyFields()"/>
 		</div>
@@ -99,9 +172,9 @@ $(document).bind("pageinit", myLiveEventHandler);
 			<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="E-mail" onchange="emptyFields()"/>
 		</div>
 		
-
+		
 		<label for="select-choice-0" class="select">Study Program</label>
-			<select name="studyProgram" id="studyProgram">
+			<select name="studyProgram" id="studyProgram" onChange="changeRemove()">
 			<%
 				String[] studyProgramNames = (String[])request.getAttribute("studyProgramNames");
 				int j = 0;
@@ -113,7 +186,9 @@ $(document).bind("pageinit", myLiveEventHandler);
    			<% j++; } }%>
 		</select>
 		
-		<div data-role="fieldcontain">
+		<a href="#popupBasic1" data-rel="popup">Add extra Courses</a>
+		<div data-role="popup" id="popupBasic1">
+			<div data-role="fieldcontain">
 			<fieldset data-role="controlgroup">
 			<legend>Courses:</legend>
 			<%
@@ -122,15 +197,38 @@ $(document).bind("pageinit", myLiveEventHandler);
 				if( courseNames != null){
 				while(i<courseNames.length) {
 			%>
-			<input type="checkbox" name=<% out.println(courseNames[i]);%> id=<% out.println(courseNames[i]);%> class="custom";"/>
-			<label for=<% out.println(courseNames[i]);%>> <% out.println(courseNames[i]);%> </label>
-			<% i++; } }%>
+			<div id=<% out.println("test"+ courseNames[i]);%>>
+			<input type="checkbox" name=<% out.println("test"+ courseNames[i]);%>  class="custom"/>
+			<label for=<% out.println("test"+ courseNames[i]);%>> <% out.println(courseNames[i]);%> </label>
+			</div>
+			<% i++; } }%>			
 			</fieldset>
+			</div>
 		</div>
+
+		
+		<a href="#popupBasic" data-rel="popup" >Remove courses from your StudyProgram</a>
+		<div data-role="popup" id="popupBasic">
+					<div data-role="fieldcontain" id="RemoveBoxes">
+						<fieldset data-role="controlgroup">
+							<legend>Courses:</legend>
+							<% String[] programCourseNames = (String[])request.getAttribute("courseNames");			
+								int i2 = 0;
+								if( programCourseNames != null){
+								while(i2<programCourseNames.length) {
+								%>
+								<div id=<% out.println(programCourseNames[i2]);%>>
+								<input type="checkbox" name=<%out.println(programCourseNames[i2]);%> id=<%out.println(i2);%>  class="custom"/>
+								<label for=<%out.println(i2);%>> <% out.println(programCourseNames[i2]);%> </label>
+								</div>
+								<% i2++; }}%>
+							</fieldset>
+						</div>
+					</div>	
 		
 		<fieldset class="ui-grid-a">
-			<div class="ui-block-a"><button type="submit" data-theme="b">Register</button></div>
-			<div class="ui-block-b"><a href="home.jsp" data-role="button">Cancel</a></button></div>	   
+			<div class="ui-block-a"><button type="submit" name ="submit1" value="submit" data-theme="b">Register</button></div>
+			<div class="ui-block-b"><a href="home.jsp" name="cancel" value="cancel" data-role="button">Cancel</a></button></div>	   
 		</fieldset>
 		
 
@@ -139,7 +237,6 @@ $(document).bind("pageinit", myLiveEventHandler);
 		
 	</form>
 
-	
 
 
 </div><!-- /page -->
