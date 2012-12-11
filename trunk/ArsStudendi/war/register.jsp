@@ -258,7 +258,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 		
 		<fieldset class="ui-grid-a">
 			<div class="ui-block-a"><button type="submit" name ="submit1" value="submit" data-theme="b">Register</button></div>
-			<div class="ui-block-b"><a href="home.jsp" name="cancel" value="cancel" data-role="button">Cancel</a></button></div>	   
+			<div class="ui-block-b"><a href="/home" name="cancel" value="cancel" data-role="button" data-ajax="false">Cancel</a></button></div>	   
 		</fieldset>
 		
 
