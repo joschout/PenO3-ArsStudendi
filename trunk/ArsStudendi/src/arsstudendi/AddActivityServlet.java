@@ -24,9 +24,9 @@ public class AddActivityServlet extends HttpServlet{
 		String[] studentCourses = controller.getCourseNames(student);
 		req.setAttribute("studentCourses", studentCourses);
 		
-		String add= req.getParameter("AddActivity");
-		System.out.println(add);
-		if(add != null){
+		String stop= req.getParameter("stop");
+		System.out.println(stop);
+		if(stop != null){
 		Calendar startTime = Calendar.getInstance();	
 		int startyear = Integer.parseInt(req.getParameter("select-start-year"));
 		int startmonth = Integer.parseInt(req.getParameter("select-start-month"));
@@ -43,7 +43,29 @@ public class AddActivityServlet extends HttpServlet{
 		int stophour = Integer.parseInt(req.getParameter("select-stop-hour"));
 		int stopminute = Integer.parseInt(req.getParameter("select-stop-minute"));
 		stopTime.set(stopyear, stopmonth, stopday, stophour, stopminute);
-		controller.addActivity(student, currentID, startTime, stopTime, activityName);
+		
+		String option1 = req.getParameter("option1");
+		String option2 = req.getParameter("option2");
+		String option3 = req.getParameter("option3");
+		String description= req.getParameter("ActivityDescription");
+		String courseStudied = new String();
+		String activityType = new String();
+		int amountOfPages = -1;
+		if (option1.equals("STUDY")){
+			activityType= option2;
+			courseStudied = (String)req.getParameter("courses");
+			if(option2.equals("Practice")){
+				amountOfPages = Integer.parseInt(req.getParameter("amountOfPages"));
+			}
+		}
+		else if(option1.equals("FREETIME")){
+			activityType= option3;
+		}
+		else if(option1.equals("SLEEP")){
+			activityType=option1;
+		}
+		controller.addActivity(student, currentID, startTime, stopTime, activityName, description, courseStudied, activityType, amountOfPages);
+		resp.sendRedirect("/tracking");
 		}
 		try {
 			req.getRequestDispatcher("/addActivity.jsp").forward(req, resp);
