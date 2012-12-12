@@ -54,7 +54,7 @@
 		
 		<br>
 		
-				<div><a href="#popupBasic" data-rel="popup">Add Courses</a></div>
+				<div class="center-align"><a href="#popupBasic" data-rel="popup">Add Courses</a></div>
 
 				<div data-role="popup" id="popupBasic">
 					<form action="/courses" method="post" data-ajax="false">
@@ -76,7 +76,7 @@
 						</form>
 					</div>	
 					
-				<div><a href="#popupBasic2" data-rel="popup">Remove Courses</a></div>
+				<div class="center-align"><a href="#popupBasic2" data-rel="popup">Remove Courses</a></div>
 
 				<div data-role="popup" id="popupBasic2">
 					<form action="/courses" method="post" data-ajax="false">
