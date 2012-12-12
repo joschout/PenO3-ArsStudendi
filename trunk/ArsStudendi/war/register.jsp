@@ -257,7 +257,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 					</div>
 				</div>
 
-		
+	<br>
 
 	<button type="submit" name ="submit" value="submit" data-theme="b">Register</button>
 	<div><a href="/home" name="cancel" value="cancel" data-role="button" data-ajax="false">Cancel</a></button></div>	   

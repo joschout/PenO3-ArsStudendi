@@ -4,6 +4,7 @@
 	<title>ArsStudendi</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" type="text/css" href="main.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	<script>
@@ -218,7 +219,7 @@
 
 
 	<div data-role="header" data-theme="b">
-		<h1><%out.println("header"); %></h1>
+		<h1><%out.println("Add Manually"); %></h1>
 		 <a href="/index" data-role="button" data-icon="home" data-iconpos="notext" data-ajax="false">Home</a> 
 		<a href="logout.jsp" data-role="button" data-icon="delete">Log Out</a>
 	</div>
@@ -230,7 +231,7 @@
 		<form action="/addActivity" method="POST" data-ajax="false">
 	
 		<div data-role="fieldcontain">
-		<legend>StartTime</legend>
+		<legend>Start Date</legend>
 		<fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Day, Month, Year)</legend>
 		
@@ -258,6 +259,7 @@
         </div>
         
         <div data-role="fieldcontain">
+        <legend>Start Time</legend>
         <fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Hours, Minutes)</legend>
         <select name="select-start-hour" id="select-start-hour" onChange="testDates();">           
@@ -277,7 +279,7 @@
 		
 		
 		<div data-role="fieldcontain">
-		<legend>StopTime</legend>
+		<legend>Stop Date</legend>
 		<fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Day, Month, Year)</legend>
 		
@@ -305,6 +307,7 @@
         </div>
         
         <div data-role="fieldcontain">
+        <legend>Stop Time</legend>
         <fieldset data-role="controlgroup" data-type="horizontal">
 		<legend>(Hours, Minutes)</legend>
         <select name="select-stop-hour" id="select-stop-hour" onChange="testDates();">           
@@ -322,7 +325,7 @@
         </fieldset>
         </div>
 		
-		
+		<br>
 		
 
 		
@@ -334,7 +337,7 @@
 						<label for="option1" class="select"></label>
 						<select name="option1" id="option1" onChange="hideList2();">
 							<option value=STUDY>Study</option>
-							<option value=FREETIME>FreeTime</option>
+							<option value=FREETIME>Free Time</option>
    							<option value=SLEEP>Sleep</option>
    						</select>
    					</div>
@@ -343,7 +346,7 @@
    						<label for="option2" class="select"></label>
 						<select name="option2" onChange="hideList2();">
 							<option value="Lecture">Lecture</option>
-   							<option value="TeamWork">TeamWork</option>
+   							<option value="TeamWork">Teamwork</option>
    							<option value="Practice">Practice</option>
    						</select>
    					</div>
@@ -363,8 +366,8 @@
 		
 		
 			<div data-role="fieldcontain" class="ui-hide-label" id="description">
-				<label for="ActivityDescription" class="select">Description</label><br>
-				<input type="text" name="ActivityDescription"  value="" placeholder="ActivityDescription"/>
+				<label for="ActivityDescription" class="select">Description:</label><br><br>
+				<input type="text" name="ActivityDescription"  value="" placeholder="Activity Description"/>
 			</div>
 			
 			<div id="pageSlider">
@@ -373,7 +376,7 @@
 			</div>	
 			
 			<div data-role="fieldcontain" id="courses">
-			<label for="select-choice-0" class="select">Course</label><br>
+			<label for="select-choice-0" class="select">Course:</label><br><br>
 			<select name="courses">
 			<%
 				String[] courseNames = (String[])request.getAttribute("studentCourses");
@@ -384,9 +387,16 @@
    			<%i++;}}%>
 			</select>
 			</div>
-   			<div id="warningMessage" class="center-align"></div>		
+			
+			<br>
+			
+   			<div id="warningMessage" class="center-align"></div>
+   			
+   			<br>
+   					
 			<fieldset class="ui-grid-a">
 				<div class="ui-block-a" id="stop"><button type="submit" name="stop" data-theme="b" value="stop">Add</button></div>	   
+				<div class="ui-block-b"><a href="/tracking" data-role="button" data-ajax="false">Cancel</a></button></div>
 			</fieldset>
 		
 		
