@@ -51,41 +51,41 @@
 		allNames[parseInt(<%out.println(n);%>)] = "<%= allNames[n]%>";
 		<%}%>
  	var program2 = {};
-	program2["TESTPROGRAM1"] = new Array();
-	<%String[] TESTPROGRAM1 = (String[])request.getAttribute("TESTPROGRAM1");%>
+	program2["Eerste_Bach_Ingenieurswetenschappen_SEM1"] = new Array();
+	<%String[] Eerste_Bach_Ingenieurswetenschappen_SEM1 = (String[])request.getAttribute("Eerste_Bach_Ingenieurswetenschappen_SEM1");%>
 	<%  
-		for(int n = 0; n<TESTPROGRAM1.length; n++){%>
-		program2["TESTPROGRAM1"][parseInt(<%out.println(n);%>)] = "<%= TESTPROGRAM1[n]%>";
+		for(int n = 0; n<Eerste_Bach_Ingenieurswetenschappen_SEM1.length; n++){%>
+		program2["Eerste_Bach_Ingenieurswetenschappen_SEM1"][parseInt(<%out.println(n);%>)] = "<%= Eerste_Bach_Ingenieurswetenschappen_SEM1[n]%>";
 		<%}%>
-	program2["TESTPROGRAM2"] = new Array();
-	<%String[] TESTPROGRAM2 = (String[])request.getAttribute("TESTPROGRAM2");%>
+	program2["Tweede_Bach_Ingenieurswetenschappen_SEM1"] = new Array();
+	<%String[] Tweede_Bach_Ingenieurswetenschappen_SEM1 = (String[])request.getAttribute("Tweede_Bach_Ingenieurswetenschappen_SEM1");%>
 	<%  
-		for(int n = 0; n<TESTPROGRAM2.length; n++){%>
-		program2["TESTPROGRAM2"][parseInt(<%out.println(n);%>)] = "<%= TESTPROGRAM2[n]%>";
+		for(int n = 0; n<Tweede_Bach_Ingenieurswetenschappen_SEM1.length; n++){%>
+		program2["Tweede_Bach_Ingenieurswetenschappen_SEM1"][parseInt(<%out.println(n);%>)] = "<%= Tweede_Bach_Ingenieurswetenschappen_SEM1[n]%>";
 		<%}%>
-	program2["TESTPROGRAM3"] = new Array();
-	<%String[] TESTPROGRAM3 = (String[])request.getAttribute("TESTPROGRAM3");%>
+	program2["Eerste_Bach_Ingenieurswetenschappen_SEM2"] = new Array();
+	<%String[] Eerste_Bach_Ingenieurswetenschappen_SEM2 = (String[])request.getAttribute("Eerste_Bach_Ingenieurswetenschappen_SEM2");%>
 	<%  
-		for(int n = 0; n<TESTPROGRAM3.length; n++){%>
-		program2["TESTPROGRAM3"][parseInt(<%out.println(n);%>)] = "<%= TESTPROGRAM3[n]%>";
+		for(int n = 0; n<Eerste_Bach_Ingenieurswetenschappen_SEM2.length; n++){%>
+		program2["Eerste_Bach_Ingenieurswetenschappen_SEM2"][parseInt(<%out.println(n);%>)] = "<%= Eerste_Bach_Ingenieurswetenschappen_SEM2[n]%>";
 		<%}%>
-	program2["TESTPROGRAM4"] = new Array();
-	<%String[] TESTPROGRAM4 = (String[])request.getAttribute("TESTPROGRAM4");%>
+	program2["Eerste_Bach_Rechten_SEM1"] = new Array();
+	<%String[] Eerste_Bach_Rechten_SEM1 = (String[])request.getAttribute("Eerste_Bach_Rechten_SEM1");%>
 	<%  
-		for(int n = 0; n<TESTPROGRAM4.length; n++){%>
-		program2["TESTPROGRAM4"][parseInt(<%out.println(n);%>)] = "<%= TESTPROGRAM4[n]%>";
+		for(int n = 0; n<Eerste_Bach_Rechten_SEM1.length; n++){%>
+		program2["Eerste_Bach_Rechten_SEM1"][parseInt(<%out.println(n);%>)] = "<%= Eerste_Bach_Rechten_SEM1[n]%>";
 			<%}%>
-	program2["TESTPROGRAM5"] = new Array();
-	<%String[] TESTPROGRAM5 = (String[])request.getAttribute("TESTPROGRAM5");%>
+	program2["Eerste_Bach_Geneeskunde_SEM1"] = new Array();
+	<%String[] Eerste_Bach_Geneeskunde_SEM1 = (String[])request.getAttribute("Eerste_Bach_Geneeskunde_SEM1");%>
 	<%  
-		for(int n = 0; n<TESTPROGRAM5.length; n++){%>
-		program2["TESTPROGRAM5"][parseInt(<%out.println(n);%>)] = "<%= TESTPROGRAM5[n]%>";
+		for(int n = 0; n<Eerste_Bach_Geneeskunde_SEM1.length; n++){%>
+		program2["Eerste_Bach_Geneeskunde_SEM1"][parseInt(<%out.println(n);%>)] = "<%= Eerste_Bach_Geneeskunde_SEM1[n]%>";
 		<%}%>
-	program2["TESTPROGRAM6"] = new Array();
-	<%String[] TESTPROGRAM6 = (String[])request.getAttribute("TESTPROGRAM6");%>
+	program2["Eerste_Bach_Geneeskunde_SEM2"] = new Array();
+	<%String[] Eerste_Bach_Geneeskunde_SEM2 = (String[])request.getAttribute("Eerste_Bach_Geneeskunde_SEM2");%>
 	<%  
-		for(int n = 0; n<TESTPROGRAM6.length; n++){%>
-		program2["TESTPROGRAM6"][parseInt(<%out.println(n);%>)] = "<%= TESTPROGRAM6[n]%>";
+		for(int n = 0; n<Eerste_Bach_Geneeskunde_SEM2.length; n++){%>
+		program2["Eerste_Bach_Geneeskunde_SEM2"][parseInt(<%out.println(n);%>)] = "<%= Eerste_Bach_Geneeskunde_SEM2[n]%>";
 		<%}%>
 function changeRemove(){
 	var v = $("#studyProgram option:selected").val();
@@ -94,13 +94,13 @@ function changeRemove(){
 	for(var n = 0; n<program2[v].length; n++){
 		var optionName = "#" + program2[v][n];
 		var optionName2 = "#test" + program2[v][n];
-		$(optionName).show();
-		$(optionName2).hide();
 		for(var n2 = 0; n2<a.length; n2++){
-			var optionName2 = "#" + a[n2];
-			if( optionName2 == optionName)
+			var optionName3 = "#" + a[n2];
+			if( optionName3 == optionName)
 			{
 				b[n2] = "show";
+				$(optionName).show();
+				$(optionName2).hide();
 			}
 		}
 	}

@@ -9,8 +9,9 @@ public class CourseRegistry extends Objectifiable {
 
 	private static CourseRegistry _singletonObject;
 	//	public static ArrayList<Course> courses;
-	public static String[] courseNames = { "TESTCOURSE1", "TESTCOURSE2", "TESTCOURSE3",
-			"TESTCOURSE4", "TESTCOURSE5", "TESTCOURSE6" };
+	public static String[] courseNames = { "Analyse1", "Analyse2", "Analyse3",
+			"Mechanica1", "Mechanica2", "Organische Scheikunde", "Toegepaste Lineaire Algebra", "Elektrische Netwerken", "Informatica", "Wijsbegeerte", "Materiaalkunde", "Economie", "Informatie-Overdracht en Verwerking", "Toegepaste Scheikunde", "Statistiek", "PENO1", "PENO2", "PENO3", "Algemene Natuurkunde", "Thermodynamica","Inleiding tot de Rechtswetenschap", "Geschiedenis van het publiek recht", "Romeins Recht", "Francais juridique", 
+			"Fysiochemische Processen 1", "Fysiochemische Processen 2", "Medisch Wetenschappelijk Onderzoek", "Anatomie", "Metabolismen", "Spijsvertering", "Celfunctie", "Celstructuur"};
 
 	/**
 	 * Dit is eigenlijk de getInstance() methode
