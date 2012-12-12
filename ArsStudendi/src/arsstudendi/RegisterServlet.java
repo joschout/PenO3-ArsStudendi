@@ -93,6 +93,9 @@ public class RegisterServlet extends HttpServlet {
 		session.setAttribute("currentID", ID);
 		resp.sendRedirect("/index");
 		}
+		else{
+			req.setAttribute("inUse", emailAdress);
+		}
 		try {
 			req.getRequestDispatcher("/register.jsp").forward(req, resp);
 		} catch (ServletException e) {

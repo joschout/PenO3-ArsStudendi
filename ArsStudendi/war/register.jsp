@@ -140,13 +140,26 @@ function showRemove()
 	showR = "true";
 	}
 }
- 	
+function warningM(){
+	var warning = "<%= request.getAttribute("inUse")%>";
+	if(warning !== "null"){
+			$("#warningMessage").text("Email " + warning + " already in use");
+			$('[type="submit"]').button('disable');
+			$('[type="submit"]').button('refresh');	
+			}
+		
+}
+function diswarM(){
+	$("#warningMessage").text("");
+	}
+	
  	
  	
 function myLiveEventHandler(event)
 {
   if(event.handled !== true)
   {
+  	warningM();
   	showAdd();
   	showRemove();
   	changeRemove();
@@ -181,7 +194,7 @@ $(document).bind("pageinit", myLiveEventHandler);
 	
 	<form id="form1" action="/register" method="post" data-ajax="false">
 		<div data-role="fieldcontain" class="ui-hide-label">
-			<input type="text" name="studentFirstName" id="studentFirstName" value="" placeholder="First Name" onchange="emptyFields()"/>
+			<input type="text" name="studentFirstName" id="studentFirstName" value="" placeholder="First Name" onchange="emptyFields();"/>
 		</div>
 		
 		<div data-role="fieldcontain" class="ui-hide-label">
@@ -198,8 +211,10 @@ $(document).bind("pageinit", myLiveEventHandler);
 		</div>
 		
 		<div data-role="fieldcontain" class="ui-hide-label">
-			<input type="text" name="emailAdress" id="emailAdress" value="" placeholder="E-mail" onchange="emptyFields()"/>
+			<input type="email" name="emailAdress" id="emailAdress" value="" placeholder="E-mail" onchange="emptyFields();diswarM();"/>
 		</div>
+		
+		<div id="warningMessage" class="center-align"></div>
 		
 		<br>
 		
@@ -259,8 +274,9 @@ $(document).bind("pageinit", myLiveEventHandler);
 					</div>
 				</div>
 
-	<br>
-
+   			
+   			<br>
+   			
 	<button type="submit" name ="submit" value="submit" data-theme="b">Register</button>
 	<div><a href="/home" name="cancel" value="cancel" data-role="button" data-ajax="false">Cancel</a></button></div>	   
 		
