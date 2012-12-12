@@ -110,7 +110,6 @@ function changeRemove(){
 		if(b[n] !== "show"){
 		var optionName = "#" + a[n];
 		var optionName2 = "#test" + a[n];
-		alert(optionName)
 		$(optionName).hide();
 		$(optionName2).show();
 		}
