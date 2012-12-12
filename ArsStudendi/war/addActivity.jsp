@@ -372,7 +372,7 @@
 			
 			<div id="pageSlider">
 				<label for="amountOfPages">Amount of pages:</label>
-				<input type="range" name="amountOfPages" id="amountOfPages" value="pages" min="0" max="100" data-highlight="true"/>
+				<input type="range" name="amountOfPages" id="amountOfPages" value="10" min="0" max="100" data-highlight="true"/>
 			</div>	
 			
 			<div data-role="fieldcontain" id="courses">
