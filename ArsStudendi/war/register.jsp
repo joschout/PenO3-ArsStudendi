@@ -91,6 +91,7 @@ function changeRemove(){
 	var v = $("#studyProgram option:selected").val();
 	var b = new Array();
 	var a = allNames;
+	
 	for(var n = 0; n<program2[v].length; n++){
 		var optionName = "#" + program2[v][n];
 		var optionName2 = "#test" + program2[v][n];
@@ -98,6 +99,7 @@ function changeRemove(){
 			var optionName3 = "#" + a[n2];
 			if( optionName3 == optionName)
 			{
+				
 				b[n2] = "show";
 				$(optionName).show();
 				$(optionName2).hide();
@@ -108,6 +110,7 @@ function changeRemove(){
 		if(b[n] !== "show"){
 		var optionName = "#" + a[n];
 		var optionName2 = "#test" + a[n];
+		alert(optionName)
 		$(optionName).hide();
 		$(optionName2).show();
 		}
