@@ -10,8 +10,8 @@ public class CourseRegistry extends Objectifiable {
 	private static CourseRegistry _singletonObject;
 	//	public static ArrayList<Course> courses;
 	public static String[] courseNames = { "Analyse1", "Analyse2", "Analyse3",
-			"Mechanica1", "Mechanica2", "Organische Scheikunde", "Toegepaste Lineaire Algebra", "Elektrische Netwerken", "Informatica", "Wijsbegeerte", "Materiaalkunde", "Economie", "Informatie-Overdracht en Verwerking", "Toegepaste Scheikunde", "Statistiek", "PENO1", "PENO2", "PENO3", "Algemene Natuurkunde", "Thermodynamica","Inleiding tot de Rechtswetenschap", "Geschiedenis van het publiek recht", "Romeins Recht", "Francais juridique", 
-			"Fysiochemische Processen 1", "Fysiochemische Processen 2", "Medisch Wetenschappelijk Onderzoek", "Anatomie", "Metabolismen", "Spijsvertering", "Celfunctie", "Celstructuur"};
+			"Mechanica1", "Mechanica2", "Organische_Scheikunde", "Toegepaste_Lineaire_Algebra", "Elektrische_Netwerken", "Informatica", "Wijsbegeerte", "Materiaalkunde", "Economie", "Informatie_Overdracht_en_Verwerking", "Toegepaste_Scheikunde", "Statistiek", "PENO1", "PENO2", "PENO3", "Algemene_Natuurkunde", "Thermodynamica","Inleiding_tot_de_Rechtswetenschap", "Geschiedenis_van_het_publiek_recht", "Romeins_Recht", "Francais_juridique", 
+			"Fysiochemische_Processen_1", "Fysiochemische_Processen_2", "Medisch_Wetenschappelijk_Onderzoek", "Anatomie", "Metabolismen", "Spijsvertering", "Celfunctie", "Celstructuur"};
 
 	/**
 	 * Dit is eigenlijk de getInstance() methode
