@@ -7,13 +7,15 @@ import DomainModel.*;
 
 import java.util.*;
 /**
- * A class for registering instances of the class Student in Google's database, the Google Datastore.
- * To do this, this class extends the class Objectifiable, which delivers Objectify instances.
- * For more information about Objectify, its javadocs and source code, please visit https://code.google.com/p/objectify-appengine/.
+ * A class for registering instances of the class Student in Google's database,
+ * the Google Datastore. To do this, this class extends the class Objectifiable,
+ *  which delivers Objectify instances. For more information about Objectify, 
+ *  its javadocs and source code, please visit https://code.google.com/p/objectify-appengine/.
  * The class follow a singleton pattern. Therefore only one instance of this class can exist at run time.
  
  * 
- * @author Team PenO CW-B1: Jonas Schouterden, Nils Nijs, Thijs Peirelinck, Michiel Meertens, 
+ * @author 	Team PenO CW-B1:
+ * 		 	Jonas Schouterden, Nils Nijs, Thijs Peirelinck, Michiel Meertens, Lucas Vanlaer
  * @version 13-12-2012
  *
  */
@@ -95,7 +97,7 @@ public class StudentRegistry extends Objectifiable {
 	 *        The password of the Student associated with the given email adress.
 	 * @return  the student with the given email address and password. 
 	 * 			|if (isEmailAddressAvailable || password==null || inLogEmailAdress == null ||
-	 * 			|	(for all Student student  in { getObjectify().query(Student.class).get() : Student.getPassword() != password ))
+	 * 			|	(for all Student student  in { getObjectify().query(Student.class).get()} : Student.getPassword() != password ))
 	 * 			|then	result == null
 	 * 			|else result == getObjectify().query(Student.class)
 	 * 			| 		.filter("emailAdress",   inLogEmailAdress).filter("password", password).get()
