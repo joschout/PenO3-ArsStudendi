@@ -6,19 +6,35 @@ import Controllers.Objectifiable;
 import DomainModel.*;
 
 import java.util.*;
-
+/**
+ * A class for registering instances of the class Student in Google's database, the Google Datastore.
+ * To do this, this class extends the class Objectifiable, which delivers Objectify instances.
+ * For more information about Objectify, its javadocs and source code, please visit https://code.google.com/p/objectify-appengine/.
+ * The class follow a singleton pattern. Therefore only one instance of this class can exist at run time.
+ 
+ * 
+ * @author Team PenO CW-B1: Jonas Schouterden, Nils Nijs, Thijs Peirelinck, Michiel Meertens, 
+ * @version 13-12-2012
+ *
+ */
 public class StudentRegistry extends Objectifiable {
 
+	/**
+	 * Class variable with the class itself as its type.
+	 */
 	private static StudentRegistry _singletonObject;
 
+	/**
+	 * Constructor registering the Objectify Entity class "Student" with the ObjectifyService.
+	 */
 	private StudentRegistry() {
 		ObjectifyService.register(Student.class);
 	}
 
 	/**
-	 * Dit is eigenlijk de getInstance() methode
-	 * 
-	 * @return
+	 * Return the unique instance of this class.
+	 * Another name for this method could be "getInstance()".
+	 * @return StudentRegistry _singletonObject
 	 */
 	public static synchronized StudentRegistry getSingletonObject() {
 		if (_singletonObject == null) {
@@ -27,27 +43,40 @@ public class StudentRegistry extends Objectifiable {
 		return _singletonObject;
 	}
 
+
 	/**
-	 * 
+	 * Return the instance of the class Student in the database uniquely associated with the given key.
+	 * @param 	studentKey
+	 * 			The key uniquely associated with an instance of the class Student in the database
+	 * @return 	The Student stored in the database associated with the given key.
+	 * 			| getObjectify().get(studentKey)
 	 */
 	public Student getStudent(Key<Student> studentKey) {
 		return getObjectify().get(studentKey);
 	}
 
 	/**
-	 * 
-	 * @param emailAdress
-	 * @return
+	 * Check whether there already exists an object of the class Student with the given email address in the database.
+	 * @param 	emailAddress
+	 * 			The email address to check
+	 * @return	true if there isn't an instance in the database with the given email address
+	 * 			| result == (getObjectify().query(Student.class).filter("emailAdress", emailAdress).get() == null)
 	 */
-	public boolean isEmailAvailable(String emailAdress) {
+	public boolean isEmailAvailable(String emailAddress) {
 		Student student = getObjectify().query(Student.class)
-				.filter("emailAdress", emailAdress).get();
+				.filter("emailAdress", emailAddress).get();
 		if (student == null) {
 			return true;
 		}
 		return false;
 	}
 
+	/**
+	 * Put the given student in the Google Datastore.
+	 * @param student
+	 * 	The student to put in the Datastore
+	 * @return result == (student != null)
+	 */
 	public boolean putStudent(Student student) {
 		if (student != null) {
 			getObjectify().put(student);
@@ -58,160 +87,42 @@ public class StudentRegistry extends Objectifiable {
 	}
 
 	/**
-	 * Vraagt het Studentobject uit de Google Datastore op die
+	 * Return the object of the class Student associates with the given email address and password.
 	 * 
-	 * @param inLogEmailAdress
-	 *            Het emailadres waarmee de gebruiker probeert in te loggen.
+	 * @param inLogEmailAddress
+	 *        The email address (uniquely) associated with the Student to be returned.
 	 * @param password
-	 *            Het wachtwoord waarme de gebruiker probeert in te loggen.
-	 * @return getObjectify().query(Student.class).filter("emailAdress",
-	 *         inLogEmailAdress).filter("password", password).get() null als het
-	 *         object niet wordt gevonden?
+	 *        The password of the Student associated with the given email adress.
+	 * @return  the student with the given email address and password. 
+	 * 			|if (isEmailAddressAvailable || password==null || inLogEmailAdress == null ||
+	 * 			|	(for all Student student  in { getObjectify().query(Student.class).get() : Student.getPassword() != password ))
+	 * 			|then	result == null
+	 * 			|else result == getObjectify().query(Student.class)
+	 * 			| 		.filter("emailAdress",   inLogEmailAdress).filter("password", password).get()
 	 */
-	public Student getStudent(String inLogEmailAdress, String password) {
-		return getObjectify().query(Student.class).filter("emailAdress", inLogEmailAdress).filter("password", password).get();// load().type(Student.class)
+	public Student getStudent(String inLogEmailAddress, String password) {
+		return getObjectify().query(Student.class).filter("emailAdress", inLogEmailAddress).filter("password", password).get();
 	}
 
-	/**
-	 * 
-	 * @param studentID
-	 * @return
-	 */
+/**
+ * Return the object of the class Student uniquely associated with the given ID.
+ * @param 	studentID
+ *			the id of the student to be returned
+ * @return	the student with the given id. 
+ * 			| result == getObjectify().get(Student.class, studentID)
+ */
 	public Student getStudent(Long studentID) {
 		return getObjectify().get(Student.class, studentID);
 	}
-	
+	/**
+	 * Return all objects of the class Student stored in the Google Datastore.
+	 * @return all objects of the class Student stored in the Google Datastore
+	 * 			|result == getObjectify().query(Student.class).list()
+	 */
 	public List<Student> getAllStudents() {
 		List<Student> students = new ArrayList<Student>();
 		students = getObjectify().query(Student.class).list();
 		return students;
 	}
-
-//	private ArrayList<Course> makeCourses() {
-//		String[] arr = CourseRegistry.getSingletonObject().getCourseNames();
-//		ArrayList<Course> courses = new ArrayList<Course>();
-//		int length = arr.length;
-//		int i = 0;
-//		while (i < length) {
-//			Course course = new Course(arr[i], (long) i);
-//			courses.add(course);
-//			i++;
-//		}
-//		return courses;
-//	}
-
-//	/**
-//	 * 
-//	 * @param givenCourseList
-//	 * @return
-//	 */
-//	private ArrayList<StudyProgram> makeProgramList(ArrayList<Course> givenCourseList) {
-//		
-//		ArrayList<Course> courses = givenCourseList;
-//		ArrayList<StudyProgram> studyPrograms = new ArrayList<StudyProgram>();
-//		
-//		int length = 6;
-//		int i = 0;
-//		String[] arr = StudyProgramRegistry.getSingletonObject().getStudyProgamNames();
-//		
-//		while (i < length) {
-//			ArrayList<Course> courseList = new ArrayList<Course>();
-//			if (i == 0) {
-//				courseList.add(courses.get(1));
-//				courseList.add(courses.get(3));
-//				courseList.add(courses.get(5));
-//			}
-//			if (i == 1) {
-//				courseList.add(courses.get(1));
-//				courseList.add(courses.get(2));
-//				courseList.add(courses.get(3));
-//			}
-//			if (i == 2) {
-//				courseList.add(courses.get(1));
-//				courseList.add(courses.get(3));
-//				courseList.add(courses.get(4));
-//			}
-//			if (i == 3) {
-//				courseList.add(courses.get(1));
-//				courseList.add(courses.get(5));
-//				courseList.add(courses.get(0));
-//			}
-//			if (i == 4) {
-//				courseList.add(courses.get(2));
-//				courseList.add(courses.get(3));
-//				courseList.add(courses.get(4));
-//			}
-//			if (i == 5) {
-//				courseList.add(courses.get(1));
-//				courseList.add(courses.get(4));
-//				courseList.add(courses.get(5));
-//			}
-//			StudyProgram studyProgram = new StudyProgram(courseList, arr[i], (long) i);
-//			studyPrograms.add(studyProgram);
-//			i++;
-//		}
-//		return studyPrograms;
-//	}
-
-//	public Course getCourse(String courseName) {
-//		ArrayList<Course> courses = makeCourses();
-//		for (Course course : courses) {
-//			if (course.getCourseName() == courseName) {
-//				return course;
-//			}
-//
-//		}
-//		return null;
-//	}
-
-//	public String getCourseNameWithLong(long i) {
-//		ArrayList<Course> courses = makeCourses();
-//		for (Course course : courses) {
-//			if (course.getCourseID() == i) {
-//				return course.getCourseName();
-//			}
-//
-//		}
-//		return null;
-//	}
-
-//	public String getProgramNameWithLong(long i) {
-//		ArrayList<StudyProgram> programList = makeProgramList(makeCourses());
-//		for (StudyProgram studyProgram : programList) {
-//			if (studyProgram.getStudyProgramID() == i) {
-//				return studyProgram.getStudyProgramName();
-//			}
-//
-//		}
-//		return null;
-//	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-//	public ArrayList<Course> getCourseList() {
-//		ArrayList<Course> courses = makeCourses();
-//		return courses;
-//	}
-//	
-	/**
-	 * 
-	 * @param studyProgramName
-	 * @return
-	 */
-//	public StudyProgram getStudyProgram(String studyProgramName) {
-//		ArrayList<StudyProgram> studyPrograms = makeProgramList(makeCourses());
-//		for (StudyProgram studyProgram : studyPrograms) {
-//			if (studyProgram.getStudyProgramName() == studyProgramName) {
-//				return studyProgram;
-//			}
-//
-//		}
-//		return null;
-//		// should NEVER happen
-//		// THIS CANNOT HAPPEN DO YOU HEAR ME
-//
-//	}
 
 }
